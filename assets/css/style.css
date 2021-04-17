@@ -46,6 +46,10 @@ html, body
     font-family: Ubuntu; 
 }
 
+body {
+    background-image: url(".assets/img/background-image.png");
+}
+
 h1 {
     font-size: var(--lg-font);
     font-family: Ubuntu, sans-serif;
