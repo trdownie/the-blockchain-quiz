@@ -47,7 +47,7 @@ html, body
 }
 
 body {
-    background-image: url(".assets/img/background-image.png");
+    background: url(../img/background-index.png) fixed no-repeat;
 }
 
 h1 {
@@ -71,4 +71,32 @@ img {
 
 
 /*----------------------------------  Sitewide  ------------------------------------------*/
+
+.text-box {
+    width: 70%;
+    margin: 30px auto;
+    text-align: center;
+    padding: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--btc-orange);
+    border-radius: 15px;
+    background-color: var(--btc-grey);
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.button {
+    width: 100px;
+    text-align: center;
+    font-weight: 800;
+    color: var(--btc-grey);
+    border-radius: 5px;
+    background-color: var(--btc-orange);
+}
 
