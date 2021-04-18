@@ -81,12 +81,29 @@ img {
     color: var(--btc-orange);
 }
 
+a.orange-text:hover {
+    color: var(--btc-white);
+    text-decoration: none;
+}
+
 .white-text {
     color: var(--btc-white)
 }
+
+.small-divider {
+    height: 30px;
+}
+
+.medium-divider {
+    height: 60px;
+}
+
+.large-divider {
+    height: 120px;
+}
 /*----------------------------------  Sitewide  ------------------------------------------*/
 
-.text-box {
+.grey-box {
     width: 70%;
     margin: 30px auto;
     text-align: center;
@@ -95,6 +112,22 @@ img {
     border-color: var(--btc-orange);
     border-radius: 15px;
     background-color: var(--btc-grey);
+}
+
+.orange-box {
+    width: 70%;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 15px;
+    background-color: var(--btc-orange);
+}
+
+.white-box {
+    width: 70%;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 15px;
+    background-color: var(--btc-white);
 }
 
 .button-box {
@@ -131,4 +164,9 @@ img {
     color: var(--btc-grey);
     font-size: var(--xl-font);
     font-weight: 200;
+}
+
+.knowledge-level {
+    width: 200px;
+    height: 200px;
 }
