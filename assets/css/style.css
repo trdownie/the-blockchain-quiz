@@ -73,6 +73,10 @@ img {
 
 /*----------------------------------  Utilities  ------------------------------------------*/
 
+.center-text {
+    text-align: center;
+}
+
 .grey-text {
     color: var(--btc-grey);
 }
@@ -101,12 +105,18 @@ a.orange-text:hover {
 .large-divider {
     height: 120px;
 }
+
+/*TRYING TO FIGURE OUT GOOD WAY TO HAVE RADIO BUTTONS*/
+input[type="radio"] {
+    text-align: center;
+}
 /*----------------------------------  Sitewide  ------------------------------------------*/
 
 .grey-box {
     width: 70%;
     margin: 30px auto;
-    text-align: center;
+    padding: 10px;
+    text-align: left;
     border-style: solid;
     border-width: 2px;
     border-color: var(--btc-orange);
