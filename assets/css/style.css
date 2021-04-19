@@ -54,6 +54,7 @@ h1 {
     font-size: var(--lg-font);
     font-weight: 600;
     text-align: center;
+    color: var(--btc-white);
 }
 
 h2 {
