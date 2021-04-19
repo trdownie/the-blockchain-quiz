@@ -1,35 +1,64 @@
+
+
+
 //-------------------- WELCOME MESSAGE ANIMATION
 //---------- Variables
+    newWelcome = "Welcome to";
+    returnWelcome = "Welcome back to";
+    winnerWelcome = "Welcome back to";
+    let lineBreak = document.createElement("br");
+    quizTitle = "The Blockchain Quiz";
+    newGreeting = ""
+    returnGreeting1 = "Peter. There is still much to learn."
+    newInvite = "Shall we begin?";
+    returnInvite = "Are you ready?";
+    winnerInvite = "You have unlocked the full site."
     let i = 0;
     let j = 0;
-    let welcomeNew = 'Welcome to';
-    let title = 'The Blockchain Quiz';
-    let invitation = 'Shall we begin?';
     let speed = 100;
-    let lineBreak = document.createElement("br");
-//---------- Main function
-function welcomeIntro(){
-//----- step 1: adds welcome message letter by letter
-    if (i < welcomeNew.length) {
-        document.getElementById("welcome-message").innerHTML += welcomeNew.charAt(i);
+
+// reusable function for writing typewriter text
+function typewriterText(textToType, elementId){
+    setTimeout(function() {
+        document.getElementById(elementId).innerHTML += textToType.charAt(i);
         i++;
-        setTimeout(welcomeIntro, speed);
-    }
-//----- step 2: adds the title in one go
-    else if (i = welcomeNew.length) {
-        setTimeout(function() {
-        document.getElementById("welcome-message").append(lineBreak);
-        document.getElementById("welcome-message").append(title);
-        i++;;
-    }, 500);
-    }
-//----- step 3: adds the invitation letter by letter (NOT WORKING!!!)
-    else if (j < welcomeNew.length) {
-        document.getElementById("invite").innerHTML += invitation.charAt(j);
-        j++;
-        setTimeout(welcomeIntro, speed);
-    }
+        if (i < textToType.length) {
+            typewriterText(textToType, elementId);
+        }
+    }, speed)
 }
-//----- this begins the function once DOM has loaded page content
-document.addEventListener("DOMContentLoaded", function(){ welcomeIntro(invite)
-})
+
+// GREETING FUNCTIONS
+// 1 - typewriter text welcome
+function welcome(callback){
+    typewriterText(newWelcome, 'welcome-message')
+    callback()
+}
+
+// 2 - non-typewriter text title
+function title(){
+    setTimeout(function() {
+        document.getElementById("welcome-message").append(lineBreak);
+        document.getElementById("welcome-message").append(quizTitle);
+    }, 2000);
+}
+
+// 3 - typewriter text greeting
+function greeting(){
+    typewriterText(newGreeting, 'welcome-message')
+}
+
+// 4 - typewriter text invite
+function invite(){
+    typewriterText(newInvite, 'invite')
+}
+
+document.addEventListener("DOMContentLoaded",
+    welcome(
+        title(
+            greeting(
+                invite()
+            )
+        )
+    )
+)
