@@ -1,5 +1,5 @@
 //-------------------- COOKIES
-//---------- retrieve previously achieved level
+// function to retrieve previously achieved level
 // cookie should look like {userLevel=6;path=/}
 function retrieveLevel() {
 // line 6 adapted from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
@@ -8,26 +8,99 @@ function retrieveLevel() {
 }
 
 //-------------------- WELCOME MESSAGE ANIMATION
-//---------- greetings
+// welcome text options
+    let welcome
     newWelcome = "Welcome to";
     returnWelcome = "Welcome back to";
+// title of quiz
     quizTitle = "The Blockchain Quiz";
-    Greeting0 = ""
-    Greeting1 = "Peter. There is still much to learn."
-    Greeting2 = 
-    Greeting3 = 
-    Greeting4 = 
-    Greeting5 = 
-    Greeting6 = 
-    Greeting7 = 
-    Greeting8 = 
-    Greeting9 = 
-    Greeting10 = "Satoshi, hero of the people."
+// greeting text options
+    let greeting
+    greeting0 = ""
+    greeting1 = "Peter. There is still much to learn."
+    greeting2 = 
+    greeting3 = 
+    greeting4 = 
+    greeting5 = 
+    greeting6 = 
+    greeting7 = 
+    greeting8 = 
+    greeting9 = 
+    greeting10 = "Satoshi, hero of the people."
+// invite text options
+    let invite
     newInvite = "Shall we begin?";
     returnInvite = "Are you ready?";
     winnerInvite = "You have unlocked the full site."
 
-// variables
+// function to set greetings to be displayed based on previous level achieved
+function setGreeting() {
+// line 6 adapted from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+    var userLevel = document.cookie.split('; ').find(row => row.startsWith('userLevel=')).split('=')[1];
+// sets default greetings for no level found
+    if (userLevel = '') {
+        welcome = newWelcome
+        greeting = greeting0
+        invite = newInvite
+    }
+// sets greetings based on level found
+    else {
+        switch(userLevel) {
+            case 1:
+            welcome = returnWelcome
+            greeting = greeting1
+            invite = returnInvite
+            break;
+            case 2:
+            welcome = returnWelcome
+            greeting = greeting2
+            invite = newInvite
+            break;
+            case 3:
+            welcome = returnWelcome
+            greeting = greeting3
+            invite = newInvite
+            break;
+            case 4:
+            welcome = returnWelcome
+            greeting = greeting4
+            invite = newInvite
+            break;
+            case 5:
+            welcome = returnWelcome
+            greeting = greeting5
+            invite = newInvite
+            break;
+            case 6:
+            welcome = returnWelcome
+            greeting = greeting6
+            invite = newInvite
+            break;
+            case 7:
+            welcome = returnWelcome
+            greeting = greeting7
+            invite = newInvite
+            break;
+            case 8:
+            welcome = returnWelcome
+            greeting = greeting8
+            invite = newInvite
+            break;
+            case 9:
+            welcome = returnWelcome
+            greeting = greeting9
+            invite = newInvite
+            break;
+            case 10:
+            welcome = returnWelcome
+            greeting = greeting10
+            invite = winnerInvite
+            break;
+        }
+    }
+}
+
+// animation variables
 let typeSpeed = 50
 
 // reusable function for writing typewriter text - couldn't get to work more than once
@@ -41,7 +114,7 @@ function typewriterText(textToType, elementId){
     }, speed)
 }
 
-// GREETING FUNCTIONS
+// greeting functions
 // 1 - typewriter text welcome
 let i = 0
 function typewriterWelcome(){
@@ -126,7 +199,7 @@ function button() {
     appear2(document.getElementsByTagName('button')[0], 0, 5, 50);
 }
 
-// Run Full Greeting
+// Run Full Greeting (TO ADD SetGreeting function once cookies enabled)
 document.addEventListener("DOMContentLoaded",
     typewriterWelcome(),
     setTimeout(function() {
