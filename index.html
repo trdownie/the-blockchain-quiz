@@ -8,16 +8,32 @@
         <title>The Blockchain Quiz</title>
     </head>
     <body>
-<!--======================================    START OF PAGE    ======================================-->
+<!--======================================    START OF PAGE    -->
         <div id="welcome-box" class="grey-box">
             <p id="welcome" class="center-text orange-text"></p>
-            <h1 id="title">The Blockchain Quiz</h1>
+            <h1>The Blockchain Quiz</h1>
             <p id="greeting"></p>
             <div class="small-divider"></div>
             <p id="invite" class="center-text orange-text"></p>
         </div>
         <div class="button-box">
-            <button id="start-button" type="button">BEGIN</button>
+            <button id="begin-button" type="button">BEGIN</button>
+        </div>
+<!----------------------------------------    'Begin' Modal    -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 class="orange-text underline">The Rules</h2>
+                <p class="grey-text">
+                • There are 10 questions that get progressively more difficult<br>
+                • You have 60 seconds to answer each question<br>
+                • You must answer each question correctly to proceed<br>
+                • If you fail a single question, you lose<br>
+                • You will be assigned a rank based on your performance<br>
+                • There is a unique prize for winners, so don't lose<br>
+                </p>
+                <a href="quiz.html" class="grey-button white-text">BEGIN</a>
+            </div>
         </div>
     <script src="index.js"></script>
     </body>
