@@ -1,17 +1,34 @@
-
-
+//-------------------- COOKIES
+//---------- retrieve previously achieved level
+// cookie should look like {userLevel=6;path=/}
+function retrieveLevel() {
+// line 6 adapted from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+    var userLevel = document.cookie.split('; ').find(row => row.startsWith('userLevel=')).split('=')[1];
+    return userLevel
+}
 
 //-------------------- WELCOME MESSAGE ANIMATION
 //---------- greetings
     newWelcome = "Welcome to";
     returnWelcome = "Welcome back to";
-    winnerWelcome = "Welcome back to";
     quizTitle = "The Blockchain Quiz";
-    newGreeting = ""
-    returnGreeting1 = "Peter. There is still much to learn."
+    Greeting0 = ""
+    Greeting1 = "Peter. There is still much to learn."
+    Greeting2 = 
+    Greeting3 = 
+    Greeting4 = 
+    Greeting5 = 
+    Greeting6 = 
+    Greeting7 = 
+    Greeting8 = 
+    Greeting9 = 
+    Greeting10 = "Satoshi, hero of the people."
     newInvite = "Shall we begin?";
     returnInvite = "Are you ready?";
     winnerInvite = "You have unlocked the full site."
+
+// variables
+let typeSpeed = 50
 
 // reusable function for writing typewriter text - couldn't get to work more than once
 function typewriterText(textToType, elementId){
@@ -27,7 +44,6 @@ function typewriterText(textToType, elementId){
 // GREETING FUNCTIONS
 // 1 - typewriter text welcome
 let i = 0
-let typeSpeed = 50
 function typewriterWelcome(){
     setTimeout(function() {
         document.getElementById('welcome').innerHTML += newWelcome.charAt(i);
@@ -39,7 +55,7 @@ function typewriterWelcome(){
 }
 
 // 2 - title appears
-// code adapted from Mic on SO: https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// title function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
 function title() {
     function appear(elm, num, step, speed){
         var t_o;
@@ -66,9 +82,9 @@ function title() {
 let j = 0
 function typewriterGreeting(){
     setTimeout(function() {
-        document.getElementById('greeting').innerHTML += newGreeting.charAt(j);
+        document.getElementById('greeting').innerHTML += Greeting0.charAt(j);
         j++;
-        if (j < newGreeting.length) {
+        if (j < Greeting0.length) {
             typewriterGreeting();
         }
     }, typeSpeed)
@@ -87,7 +103,7 @@ function typewriterInvite(){
 }
 
 // 5 - button appears
-// code adapted from Mic on SO: https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// button function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
 function button() {
     function appear2(elm, num, step, speed){
         var t_o;
