@@ -55,6 +55,7 @@ h1 {
     font-weight: 600;
     text-align: center;
     color: var(--btc-white);
+    opacity: 0;
 }
 
 h2 {
@@ -148,7 +149,7 @@ input[type="radio"] {
     height: 100px;
 }
 
-.button {
+#start-button {
     width: 150px;
     height: 50px;
     text-align: center;
@@ -157,6 +158,7 @@ input[type="radio"] {
     color: var(--btc-grey);
     border-radius: 5px;
     background-color: var(--btc-orange);
+    opacity: 0;
 }
 
 #timer-box {
