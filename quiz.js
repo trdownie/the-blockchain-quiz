@@ -30,15 +30,15 @@ var questionTen = document.getElementById("answer-ten");
 
 function runQuiz(){ // run master function on page load
 
-// default userLevel = 0
+// default userLevel
     let userLevel = 0
-// default userScore = 0
+// default userScore
     let userScore = 0
 
+// displays question
     function displayQuestion() {
 // appends 1 to the question title on load
         document.getElementById("question-number").innerHTML += (userLevel + 1);
-
 // asks question in typewriter text
         let i = 0
         let q1 = 'What is blockchain?'
@@ -53,22 +53,26 @@ function runQuiz(){ // run master function on page load
         }
         typewriterWelcome()
 // timer fades in but doesn't begin
+
 // unhides q1 (form/answers) after 3 seconds & starts timer
-// on click of submit, assess whether right/wrong
-// if correct move userLevel up by 1, add timer count to userScore, run Q2
-// if incorrect display modal using level/score & stores/overwrites cookie
+        setTimeout(function() {
+            document.getElementById("answer-one").style.display = "block"
+        }, 2500)
     }
 
-//    function failModal(userLevel, userScore) {
+// on click of submit button assess whether correct and adjust user level/score or run fail
+    function assessAnswer() {
+    }
+
+    function failModal(userLevel, userScore) {
 // on run displays modal by adding inner html to elements based on userLevel/userScore info saved in array
 // modal also has button to begin quiz again reminding users of prize
-//    }
+    }
 
-//    function weHaveAWinner(userLevel, userScore) {
+    function weHaveAWinner(userLevel, userScore) {
 // takes user to winner's area & stores/overwrites cookie
-//    }
+    }
 
-//}
     displayQuestion()
 }
 
