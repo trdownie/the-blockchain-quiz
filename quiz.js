@@ -17,6 +17,17 @@ var questionEight = document.getElementById("question-eight");
 var questionNine = document.getElementById("question-nine");
 var questionTen = document.getElementById("question-ten");
 
+var questionOne = document.getElementById("answer-one"); // targets form for answer one
+var questionTwo = document.getElementById("answer-two"); // targets form for answer two
+var questionThree = document.getElementById("answer-three"); // targets form for answer three
+var questionFour = document.getElementById("answer-four"); // etc
+var questionFive = document.getElementById("answer-five");
+var questionSix = document.getElementById("answer-six");
+var questionSeven = document.getElementById("answer-seven");
+var questionEight = document.getElementById("answer-eight");
+var questionNine = document.getElementById("answer-nine");
+var questionTen = document.getElementById("answer-ten");
+
 function runQuiz(){ // run master function on page load
 
 // default userLevel = 0
@@ -29,7 +40,18 @@ function runQuiz(){ // run master function on page load
         document.getElementById("question-number").innerHTML += (userLevel + 1);
 
 // asks question in typewriter text
-
+        let i = 0
+        let q1 = 'What is blockchain?'
+        function typewriterWelcome(){
+            setTimeout(function() {
+                document.getElementById('question-one').innerHTML += q1.charAt(i);
+                i++;
+                if (i < q1.length) {
+                    typewriterWelcome();
+                }
+            }, 100)
+        }
+        typewriterWelcome()
 // timer fades in but doesn't begin
 // unhides q1 (form/answers) after 3 seconds & starts timer
 // on click of submit, assess whether right/wrong
@@ -49,6 +71,7 @@ function runQuiz(){ // run master function on page load
 //}
     displayQuestion()
 }
+
 
 document.addEventListener("DOMContentLoaded",
     runQuiz()

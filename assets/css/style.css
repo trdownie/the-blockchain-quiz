@@ -257,42 +257,42 @@ input[type="radio"] {
     background-color: var(--btc-orange);
 }
 
-#question-one {
+#answer-one {
     display: none;
 }
 
-#question-two {
+#answer-two {
     display: none;
 }
 
-#question-three {
+#answer-three {
     display: none;
 }
 
-#question-four {
+#answer-four {
     display: none;
 }
 
-#question-five {
+#answer-five {
     display: none;
 }
 
-#question-six {
+#answer-six {
     display: none;
 }
 
-#question-seven {
+#answer-seven {
     display: none;
 }
 
-#question-eight {
+#answer-eight {
     display: none;
 }
 
-#question-nine {
+#answer-nine {
     display: none;
 }
 
-#question-ten {
+#answer-ten {
     display: none;
 }
