@@ -31,13 +31,13 @@ var questionTen = document.getElementById("answer-ten");
 // run master function on page load
 function runQuiz(){
 
-    // default userLevel
+    // default userLevel, increasing by 1 as each question is answered
     let userLevel = 0
-    // default userScore
+    // default userScore, increasing by time on clock as each question answered
     let userScore = 0
 
-    // loads full question page up
-    function displayQuestion() {
+    // loads full question page up based on userLevel
+    function displayQuestion(userLevel) {
         
         // appends correct question number on load
         document.getElementById("question-number").innerHTML += (userLevel + 1);
@@ -113,19 +113,21 @@ function runQuiz(){
             }, 5000)
         }
         beginTimer()
-
-
-
-
-
     }
     
-    
-    
-    
-    
     // on click of submit button assess whether correct and adjust user level/score or run fail
-    function assessAnswer() {
+    function assessAnswer(userLevel) {
+        let correctAnswer = b
+        answerGiven = document.querySelector('input[name="q1"]:checked').value
+        document.getElementById('submit-one').onclick() = function(){
+        if (answerGiven = correctAnswer){
+            userLevel ++;
+            // load next question
+        }
+        else {
+            // fail modal
+        }
+        }
     }
 
     function failModal(userLevel, userScore) {
