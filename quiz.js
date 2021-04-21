@@ -43,6 +43,7 @@ function runQuiz(){
         document.getElementById("question-number").innerHTML += (userLevel + 1);
         
         // asks question in typewriter text
+        // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO QUESTION X
         let i = 0
         let q1 = 'What is blockchain?'
         function askQuestion(){
@@ -83,6 +84,7 @@ function runQuiz(){
 
         // displays answers after 4 seconds
         // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+        // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO ANSWER X
         function displayAnswer() {
             setTimeout(function() {    
                 appear(document.getElementById('answer-one'), 0, 10, 50)
@@ -116,6 +118,8 @@ function runQuiz(){
     }
     
     // on click of submit button assess whether correct and adjust user level/score or run fail
+    
+    // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO SUBMIT X, qX & obtain different answers from an index
     function assessAnswer(userLevel) {
         let correctAnswer = b
         answerGiven = document.querySelector('input[name="q1"]:checked').value
@@ -123,9 +127,11 @@ function runQuiz(){
         if (answerGiven = correctAnswer){
             userLevel ++;
             // load next question
+            displayQuestion(userLevel)
         }
         else {
             // fail modal
+            failModal()
         }
         }
     }
