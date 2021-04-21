@@ -90,16 +90,23 @@ function runQuiz(){
         }
         displayAnswer()
         
-        // starts timer once answer has loaded (4.5 seconds)
+        // starts timer once answer has loaded (5 seconds)
         function beginTimer () {
             setTimeout(function() {
                 let seconds = 59
                 setInterval(function(){
-                    if (seconds > -1) {
+                    if (seconds > 0) {
+                        if (seconds > 9) {
                         document.getElementById('timer').innerHTML = '0:' + seconds;
                         seconds-- ;
+                        }
+                        else {
+                        document.getElementById('timer').innerHTML = '0:0' + seconds;
+                        seconds-- ;
+                        }
                     }
                     else {
+                        document.getElementById('timer').innerHTML = '&#128128';
                         clearInterval()
                     }
                 }, 1000);
