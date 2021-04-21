@@ -123,17 +123,18 @@ function startQuiz(){
 // on click of submit button assess whether correct and adjust user level/score or run fail
 // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO SUBMIT X, qX & obtain different answers from an index
 function assessAnswer(userLevel, userScore) {
-    document.getElementById("question-number").innerHTML += ('userLevel');
-    let correctAnswer = b
-    answerGiven = document.querySelector('input[name="q1"]:checked').value
+    var correctAnswer = "b"
+    var answerGiven = document.querySelector('input[name="q1"]:checked').value
         if (answerGiven == correctAnswer){
-            userLevel ++;
+            // userLevel ++;
             // load next question
-            displayQuestion(userLevel, userScore)
+            // displayQuestion(userLevel, userScore)
+            document.getElementById("question-number").innerHTML += ('win');
         }
         else {
             // fail modal
-            failModal()
+            document.getElementById("question-number").innerHTML += ('fail');
+            // failModal()
         }
     }
 
@@ -156,5 +157,5 @@ document.addEventListener("DOMContentLoaded",
 )
 
 document.getElementById('submit-one').onclick = function(){
-        failModal();
-    }
+    assessAnswer();
+}
