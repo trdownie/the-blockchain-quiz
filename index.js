@@ -128,27 +128,27 @@ function typewriterWelcome(){
 }
 
 // 2 - title appears
-// title function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
 function title() {
-    function appear(elm, num, step, speed){
+    function appear(element, num, step, speed){
         var t_o;
         t_o = setInterval(function(){
             // get opacity in decimals
             var opacity = num / 100;
             // set the next opacity step
             num = num + step; 
-            if(opacity > 1 || opacity < 0){
+            if(opacity > 1){
                 clearInterval(t_o);
-            // if 1-opaque or 0-transparent, stop
+            // if 1-opaque, stop
                 return; 
             }
             // modern browsers
-            elm.style.opacity = opacity;
+            element.style.opacity = opacity;
             // older IE
-            elm.style.filter = 'alpha(opacity=' + opacity*100 + ')';
+            element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
         }, speed);
     }
-    appear(document.getElementsByTagName('h1')[0], 0, 5, 150);
+    appear(document.getElementById('title'), 0, 10, 150);
 }
 
 // 3 - typewriter text greeting
@@ -176,27 +176,27 @@ function typewriterInvite(){
 }
 
 // 5 - button appears
-// button function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
 function button() {
-    function appear2(elm, num, step, speed){
+    function appear(element, num, step, speed){
         var t_o;
         t_o = setInterval(function(){
             // get opacity in decimals
             var opacity = num / 100;
             // set the next opacity step
             num = num + step; 
-            if(opacity > 1 || opacity < 0){
+            if(opacity > 1){
                 clearInterval(t_o);
-            // if 1-opaque or 0-transparent, stop
+            // if 1-opaque, stop
                 return; 
             }
             // modern browsers
-            elm.style.opacity = opacity;
+            element.style.opacity = opacity;
             // older IE
-            elm.style.filter = 'alpha(opacity=' + opacity*100 + ')';
+            element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
         }, speed);
     }
-    appear2(document.getElementsByTagName('button')[0], 0, 5, 50);
+    appear(document.getElementsByTagName('button')[0], 0, 5, 50);
 }
 
 // Run Full Greeting (TO ADD SetGreeting function once cookies enabled)

@@ -55,7 +55,6 @@ h1 {
     font-weight: 600;
     text-align: center;
     color: var(--btc-white);
-    opacity: 0;
 }
 
 h2 {
@@ -161,6 +160,10 @@ input[type="radio"] {
     background-color: var(--btc-grey);
 }
 
+#title {
+    opacity: 0;
+}
+
 .button-box {
     display: flex;
     justify-content: center;
@@ -186,6 +189,7 @@ input[type="radio"] {
     border: 2px solid var(--btc-orange);
     border-radius: 15px;
     background-color: var(--btc-orange);
+    opacity: 0;
 }
 
 .timer {
@@ -258,7 +262,7 @@ input[type="radio"] {
 }
 
 #answer-one {
-    display: none;
+    opacity: 0;
 }
 
 #answer-two {
