@@ -73,24 +73,50 @@ function runQuiz(){
                 }, speed);
             }
         
-        // displays timer after 2.5 seconds
+        // displays timer after 3 seconds
         function displayTimer() {
             setTimeout(function() {    
                 appear(document.getElementById('timer-box'), 0, 10, 50)
-            }, 00)
+            }, 3000)
         }
         displayTimer()
 
-        // displays answers after 3.5 seconds
+        // displays answers after 4 seconds
         // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
         function displayAnswer() {
             setTimeout(function() {    
                 appear(document.getElementById('answer-one'), 0, 10, 50)
-            }, 3500)
+            }, 4000)
         }
         displayAnswer()
         
+        // starts timer once answer has loaded (4.5 seconds)
+        function beginTimer () {
+            setTimeout(function() {
+                let seconds = 59
+                setInterval(function(){
+                    if (seconds > -1) {
+                        document.getElementById('timer').innerHTML = '0:' + seconds;
+                        seconds-- ;
+                    }
+                    else {
+                        clearInterval()
+                    }
+                }, 1000);
+            }, 5000)
+        }
+        beginTimer()
+
+
+
+
+
     }
+    
+    
+    
+    
+    
     // on click of submit button assess whether correct and adjust user level/score or run fail
     function assessAnswer() {
     }
