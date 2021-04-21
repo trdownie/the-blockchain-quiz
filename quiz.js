@@ -28,8 +28,8 @@ var questionEight = document.getElementById("answer-eight");
 var questionNine = document.getElementById("answer-nine");
 var questionTen = document.getElementById("answer-ten");
 
-// run master function on page load
-function runQuiz(){
+// start quiz on page load
+function startQuiz(){
 
     // default userLevel, increasing by 1 as each question is answered
     let userLevel = 0
@@ -37,7 +37,7 @@ function runQuiz(){
     let userScore = 0
 
     // loads full question page up based on userLevel
-    function displayQuestion(userLevel) {
+    function displayQuestion(userLevel, userScore) {
         
         // appends correct question number on load
         document.getElementById("question-number").innerHTML += (userLevel + 1);
@@ -116,40 +116,45 @@ function runQuiz(){
         }
         beginTimer()
     }
+    displayQuestion(userLevel, userScore)
+}
+
     
-    // on click of submit button assess whether correct and adjust user level/score or run fail
-    
-    // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO SUBMIT X, qX & obtain different answers from an index
-    function assessAnswer(userLevel) {
-        let correctAnswer = b
-        answerGiven = document.querySelector('input[name="q1"]:checked').value
-        document.getElementById('submit-one').onclick() = function(){
-        if (answerGiven = correctAnswer){
+// on click of submit button assess whether correct and adjust user level/score or run fail
+// NEED TO ADD FUNCTION TO TURN USER LEVEL INTO SUBMIT X, qX & obtain different answers from an index
+function assessAnswer(userLevel, userScore) {
+    document.getElementById("question-number").innerHTML += ('userLevel');
+    let correctAnswer = b
+    answerGiven = document.querySelector('input[name="q1"]:checked').value
+        if (answerGiven == correctAnswer){
             userLevel ++;
             // load next question
-            displayQuestion(userLevel)
+            displayQuestion(userLevel, userScore)
         }
         else {
             // fail modal
             failModal()
         }
-        }
     }
 
-    function failModal(userLevel, userScore) {
-    // on run displays modal by adding inner html to elements based on userLevel/userScore info saved in array
-    // modal also has button to begin quiz again reminding users of prize
-    }
+function failModal(userLevel, userScore) {
+// on run displays modal by adding inner html to elements based on userLevel/userScore info saved in array
+// modal also has button to begin quiz again reminding users of prize
+    // opens modal on function run (closing modal not an option)
+    document.getElementById("fmodal").style.display = "block";
+}
 
-    function weHaveAWinner(userLevel, userScore) {
-    // takes user to winner's area & stores/overwrites cookie
-    }
-
-    // RUNS THE FUNCTIONS
-    displayQuestion()
+function weHaveAWinner(userLevel, userScore) {
+// takes user to winner's area & stores/overwrites cookie
 }
 
 
+
+
 document.addEventListener("DOMContentLoaded",
-    runQuiz()
+    startQuiz(),
 )
+
+document.getElementById('submit-one').onclick = function(){
+        failModal();
+    }
