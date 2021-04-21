@@ -23,7 +23,10 @@ function runQuiz(){ // run master function on page load
 // default userScore = 000
 
     function displayQuestion() {
-// unhides q1 after 3 seconds & starts timer
+// appends 1 to the question title on load
+// asks question in typewriter text
+// timer fades in but doesn't begin
+// unhides q1 (form/answers) after 3 seconds & starts timer
 // on click of submit, assess whether right/wrong
 // if correct move userLevel up by 1, add timer count to userScore, run Q2
 // if incorrect display modal using level/score & stores/overwrites cookie
