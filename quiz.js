@@ -17,38 +17,41 @@ var questionEight = document.getElementById("question-eight");
 var questionNine = document.getElementById("question-nine");
 var questionTen = document.getElementById("question-ten");
 
-var questionOne = document.getElementById("answer-one"); // targets form for answer one
-var questionTwo = document.getElementById("answer-two"); // targets form for answer two
-var questionThree = document.getElementById("answer-three"); // targets form for answer three
-var questionFour = document.getElementById("answer-four"); // etc
-var questionFive = document.getElementById("answer-five");
-var questionSix = document.getElementById("answer-six");
-var questionSeven = document.getElementById("answer-seven");
-var questionEight = document.getElementById("answer-eight");
-var questionNine = document.getElementById("answer-nine");
-var questionTen = document.getElementById("answer-ten");
+var answerOne = document.getElementById("answer-one"); // targets form for answer one
+var answerTwo = document.getElementById("answer-two"); // targets form for answer two
+var answerThree = document.getElementById("answer-three"); // targets form for answer three
+var answerFour = document.getElementById("answer-four"); // etc
+var answerFive = document.getElementById("answer-five");
+var answerSix = document.getElementById("answer-six");
+var answerSeven = document.getElementById("answer-seven");
+var answerEight = document.getElementById("answer-eight");
+var answerNine = document.getElementById("answer-nine");
+var answerTen = document.getElementById("answer-ten");
+
+const q1 = "What is blockchain technology?"
+
+
+// default userLevel, increasing by 1 as each question is answered
+let userLevel = 0
+// default userScore, increasing by time on clock as each question answered
+let userScore = 0
 
 // start quiz on page load
-function startQuiz(){
-
-    // default userLevel, increasing by 1 as each question is answered
-    let userLevel = 0
-    // default userScore, increasing by time on clock as each question answered
-    let userScore = 0
+function runQuiz(userLevel, userScore){
 
     // loads full question page up based on userLevel
     function displayQuestion(userLevel, userScore) {
         
-        // appends correct question number on load
-        document.getElementById("question-number").innerHTML += (userLevel + 1);
+        // resets question number and loads correct question number based on user level
+        document.getElementById("question-number").innerHTML = ''
+        document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
         
         // asks question in typewriter text
         // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO QUESTION X
         let i = 0
-        let q1 = 'What is blockchain?'
         function askQuestion(){
             setTimeout(function() {
-                document.getElementById('question-one').innerHTML += q1.charAt(i);
+                document.getElementById('question').innerHTML += q1.charAt(i);
                 i++;
                 if (i < q1.length) {
                     askQuestion();
@@ -96,20 +99,18 @@ function startQuiz(){
         function beginTimer () {
             setTimeout(function() {
                 let seconds = 59
+                document.getElementById('timer').innerHTML = ''
                 setInterval(function(){
-                    if (seconds > 0) {
-                        if (seconds > 9) {
+                    if (seconds > 9) {
                         document.getElementById('timer').innerHTML = '0:' + seconds;
                         seconds-- ;
-                        }
-                        else {
+                    }
+                    else if (seconds < 10 & seconds > 0){
                         document.getElementById('timer').innerHTML = '0:0' + seconds;
                         seconds-- ;
                         }
-                    }
                     else {
                         document.getElementById('timer').innerHTML = '&#128128';
-                        clearInterval()
                     }
                 }, 1000);
             }, 5000)
@@ -126,15 +127,14 @@ function assessAnswer(userLevel, userScore) {
     var correctAnswer = "b"
     var answerGiven = document.querySelector('input[name="q1"]:checked').value
         if (answerGiven == correctAnswer){
-            // userLevel ++;
+            userLevel ++;
             // load next question
             // displayQuestion(userLevel, userScore)
             document.getElementById("question-number").innerHTML += ('win');
+            runQuiz(userLevel)
         }
         else {
-            // fail modal
-            document.getElementById("question-number").innerHTML += ('fail');
-            // failModal()
+            failModal()
         }
     }
 
@@ -153,9 +153,10 @@ function weHaveAWinner(userLevel, userScore) {
 
 
 document.addEventListener("DOMContentLoaded",
-    startQuiz(),
+    runQuiz(userLevel, userScore),
 )
 
 document.getElementById('submit-one').onclick = function(){
+    clearInterval()
     assessAnswer();
 }
