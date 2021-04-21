@@ -43,17 +43,21 @@ function runQuiz(userLevel, userScore){
     function displayQuestion(userLevel, userScore) {
         
         // resets question number and loads correct question number based on user level
-        document.getElementById("question-number").innerHTML = ''
+        document.getElementById("question-number").innerHTML = '';
         document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
         
+        // sets the question
+        let q = "What is blockchain technology?"
+
+        
+        document.getElementById("question-number").innerHTML += ' userLevel is' + userLevel;
         // asks question in typewriter text
-        // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO QUESTION X
-        let i = 0
+        let i = 0   
         function askQuestion(){
             setTimeout(function() {
-                document.getElementById('question').innerHTML += q1.charAt(i);
+                document.getElementById('question').innerHTML += q.charAt(i);
                 i++;
-                if (i < q1.length) {
+                if (i < q.length) {
                     askQuestion();
                 }
             }, 100)
@@ -99,7 +103,6 @@ function runQuiz(userLevel, userScore){
         function beginTimer () {
             setTimeout(function() {
                 let seconds = 59
-                document.getElementById('timer').innerHTML = ''
                 setInterval(function(){
                     if (seconds > 9) {
                         document.getElementById('timer').innerHTML = '0:' + seconds;
@@ -130,8 +133,7 @@ function assessAnswer(userLevel, userScore) {
             userLevel ++;
             // load next question
             // displayQuestion(userLevel, userScore)
-            document.getElementById("question-number").innerHTML += ('win');
-            runQuiz(userLevel)
+            runQuiz(userLevel, userScore)
         }
         else {
             failModal()
