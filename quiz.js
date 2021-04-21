@@ -20,11 +20,16 @@ var questionTen = document.getElementById("question-ten");
 function runQuiz(){ // run master function on page load
 
 // default userLevel = 0
-// default userScore = 000
+    let userLevel = 0
+// default userScore = 0
+    let userScore = 0
 
     function displayQuestion() {
 // appends 1 to the question title on load
+        document.getElementById("question-number").innerHTML += (userLevel + 1);
+
 // asks question in typewriter text
+
 // timer fades in but doesn't begin
 // unhides q1 (form/answers) after 3 seconds & starts timer
 // on click of submit, assess whether right/wrong
@@ -32,13 +37,19 @@ function runQuiz(){ // run master function on page load
 // if incorrect display modal using level/score & stores/overwrites cookie
     }
 
-    function failModal(userLevel, userScore) {
+//    function failModal(userLevel, userScore) {
 // on run displays modal by adding inner html to elements based on userLevel/userScore info saved in array
 // modal also has button to begin quiz again reminding users of prize
-    }
+//    }
 
-    function weHaveAWinner(userLevel, userScore) {
+//    function weHaveAWinner(userLevel, userScore) {
 // takes user to winner's area & stores/overwrites cookie
-    }
+//    }
 
+//}
+    displayQuestion()
 }
+
+document.addEventListener("DOMContentLoaded",
+    runQuiz()
+)
