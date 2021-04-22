@@ -47,7 +47,9 @@ const correctAnswer = [
     "b",
     "b"]
 
-//var answerGiven = document.querySelector('input[name="q1"]:checked').value
+const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
+
+
 
 
 // default userLevel, increasing by 1 as each question is answered
@@ -166,9 +168,11 @@ function runQuiz(userLevel, userScore){
 
     // assess whether correct and adjust user level/score or run fail modal
     function assessAnswer(userLevel, userScore) {
-        let a = correctAnswer[userLevel]
-        var answerGiven = document.querySelector('input[name="q1"]:checked').value
-            if (answerGiven == a){
+        let a = correctAnswer[userLevel];
+        // targets input answer based on userLevel
+        let aGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
+        //let aGiven = document.querySelector('input[name="q1"]:checked').value
+            if (aGiven == a){
                 userLevel ++;
                 // userScore += seconds;
 
