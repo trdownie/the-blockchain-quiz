@@ -6,6 +6,7 @@ function storeLevel(level) {
 
 //-------------------- QUIZ
 
+// array of questions to ask user
 const answers = [
     'What is blockchain technology?',
     'What are nodes to blockchain?',
@@ -19,6 +20,7 @@ const answers = [
     'How many bytes are the hashes that bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces?',
     'What is a Merkle tree and how does it benefit the blockchain?']
 
+// array of answer forms taken from html
 const answerBox = [
     document.getElementById("answer-one"),
     document.getElementById("answer-two"),
@@ -31,6 +33,7 @@ const answerBox = [
     document.getElementById("answer-nine"),
     document.getElementById("answer-ten")]
 
+// array of correct answers (not correct yet)
 const correctAnswer = [
     "b",
     "b",
