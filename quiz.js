@@ -43,9 +43,9 @@ const answers = [
 
 
 // default userLevel, increasing by 1 as each question is answered
-let userLevel = 0
+const userLevel = 0
 // default userScore, increasing by time on clock as each question answered
-let userScore = 0
+const userScore = 0
 
 // start quiz on page load
 function runQuiz(userLevel, userScore){
@@ -63,14 +63,16 @@ function runQuiz(userLevel, userScore){
         // let q = "What is blockchain technology?"
         // var q = answers[0]
 
-        ////// USER LEVEL TEST
-        document.getElementById("question-number").innerHTML += ' userLevel is' + userLevel;
+        ////// USER LEVEL TEST: POP-UP (WILL NOT WORK)
+        window.alert("userLevel is " + String(userLevel));
+
+        
 
         // resets question ready to ask next question
         document.getElementById('question').innerHTML = '';
 
         // asks question in typewriter text
-        const q = answers[0]
+        const q = answers[userLevel]
         let i = 0
         function askQuestion(){
             setTimeout(function() {
@@ -121,7 +123,7 @@ function runQuiz(userLevel, userScore){
         // starts timer once answer has loaded (5 seconds)
         function beginTimer () {
             setTimeout(function() {
-                let seconds = 59
+                const seconds = 59
                 setInterval(function(){
                     if (seconds > 9) {
                         document.getElementById('timer').innerHTML = '0:' + seconds;
@@ -140,31 +142,43 @@ function runQuiz(userLevel, userScore){
         beginTimer()
     }
     displayQuestion(userLevel, userScore)
+
+    // on click of submit button assess whether correct and adjust user level/score or run fail
+    // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO SUBMIT X, qX & obtain different answers from an index
+
+    function assessAnswer(userLevel, userScore, seconds) {
+                                        ////// USER LEVEL TEST: IN QUESTION BOX
+                document.getElementById("question-number").innerHTML += ' userLevel is ' + String(userLevel);
+                document.getElementById("question-number").innerHTML += ' userScore is ' + String(userScore);
+        var correctAnswer = "b"
+        var answerGiven = document.querySelector('input[name="q1"]:checked').value
+            if (answerGiven == correctAnswer){
+                userLevel ++;
+                userScore += seconds;
+
+                // load next question
+                // displayQuestion(userLevel, userScore)
+
+                runQuiz(userLevel, userScore)
+            }
+            else {
+                failModal()
+            }
+        }
+    document.getElementById('submit-one').onclick = function(){
+    assessAnswer(userLevel, userScore);
+}    
+
+    function failModal(userLevel, userScore) {
+    // on run displays modal by adding inner html to elements based on userLevel/userScore info saved in array
+    // modal also has button to begin quiz again reminding users of prize
+        // opens modal on function run (closing modal not an option)
+        document.getElementById("fmodal").style.display = "block";
+    }
 }
 
     
-// on click of submit button assess whether correct and adjust user level/score or run fail
-// NEED TO ADD FUNCTION TO TURN USER LEVEL INTO SUBMIT X, qX & obtain different answers from an index
-function assessAnswer(userLevel, userScore) {
-    var correctAnswer = "b"
-    var answerGiven = document.querySelector('input[name="q1"]:checked').value
-        if (answerGiven == correctAnswer){
-            userLevel ++;
-            // load next question
-            // displayQuestion(userLevel, userScore)
-            runQuiz(userLevel, userScore)
-        }
-        else {
-            failModal()
-        }
-    }
 
-function failModal(userLevel, userScore) {
-// on run displays modal by adding inner html to elements based on userLevel/userScore info saved in array
-// modal also has button to begin quiz again reminding users of prize
-    // opens modal on function run (closing modal not an option)
-    document.getElementById("fmodal").style.display = "block";
-}
 
 function weHaveAWinner(userLevel, userScore) {
 // takes user to winner's area & stores/overwrites cookie
@@ -174,10 +188,5 @@ function weHaveAWinner(userLevel, userScore) {
 
 
 document.addEventListener("DOMContentLoaded",
-    runQuiz(userLevel, userScore),
+    runQuiz(userLevel, userScore)
 )
-
-document.getElementById('submit-one').onclick = function(){
-    clearInterval()
-    assessAnswer();
-}
