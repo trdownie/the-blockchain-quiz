@@ -28,6 +28,18 @@ var answerEight = document.getElementById("answer-eight");
 var answerNine = document.getElementById("answer-nine");
 var answerTen = document.getElementById("answer-ten");
 
+const answerBox = [
+    document.getElementById("answer-one"),
+    document.getElementById("answer-two"),
+    document.getElementById("answer-three"),
+    document.getElementById("answer-four"),
+    document.getElementById("answer-five"),
+    document.getElementById("answer-six"),
+    document.getElementById("answer-seven"),
+    document.getElementById("answer-eight"),
+    document.getElementById("answer-nine"),
+    document.getElementById("answer-ten")]
+
 const answers = [
     'What is blockchain technology?',
     'What are nodes to blockchain?',
@@ -86,12 +98,13 @@ function runQuiz(userLevel, userScore){
         askQuestion()
 
         // defines appear function for later use
+        // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
         function appear(element, num, step, speed){
                 var t_o;
                 t_o = setInterval(function(){
                     var opacity = num / 100;
                     num = num + step; 
-                    if(opacity > 1){
+                    if(opacity > 1 | opacity < 0){
                         clearInterval(t_o);
                         return; 
                     }
@@ -104,6 +117,7 @@ function runQuiz(userLevel, userScore){
         
         // displays timer after 3 seconds
         function displayTimer() {
+            document.getElementById('timer').innerHTML = '1:00';
             setTimeout(function() {    
                 appear(document.getElementById('timer-box'), 0, 10, 50)
             }, 3000)
@@ -111,14 +125,18 @@ function runQuiz(userLevel, userScore){
         displayTimer()
 
         // displays answers after 4 seconds
-        // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
-        // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO ANSWER X
-        function displayAnswer() {
+        // TEST FUNCTION
+        document.getElementById("question-number").innerHTML += ' userLevel is ' + String(userLevel);
+        
+        function displayAnswer(userLevel) {
+            // fades out previous answer
+            appear(answerBox[userLevel - 1], 100, -10, 50)
+            // fades in answer after 4 seconds
             setTimeout(function() {    
-                appear(document.getElementById('answer-one'), 0, 10, 50)
+                appear(answerBox[userLevel], 0, 10, 50)
             }, 4000)
         }
-        displayAnswer()
+        displayAnswer(userLevel)
         
         // starts timer once answer has loaded (5 seconds)
         function beginTimer () {
@@ -143,18 +161,13 @@ function runQuiz(userLevel, userScore){
     }
     displayQuestion(userLevel, userScore)
 
-    // on click of submit button assess whether correct and adjust user level/score or run fail
-    // NEED TO ADD FUNCTION TO TURN USER LEVEL INTO SUBMIT X, qX & obtain different answers from an index
-
-    function assessAnswer(userLevel, userScore, seconds) {
-                                        ////// USER LEVEL TEST: IN QUESTION BOX
-                document.getElementById("question-number").innerHTML += ' userLevel is ' + String(userLevel);
-                document.getElementById("question-number").innerHTML += ' userScore is ' + String(userScore);
+    // assess whether correct and adjust user level/score or run fail modal
+    function assessAnswer(userLevel, userScore) {
         var correctAnswer = "b"
         var answerGiven = document.querySelector('input[name="q1"]:checked').value
             if (answerGiven == correctAnswer){
                 userLevel ++;
-                userScore += seconds;
+                // userScore += seconds;
 
                 // load next question
                 // displayQuestion(userLevel, userScore)
