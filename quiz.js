@@ -28,7 +28,18 @@ var answerEight = document.getElementById("answer-eight");
 var answerNine = document.getElementById("answer-nine");
 var answerTen = document.getElementById("answer-ten");
 
-const q1 = "What is blockchain technology?"
+const answers = [
+    'What is blockchain technology?',
+    'What are nodes to blockchain?',
+    'What makes Bitcoin unique over regular banking?',
+    'What is mining to blockchain?',
+    'How are transactions in the blockchain verified?',
+    'What do miners receive in return for this work?',
+    'What are the costs of Bitcoin transactions on the Blockchain?',
+    'What are hashes to the blockchain?',
+    'What is a nonce to the blockchain?',
+    'How many bytes are the hashes that bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces?',
+    'What is a Merkle tree and how does it benefit the blockchain?']
 
 
 // default userLevel, increasing by 1 as each question is answered
@@ -39,6 +50,8 @@ let userScore = 0
 // start quiz on page load
 function runQuiz(userLevel, userScore){
 
+
+
     // loads full question page up based on userLevel
     function displayQuestion(userLevel, userScore) {
         
@@ -47,12 +60,18 @@ function runQuiz(userLevel, userScore){
         document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
         
         // sets the question
-        let q = "What is blockchain technology?"
+        // let q = "What is blockchain technology?"
+        // var q = answers[0]
 
-        
+        ////// USER LEVEL TEST
         document.getElementById("question-number").innerHTML += ' userLevel is' + userLevel;
+
+        // resets question ready to ask next question
+        document.getElementById('question').innerHTML = '';
+
         // asks question in typewriter text
-        let i = 0   
+        const q = answers[0]
+        let i = 0
         function askQuestion(){
             setTimeout(function() {
                 document.getElementById('question').innerHTML += q.charAt(i);
