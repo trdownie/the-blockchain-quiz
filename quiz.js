@@ -78,7 +78,6 @@ function runQuiz(userLevel, userScore){
         ////// USER LEVEL TEST: POP-UP (WILL NOT WORK)
         window.alert("userLevel is " + String(userLevel));
 
-        
 
         // resets question ready to ask next question
         document.getElementById('question').innerHTML = '';
@@ -99,6 +98,7 @@ function runQuiz(userLevel, userScore){
 
         // defines appear function for later use
         // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+        // to appear: num = 0 step = positive / to disappear: num = 100 step = negative
         function appear(element, num, step, speed){
                 var t_o;
                 t_o = setInterval(function(){
@@ -126,16 +126,22 @@ function runQuiz(userLevel, userScore){
 
         // displays answers after 4 seconds
         function displayAnswer(userLevel) {
-                    // TEST FUNCTION
-            document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
-            // fades out previous answer on q2 and above
+
+            // TEST FUNCTION
+            document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);  
+            
+            // fades out previous answer on q2 and above, and then hides their shell
             if (userLevel > 0) {
                 appear(answerBox[userLevel - 1], 100, -10, 50)
+                setTimeout (function(){
+                    answerBox[userLevel - 1].style.display = "none";
+                }, 600)
+                answerBox[userLevel].style.display = "block";
             }
             // fades in answer after 4 seconds
-            setTimeout(function() {    
-                // answerBox[userLevel - 1].style.display = none;
-                // answerBox[userLevel].style.display = block;
+            setTimeout(function() {  
+                //answerBox[userLevel - 1].style.display = "none";
+                //answerBox[userLevel].style.display = "block";
                 appear(answerBox[userLevel], 0, 10, 50)
             }, 4000)
         }
