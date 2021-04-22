@@ -6,27 +6,18 @@ function storeLevel(level) {
 
 //-------------------- QUIZ
 
-var questionOne = document.getElementById("question-one"); // targets form for question one
-var questionTwo = document.getElementById("question-two"); // targets form for question two
-var questionThree = document.getElementById("question-three"); // targets form for question three
-var questionFour = document.getElementById("question-four"); // etc
-var questionFive = document.getElementById("question-five");
-var questionSix = document.getElementById("question-six");
-var questionSeven = document.getElementById("question-seven");
-var questionEight = document.getElementById("question-eight");
-var questionNine = document.getElementById("question-nine");
-var questionTen = document.getElementById("question-ten");
-
-var answerOne = document.getElementById("answer-one"); // targets form for answer one
-var answerTwo = document.getElementById("answer-two"); // targets form for answer two
-var answerThree = document.getElementById("answer-three"); // targets form for answer three
-var answerFour = document.getElementById("answer-four"); // etc
-var answerFive = document.getElementById("answer-five");
-var answerSix = document.getElementById("answer-six");
-var answerSeven = document.getElementById("answer-seven");
-var answerEight = document.getElementById("answer-eight");
-var answerNine = document.getElementById("answer-nine");
-var answerTen = document.getElementById("answer-ten");
+const answers = [
+    'What is blockchain technology?',
+    'What are nodes to blockchain?',
+    'What makes Bitcoin unique over regular banking?',
+    'What is mining to blockchain?',
+    'How are transactions in the blockchain verified?',
+    'What do miners receive in return for this work?',
+    'What are the costs of Bitcoin transactions on the Blockchain?',
+    'What are hashes to the blockchain?',
+    'What is a nonce to the blockchain?',
+    'How many bytes are the hashes that bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces?',
+    'What is a Merkle tree and how does it benefit the blockchain?']
 
 const answerBox = [
     document.getElementById("answer-one"),
@@ -40,18 +31,20 @@ const answerBox = [
     document.getElementById("answer-nine"),
     document.getElementById("answer-ten")]
 
-const answers = [
-    'What is blockchain technology?',
-    'What are nodes to blockchain?',
-    'What makes Bitcoin unique over regular banking?',
-    'What is mining to blockchain?',
-    'How are transactions in the blockchain verified?',
-    'What do miners receive in return for this work?',
-    'What are the costs of Bitcoin transactions on the Blockchain?',
-    'What are hashes to the blockchain?',
-    'What is a nonce to the blockchain?',
-    'How many bytes are the hashes that bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces?',
-    'What is a Merkle tree and how does it benefit the blockchain?']
+const correctAnswer = [
+    "b",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b"]
+
+//var answerGiven = document.querySelector('input[name="q1"]:checked').value
 
 
 // default userLevel, increasing by 1 as each question is answered
@@ -125,10 +118,7 @@ function runQuiz(userLevel, userScore){
         displayTimer()
 
         // displays answers after 4 seconds
-        function displayAnswer(userLevel) {
-
-            // TEST FUNCTION
-            document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);  
+        function displayAnswer(userLevel) {  
             
             // fades out previous answer on q2 and above, and then hides their shell
             if (userLevel > 0) {
@@ -140,8 +130,6 @@ function runQuiz(userLevel, userScore){
             }
             // fades in answer after 4 seconds
             setTimeout(function() {  
-                //answerBox[userLevel - 1].style.display = "none";
-                //answerBox[userLevel].style.display = "block";
                 appear(answerBox[userLevel], 0, 10, 50)
             }, 4000)
         }
@@ -170,11 +158,14 @@ function runQuiz(userLevel, userScore){
     }
     displayQuestion(userLevel, userScore)
 
+    // TEST FUNCTION
+    document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
+
     // assess whether correct and adjust user level/score or run fail modal
     function assessAnswer(userLevel, userScore) {
-        var correctAnswer = "b"
+        let a = correctAnswer[userLevel]
         var answerGiven = document.querySelector('input[name="q1"]:checked').value
-            if (answerGiven == correctAnswer){
+            if (answerGiven == a){
                 userLevel ++;
                 // userScore += seconds;
 
