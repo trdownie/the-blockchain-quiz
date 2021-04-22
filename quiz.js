@@ -125,14 +125,17 @@ function runQuiz(userLevel, userScore){
         displayTimer()
 
         // displays answers after 4 seconds
-        // TEST FUNCTION
-        document.getElementById("question-number").innerHTML += ' userLevel is ' + String(userLevel);
-        
         function displayAnswer(userLevel) {
-            // fades out previous answer
-            appear(answerBox[userLevel - 1], 100, -10, 50)
+                    // TEST FUNCTION
+            document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
+            // fades out previous answer on q2 and above
+            if (userLevel > 0) {
+                appear(answerBox[userLevel - 1], 100, -10, 50)
+            }
             // fades in answer after 4 seconds
             setTimeout(function() {    
+                // answerBox[userLevel - 1].style.display = none;
+                // answerBox[userLevel].style.display = block;
                 appear(answerBox[userLevel], 0, 10, 50)
             }, 4000)
         }
