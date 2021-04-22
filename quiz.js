@@ -6,8 +6,8 @@ function storeLevel(level) {
 
 //-------------------- QUIZ
 
-// array of questions to ask user
-const answers = [
+// questions to ask user
+const question = [
     'What is blockchain technology?',
     'What are nodes to blockchain?',
     'What makes Bitcoin unique over regular banking?',
@@ -20,7 +20,7 @@ const answers = [
     'How many bytes are the hashes that bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces?',
     'What is a Merkle tree and how does it benefit the blockchain?']
 
-// array of answer forms taken from html
+// answer forms taken from html
 const answerBox = [
     document.getElementById("answer-one"),
     document.getElementById("answer-two"),
@@ -33,22 +33,25 @@ const answerBox = [
     document.getElementById("answer-nine"),
     document.getElementById("answer-ten")]
 
-// array of correct answers (not correct yet)
-const correctAnswer = [
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
-    "b"]
+// correct answers (not correct yet)
+const correctAnswer = ["b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"]
 
+// selector for identifying form
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
 
+// submit buttons taken from html
+const submitButton = [
+    document.getElementById("submit-one"),
+    document.getElementById("submit-two"),
+    document.getElementById("submit-three"),
+    document.getElementById("submit-four"),
+    document.getElementById("submit-five"),
+    document.getElementById("submit-six"),
+    document.getElementById("submit-seven"),
+    document.getElementById("submit-eight"),
+    document.getElementById("submit-nine"),
+    document.getElementById("submit-ten"),
+    document.getElementById("submit-eleven")]
 
 
 
@@ -56,6 +59,8 @@ const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q
 const userLevel = 0
 // default userScore, increasing by time on clock as each question answered
 const userScore = 0
+
+
 
 // start quiz on page load
 function runQuiz(userLevel, userScore){
@@ -81,7 +86,7 @@ function runQuiz(userLevel, userScore){
         document.getElementById('question').innerHTML = '';
 
         // asks question in typewriter text
-        const q = answers[userLevel]
+        const q = question[userLevel]
         let i = 0
         function askQuestion(){
             setTimeout(function() {
@@ -185,7 +190,7 @@ function runQuiz(userLevel, userScore){
                 failModal()
             }
         }
-    document.getElementById('submit-one').onclick = function(){
+    submitButton[userLevel].onclick = function(){
     assessAnswer(userLevel, userScore);
 }    
 
