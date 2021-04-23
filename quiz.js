@@ -54,9 +54,15 @@ const submitButton = [
     document.getElementById("submit-eleven")]
 
 // default userLevel, increasing by 1 as each question is answered
-var userLevel = 0
+let userLevel = 0
 // default userScore, increasing by time on clock as each question answered
-var userScore = 0
+let userScore = 0
+
+document.addEventListener("DOMContentLoaded", function () {
+        // USER LEVEL TEST: POP-UP
+    window.alert("userLevel is " + String(userLevel));
+})
+
 
 // starts quiz on page load
 document.addEventListener("DOMContentLoaded", function () {
