@@ -64,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // USER LEVEL TEST: POP-UP
     window.alert("userLevel is " + String(userLevel));
 
+    submitButton[userLevel].onclick = function(){
+        assessAnswer(userLevel, userScore);
+        }   
+
     if (userLevel < 11) {
-        displayQuestion(userLevel, userScore);
-        submitButton[userLevel].onclick = function(){
-            assessAnswer(userLevel, userScore)
-            let userLevel = assessAnswer(userLevel, userScore)
-            }
+        displayQuestion(userLevel, userScore)
     }
     else {
         weHaveAWinner(userLevel, userScore)
@@ -80,26 +80,28 @@ document.addEventListener("DOMContentLoaded", function () {
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel) {
     
-    // resets question number and loads correct question number based on user level
+    // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
+
+    // adds the new question number inner HTML based on userLevel
     document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
 
-    // asks question in typewriter text
+    // asks the question in typewriter text based on userLevel
     askQuestion(userLevel)
 
-    // displays the timer at 1:00
+    // displays the timer at 1:00 for every question
     displayTimer()
 
-    // displays answers after 4 seconds
+    // displays answer box after 4 seconds based on userLevel
     displayAnswerBox(userLevel)
     
-    // starts timer once answer has loaded (5 seconds)
-    beginTimer()
-
-    submitButton[userLevel].onclick = function(){
-        assessAnswer(userLevel, userScore);
-        }   
+    // starts 60 second timer once answer has loaded (5 seconds)
+    setTimeout(function() {
+        beginTimer()
+    }, 5000)
 }
+
+
 
 
 function askQuestion(userLevel){
@@ -167,22 +169,22 @@ function displayAnswerBox(userLevel) {
 
 // starts timer after 5 seconds (giving time for answer box to load)
 function beginTimer () {
-    setTimeout(function() {
-        const seconds = 59
-        setInterval(function(){
-            if (seconds > 9) {
-                document.getElementById('timer').innerHTML = '0:' + seconds;
-                seconds-- ;
+    // begin interval that begins after 1 second and repeats every second until seconds = 0
+    setInterval(function(){
+    let seconds = 59
+        if (seconds > 9) {
+            document.getElementById('timer').innerHTML = '0:' + seconds;
+            seconds-- ;
+        }
+        else if (seconds < 10 & seconds > 0){
+            document.getElementById('timer').innerHTML = '0:0' + seconds;
+            seconds-- ;
             }
-            else if (seconds < 10 & seconds > 0){
-                document.getElementById('timer').innerHTML = '0:0' + seconds;
-                seconds-- ;
-                }
-            else {
-                document.getElementById('timer').innerHTML = '&#128128';
-            }
-        }, 1000);
-    }, 5000)
+        else {
+            clearInterval()
+            document.getElementById('timer').innerHTML = '&#128128';
+        }
+    }, 1000);
 }
 
 // TEST FUNCTION
