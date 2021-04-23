@@ -208,8 +208,6 @@ function assessAnswer(userLevel, userScore) {
         }
 }
 
-
-
 // on question fail display fail modal
 // (to add details based on userLevel/userScore)
 function loserModal(userLevel, userScore) {
