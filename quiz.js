@@ -61,6 +61,9 @@ var userScore = 0
 // starts quiz on page load
 document.addEventListener("DOMContentLoaded", function () {
 
+    // USER LEVEL TEST: POP-UP
+    window.alert("userLevel is " + String(userLevel));
+
     if (userLevel < 11) {
         displayQuestion(userLevel, userScore);
         submitButton[userLevel].onclick = function(){
@@ -74,108 +77,117 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
-// loads question up based on userLevel
-function displayQuestion(userLevel, userScore) {
+// loads question & answer box based on userLevel
+function displayQuestion(userLevel) {
     
     // resets question number and loads correct question number based on user level
     document.getElementById("question-number").innerHTML = '';
     document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
 
-    ////// USER LEVEL TEST: POP-UP (WILL NOT WORK)
-    window.alert("userLevel is " + String(userLevel));
-
-    // resets question ready to ask next question
-    document.getElementById('question').innerHTML = '';
-
     // asks question in typewriter text
-    let question = questionList[userLevel]
-    // i here is simply an iterative variable to increase letters in typewriter fashion
-    let i = 0
-    function askQuestion(){
-        setTimeout(function() {
-            document.getElementById('question').innerHTML += question.charAt(i);
-            i++;
-            if (i < question.length) {
-                askQuestion();
-            }
-        }, 100)
-    }
-    askQuestion()
+    askQuestion(userLevel)
 
-    // defines appear function for later use
-    // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
-    // to appear: num = 0 step = positive / to disappear: num = 100 step = negative
-    function appear(element, num, step, speed){
-            var t_o;
-            t_o = setInterval(function(){
-                var opacity = num / 100;
-                num = num + step; 
-                if(opacity > 1 | opacity < 0){
-                    clearInterval(t_o);
-                    return; 
-                }
-                // modern browsers
-                element.style.opacity = opacity;
-                // older IE
-                element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
-            }, speed);
-        }
-    
-    // displays timer after 3 seconds
-    function displayTimer() {
-        document.getElementById('timer').innerHTML = '1:00';
-        setTimeout(function() {    
-            appear(document.getElementById('timer-box'), 0, 10, 50)
-        }, 3000)
-    }
+    // displays the timer at 1:00
     displayTimer()
 
     // displays answers after 4 seconds
-    function displayAnswer(userLevel) {  
-        
-        // fades out previous answer on q2 and above, and then hides their shell
-        if (userLevel > 0) {
-            appear(answerBox[userLevel - 1], 100, -10, 50)
-            setTimeout (function(){
-                answerBox[userLevel - 1].style.display = "none";
-            }, 600)
-            answerBox[userLevel].style.display = "block";
-        }
-        // fades in answer after 4 seconds
-        setTimeout(function() {  
-            appear(answerBox[userLevel], 0, 10, 50)
-        }, 4000)
-    }
-    displayAnswer(userLevel)
+    displayAnswerBox(userLevel)
     
     // starts timer once answer has loaded (5 seconds)
-    function beginTimer () {
-        setTimeout(function() {
-            const seconds = 59
-            setInterval(function(){
-                if (seconds > 9) {
-                    document.getElementById('timer').innerHTML = '0:' + seconds;
-                    seconds-- ;
-                }
-                else if (seconds < 10 & seconds > 0){
-                    document.getElementById('timer').innerHTML = '0:0' + seconds;
-                    seconds-- ;
-                    }
-                else {
-                    document.getElementById('timer').innerHTML = '&#128128';
-                }
-            }, 1000);
-        }, 5000)
-    }
     beginTimer()
+
     submitButton[userLevel].onclick = function(){
         assessAnswer(userLevel, userScore);
         }   
 }
 
 
+function askQuestion(userLevel){
+    let question = questionList[userLevel]
+    // resets question on screen ready to ask next question
+    document.getElementById('question').innerHTML = '';
+    // defines question based on the question list above
+    let question = questionList[userLevel]
+    // letters serves as the number of letters within the question for iteration
+    let letters = 0
+    setTimeout(function() {
+        document.getElementById('question').innerHTML += question.charAt(letters);
+        letters++;
+        if (letters < question.length) {
+            askQuestion();
+        }
+    }, 100)
+        
+}
+
+
+// displays timer after 3 seconds
+function displayTimer() {
+    document.getElementById('timer').innerHTML = '1:00';
+    setTimeout(function() {    
+        appear(document.getElementById('timer-box'), 0, 10, 50)
+    }, 3000)
+}
+
+
+// appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// to appear: num = 0 step = positive / to disappear: num = 100 step = negative
+function appear(element, num, step, speed){
+    var t_o;
+    t_o = setInterval(function(){
+        var opacity = num / 100;
+        num = num + step; 
+        if(opacity > 1 | opacity < 0){
+            clearInterval(t_o);
+            return; 
+        }
+        // modern browsers
+        element.style.opacity = opacity;
+        // older IE
+        element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
+    }, speed);
+}
+
+// displays answer box after four seconds
+function displayAnswerBox(userLevel) {     
+    // fades out previous answer on q2 and above, and then hides the element for page structure
+    if (userLevel > 0) {
+        appear(answerBox[userLevel - 1], 100, -10, 50)
+        setTimeout (function(){
+            answerBox[userLevel - 1].style.display = "none";
+        }, 600)
+        answerBox[userLevel].style.display = "block";
+    }
+    // fades in answer after 4 seconds
+    setTimeout(function() {  
+        appear(answerBox[userLevel], 0, 10, 50)
+    }, 4000)
+}
+
+
+// starts timer after 5 seconds (giving time for answer box to load)
+function beginTimer () {
+    setTimeout(function() {
+        const seconds = 59
+        setInterval(function(){
+            if (seconds > 9) {
+                document.getElementById('timer').innerHTML = '0:' + seconds;
+                seconds-- ;
+            }
+            else if (seconds < 10 & seconds > 0){
+                document.getElementById('timer').innerHTML = '0:0' + seconds;
+                seconds-- ;
+                }
+            else {
+                document.getElementById('timer').innerHTML = '&#128128';
+            }
+        }, 1000);
+    }, 5000)
+}
+
 // TEST FUNCTION
 // document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
+
 
 // assess whether correct and adjust user level/score or run fail modal
 function assessAnswer(userLevel, userScore) {
@@ -196,17 +208,19 @@ function assessAnswer(userLevel, userScore) {
         }
 }
 
+
+
 // on question fail display fail modal
 // (to add details based on userLevel/userScore)
-function failModal(userLevel, userScore) {
+function loserModal(userLevel, userScore) {
     // opens modal on function run (closing modal not an option)
-    document.getElementById("fmodal").style.display = "block";
+    document.getElementById("loser-modal").style.display = "block";
 }
 
 // on question 11 correct answer display winner modal
 // (to add details based on userLevel/userScore)
-function weHaveAWinner(userLevel, userScore) {
+function winnerModal(userLevel, userScore) {
     // opens modal on function run (closing modal not an option)
-    document.getElementById("wmodal").style.display = "block";
+    document.getElementById("winner-modal").style.display = "block";
 }
 
