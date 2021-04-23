@@ -7,7 +7,7 @@ function storeLevel(level) {
 //-------------------- QUIZ
 
 // questions to ask user
-const question = [
+const questionList = [
     'What is blockchain technology?',
     'What are nodes to blockchain?',
     'What makes Bitcoin unique over regular banking?',
@@ -34,7 +34,7 @@ const answerBox = [
     document.getElementById("answer-ten")]
 
 // correct answers (not correct yet)
-const correctAnswer = ["b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"]
+const correctAnswerList = ["b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"]
 
 // selector for identifying form
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
@@ -54,9 +54,24 @@ const submitButton = [
     document.getElementById("submit-eleven")]
 
 // default userLevel, increasing by 1 as each question is answered
-const userLevel = 0
+var userLevel = 0
 // default userScore, increasing by time on clock as each question answered
-const userScore = 0
+var userScore = 0
+
+// starts quiz on page load
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (userLevel < 11) {
+        displayQuestion(userLevel, userScore);
+        submitButton[userLevel].onclick = function(){
+            assessAnswer(userLevel, userScore)
+            let userLevel = assessAnswer(userLevel, userScore)
+            }
+    }
+    else {
+        weHaveAWinner(userLevel, userScore)
+    }
+})
 
 
 // loads question up based on userLevel
@@ -73,13 +88,14 @@ function displayQuestion(userLevel, userScore) {
     document.getElementById('question').innerHTML = '';
 
     // asks question in typewriter text
-    const q = question[userLevel]
+    let question = questionList[userLevel]
+    // i here is simply an iterative variable to increase letters in typewriter fashion
     let i = 0
     function askQuestion(){
         setTimeout(function() {
-            document.getElementById('question').innerHTML += q.charAt(i);
+            document.getElementById('question').innerHTML += question.charAt(i);
             i++;
-            if (i < q.length) {
+            if (i < question.length) {
                 askQuestion();
             }
         }, 100)
@@ -159,15 +175,16 @@ function displayQuestion(userLevel, userScore) {
 
 
 // TEST FUNCTION
-//document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
+// document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
 
 // assess whether correct and adjust user level/score or run fail modal
 function assessAnswer(userLevel, userScore) {
-    let a = correctAnswer[userLevel];
-    // targets input answer based on userLevel
-    let aGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
-    //let aGiven = document.querySelector('input[name="q1"]:checked').value
-        if (aGiven == a){
+    // answer variable defines the correct answer based on the question number (userLevel)
+    let correctAnswer = correctAnswerList[userLevel];
+    // targets input answer via the submit button according to different html form elements (each answer has its own form)
+    let answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
+    // let aGiven = document.querySelector('input[name="q1"]:checked').value
+        if (answerGiven == correctAnswer){
             userLevel ++;
             // userScore += seconds;
             // TEST FUNCTION
@@ -193,20 +210,3 @@ function weHaveAWinner(userLevel, userScore) {
     document.getElementById("wmodal").style.display = "block";
 }
 
-function startQuiz(userLevel, userScore) {
-    //document.getElementById("user-level").innerHTML += ' userLevel is now ' + String(userLevel);
-    if (userLevel < 11) {
-        displayQuestion(userLevel, userScore);
-        submitButton[userLevel].onclick = function(){
-            assessAnswer(userLevel, userScore)
-            let userLevel = assessAnswer(userLevel, userScore)
-            }
-    }
-    else {
-        weHaveAWinner(userLevel, userScore)
-    }
-}
-
-document.addEventListener("DOMContentLoaded",
-    startQuiz(userLevel, userScore)
-)
