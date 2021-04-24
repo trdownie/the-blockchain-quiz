@@ -54,58 +54,27 @@ const submitButton = [
     document.getElementById("submit-ten"),
     document.getElementById("submit-eleven")]
 
-// default userLevel, increasing by 1 as each question is answered
-//let userLevel = 0
-// default userScore, increasing by time on clock as each question answered
-//let userScore = 0
 
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-
-    // TEST FUNCTION
-    // document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
+    // TEST FUNCTIONS
+    // document.getElementById("user-level").innerHTML = 'User Level is ' + String(userLevel);
+    // document.getElementById("user-level").innerHTML = ' User Score is ' + String(userLevel);
     // document.getElementById("user-level").innerHTML = 'page is working';
-})
-*/
+
 
 // starts quiz on page load
 document.addEventListener("DOMContentLoaded", function () {
     let userLevel = 0
-    //let userScore = 0
-    // TEST FUNCTION
-    //document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
-    // USER LEVEL TEST: POP-UP
-    //window.alert("userLevel is " + String(userLevel));
-    displayQuestion(userLevel);
-
-
-
-    /*
-    let buttons = document.getElementsByClassName("button-box");
-
-    for (let button of buttons) {
-        button.onclick = function(){
-            
-            // document.getElementById("user-level").innerHTML += '       quiz is working';        
-
-            assessAnswer(userLevel);
-            let userLevel = assessAnswer(userLevel);
-            if (userLevel < 11) {
-                displayQuestion(userLevel)
-            }
-            else {
-                weHaveAWinner(userLevel)
-            }
-            
-        }   
-    }
-    */
+    let userScore = 0
+    displayQuestion(userLevel, userScore);
 })
 
 
 // loads question & answer box based on userLevel
-function displayQuestion(userLevel) {
+function displayQuestion(userLevel, userScore) {
+
+    // TEST FUNCTIONS
+    document.getElementById("user-level").innerHTML = 'User Level is ' + String(userLevel);
+    document.getElementById("user-level").innerHTML += ' User Score is ' + String(userScore);
     
     // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
@@ -125,7 +94,7 @@ function displayQuestion(userLevel) {
     
     // starts 60 second timer once answer has loaded (5 seconds)
     setTimeout(function() {
-        beginTimer(userLevel, seconds)
+        beginTimer(userLevel, userScore, seconds)
     }, 5000)
 }
 
@@ -212,7 +181,7 @@ function displayAnswerBox(userLevel) {
 
 
 // starts timer after 5 seconds (giving time for answer box to load)
-function beginTimer (userLevel, seconds) {
+function beginTimer (userLevel, userScore, seconds) {
     // begin interval that begins after 1 second and repeats every second until seconds = 0
     let timer = document.getElementById('timer')
     let countdown = setInterval(function(){
@@ -232,7 +201,7 @@ function beginTimer (userLevel, seconds) {
     // adds event listener once timer begins
     // to clear timer and assesses answer
     submitButton[userLevel].onclick = function(){
-            assessAnswer(userLevel);
+            assessAnswer(userLevel, userScore, seconds);
             clearInterval(countdown);
     }
 
@@ -241,7 +210,7 @@ function beginTimer (userLevel, seconds) {
 
 
 // assess whether correct and adjust user level/score or run fail modal
-function assessAnswer(userLevel) {
+function assessAnswer(userLevel, userScore, seconds) {
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
     // targets input answer via the submit button according to different html form elements (each answer has its own form)
@@ -249,12 +218,13 @@ function assessAnswer(userLevel) {
     // let aGiven = document.querySelector('input[name="q1"]:checked').value
         if (answerGiven == correctAnswer){
             userLevel ++;
+            userScore += seconds;
             // userScore += seconds;
             // TEST FUNCTION
             document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
             // clearInterval(countdown);
             if (userLevel < 11) {
-                displayQuestion(userLevel);
+                displayQuestion(userLevel, userScore);
             }
             else {
                 winnerModal(userLevel)
