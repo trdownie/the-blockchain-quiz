@@ -31,10 +31,11 @@ const answerBox = [
     document.getElementById("answer-seven"),
     document.getElementById("answer-eight"),
     document.getElementById("answer-nine"),
-    document.getElementById("answer-ten")]
+    document.getElementById("answer-ten"),
+    document.getElementById("answer-eleven")]
 
 // correct answers (not correct yet)
-const correctAnswerList = ["b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"]
+const correctAnswerList = ["b", "d", "b", "a", "b", "c", "c", "b", "b", "b", "a"]
 
 // selector for identifying form
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
@@ -165,7 +166,7 @@ function resetTimer(userLevel) {
     if (userLevel == 0) {
         setTimeout(function() {    
             appear(document.getElementById('timer-box'), 0, 10, 50)
-        }, 3000);
+        }, 2000);
     }
     return 59;
 }
@@ -206,7 +207,7 @@ function displayAnswerBox(userLevel) {
     // fades in answer after 4 seconds
     setTimeout(function() {  
         appear(answerBox[userLevel], 0, 10, 50)
-    }, 4000)    
+    }, 2500)    
 }
 
 
@@ -252,7 +253,13 @@ function assessAnswer(userLevel) {
             // TEST FUNCTION
             document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
             // clearInterval(countdown);
-            displayQuestion(userLevel);
+            if (userLevel < 11) {
+                displayQuestion(userLevel);
+            }
+            else {
+                winnerModal(userLevel)
+            }
+
         }
         else {
             loserModal(userLevel)
