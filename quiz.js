@@ -216,7 +216,11 @@ function assessAnswer(userLevel, userScore, seconds) {
     // targets input answer via the submit button according to different html form elements (each answer has its own form)
     let answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
     // let aGiven = document.querySelector('input[name="q1"]:checked').value
-        if (answerGiven == correctAnswer){
+        if (answerGiven === null) {
+            window.alert("Nice try! Answer the question first!")
+        }
+        
+        if (answerGiven == correctAnswer) {
             userLevel ++;
             userScore += seconds;
             // userScore += seconds;
@@ -239,7 +243,7 @@ function assessAnswer(userLevel, userScore, seconds) {
 
 // on question fail display fail modal
 // (to add details based on userLevel/userScore)
-function loserModal(userLevel) {
+function loserModal(userLevel, userScore) {
 
     document.getElementById("loser-message").innerHTML = 
         "YOU LOSE! You achieved level " + String(userLevel) + " and score " + String(userScore);
