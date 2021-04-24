@@ -72,7 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore) {
 
+
+    
     // TEST FUNCTIONS
+    window.alert("Nice try! Answer the question first!")
     document.getElementById("user-level").innerHTML = 'User Level is ' + String(userLevel);
     document.getElementById("user-level").innerHTML += ' User Score is ' + String(userScore);
     
