@@ -59,6 +59,7 @@ const submitButton = [
     // document.getElementById("user-level").innerHTML = 'User Level is ' + String(userLevel);
     // document.getElementById("user-level").innerHTML = ' User Score is ' + String(userLevel);
     // document.getElementById("user-level").innerHTML = 'page is working';
+    //window.alert("Nice try! Answer the question first!")
 
 
 // starts quiz on page load
@@ -71,39 +72,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore) {
-
-
-    
-    // TEST FUNCTIONS
-    window.alert("Nice try! Answer the question first!")
-    document.getElementById("user-level").innerHTML = 'User Level is ' + String(userLevel);
-    document.getElementById("user-level").innerHTML += ' User Score is ' + String(userScore);
     
     // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
-
     // adds the new question number inner HTML based on userLevel
     document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
 
     // asks the question in typewriter text based on userLevel
     askQuestion(userLevel)
     
-    // resets the timer to 1:00 for every question
+    // fades timer in on first question (after 2 seconds)
+    // resets the timer to 1:00 for every other question
     resetTimer(userLevel)
     let seconds = resetTimer()
 
-    // displays answer box after 4 seconds based on userLevel
+    // displays answer box after question has loaded (after 2.5 seconds)
     displayAnswerBox(userLevel)
     
-    // starts 60 second timer once answer has loaded (5 seconds)
+    // starts 60 second timer once answer box has loaded (after 3.5 seconds)
     setTimeout(function() {
         beginTimer(userLevel, userScore, seconds)
     }, 3500)
 }
 
 
-
-
+// asks the question based on the userLevel
 function askQuestion(userLevel){
     // defines question based on the question list above
     let question = questionList[userLevel]
@@ -111,9 +104,10 @@ function askQuestion(userLevel){
     let questionLetters = question.split("")
     // resets question on screen ready to ask next question
     document.getElementById('question').innerHTML = '';
-
+    // types question on using individual letters array
     typeQuestion(questionLetters)
 }
+
 
 // type the question to be asked
 function typeQuestion(questionLetters) {
@@ -132,17 +126,20 @@ function typeQuestion(questionLetters) {
     }
 }
 
-// displays timer after 3 seconds
+
+// displays timer after 2 seconds
 function resetTimer(userLevel) {
+    // resets timer to 1:00
     document.getElementById('timer').innerHTML = '1:00';
+    // fades timer in on first question, after 2 seconds
     if (userLevel == 0) {
         setTimeout(function() {    
             appear(document.getElementById('timer-box'), 0, 10, 50)
         }, 2000);
     }
+    // returns the reset time for each iteration
     return 59;
 }
-
 
 
 // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
@@ -164,29 +161,30 @@ function appear(element, num, step, speed){
 }
 
 
-// displays answer box after four seconds
+// displays answer box after 2.5 seconds
 function displayAnswerBox(userLevel) {     
-    // fades out previous answer on q2 and above, and then hides the element for page structure
+    // fades out previous answer box on q2 and fixes the page structure
     if (userLevel > 0) {
+        // fades out previous answer box
         appear(answerBox[userLevel - 1], 100, -10, 50)
+        // after box has faded (1 second) hides previous answer box
+        // displays new answer box (with zero opacity) ready to fade in
         setTimeout (function(){
             answerBox[userLevel - 1].style.display = "none";
             answerBox[userLevel].style.display = "block";
         }, 1000)
-        //answerBox[userLevel].style.display = "block";
     }
-    
-    // fades in answer after 4 seconds
+    // fades in new answer box after 2.5 seconds
     setTimeout(function() {  
         appear(answerBox[userLevel], 0, 10, 50)
     }, 2500)    
 }
 
 
-// starts timer after 5 seconds (giving time for answer box to load)
+// starts timer and sets event listener ready for each question
 function beginTimer (userLevel, userScore, seconds) {
-    // begin interval that begins after 1 second and repeats every second until seconds = 0
     let timer = document.getElementById('timer')
+    // begin interval after 1 second and repeat every second until seconds = 0
     let countdown = setInterval(function(){
         if (seconds > 9) {
             timer.innerHTML = '0:' + seconds;
@@ -197,12 +195,11 @@ function beginTimer (userLevel, userScore, seconds) {
             seconds-- ;
             }
         else {            
-            timer.innerHTML = '&#128128';
+            timer.innerHTML = '&#128128'; // skull emoji on time up
             clearInterval(countdown);
         }
     }, 1000);
-    // adds event listener once timer begins
-    // to clear timer and assesses answer
+    // adds event listener once timer begins to clear timer and assesses answer
     submitButton[userLevel].onclick = function(){
             assessAnswer(userLevel, userScore, seconds);
             clearInterval(countdown);
@@ -211,35 +208,26 @@ function beginTimer (userLevel, userScore, seconds) {
 }
 
 
-
 // assess whether correct and adjust user level/score or run fail modal
 function assessAnswer(userLevel, userScore, seconds) {
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
     // targets input answer via the submit button according to different html form elements (each answer has its own form)
     let answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
-    // let aGiven = document.querySelector('input[name="q1"]:checked').value
-    window.alert(answerGiven)
-    //document.getElementById("user-level").innerHTML = answerGiven;
-    //document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
-    if (answerGiven === null) {
-        window.alert("Nice try! Answer the question first!");
-    }
+    // determines right or wrong answer
     if (answerGiven == correctAnswer) {
         userLevel ++;
         userScore += seconds;
-        // userScore += seconds;
-        // TEST FUNCTION
-        document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
-        // clearInterval(countdown);
+        // when correct, display another question based on user level until Q11
         if (userLevel < 11) {
             displayQuestion(userLevel, userScore);
         }
+        // then display winner modal
         else {
             winnerModal(userLevel, userScore);
         }
-
     }
+    // if wrong answer given, display loser modal
     else {
         loserModal(userLevel, userScore);
     }
@@ -247,9 +235,8 @@ function assessAnswer(userLevel, userScore, seconds) {
 
 
 // on question fail display fail modal
-// (to add details based on userLevel/userScore)
 function loserModal(userLevel, userScore) {
-
+    // displays loser modal with level and score
     document.getElementById("loser-message").innerHTML = 
         "YOU LOSE! You achieved level " + String(userLevel) + " and score " + String(userScore);
 
@@ -259,9 +246,8 @@ function loserModal(userLevel, userScore) {
 
 
 // on question 11 correct answer display winner modal
-// (to add details based on userLevel/userScore)
 function winnerModal(userLevel, userScore) {
-
+    // displays winner modal with level and score
     document.getElementById("winner-message").innerHTML = 
         "YOU WIN! You achieved level " + String(userLevel) + " and score " + String(userScore);
 
