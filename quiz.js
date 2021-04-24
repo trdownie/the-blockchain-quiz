@@ -116,7 +116,7 @@ function displayQuestion(userLevel) {
     askQuestion(userLevel)
     
     // resets the timer to 1:00 for every question
-    resetTimer()
+    resetTimer(userLevel)
     let seconds = resetTimer()
 
     // displays answer box after 4 seconds based on userLevel
@@ -160,11 +160,13 @@ function typeQuestion(questionLetters) {
 }
 
 // displays timer after 3 seconds
-function resetTimer() {
+function resetTimer(userLevel) {
     document.getElementById('timer').innerHTML = '1:00';
-    setTimeout(function() {    
-        appear(document.getElementById('timer-box'), 0, 10, 50)
-    }, 3000);
+    if (userLevel == 0) {
+        setTimeout(function() {    
+            appear(document.getElementById('timer-box'), 0, 10, 50)
+        }, 3000);
+    }
     return 59;
 }
 
@@ -196,9 +198,11 @@ function displayAnswerBox(userLevel) {
         appear(answerBox[userLevel - 1], 100, -10, 50)
         setTimeout (function(){
             answerBox[userLevel - 1].style.display = "none";
+            answerBox[userLevel].style.display = "block";
         }, 600)
-        answerBox[userLevel].style.display = "block";
+        //answerBox[userLevel].style.display = "block";
     }
+    
     // fades in answer after 4 seconds
     setTimeout(function() {  
         appear(answerBox[userLevel], 0, 10, 50)
