@@ -54,28 +54,29 @@ const submitButton = [
     document.getElementById("submit-eleven")]
 
 // default userLevel, increasing by 1 as each question is answered
-let userLevel = 0
+//let userLevel = 0
 // default userScore, increasing by time on clock as each question answered
-let userScore = 0
+//let userScore = 0
 
 
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
 
     // TEST FUNCTION
     // document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
-    document.getElementById("user-level").innerHTML = 'page is working';
+    // document.getElementById("user-level").innerHTML = 'page is working';
 })
-
+*/
 
 // starts quiz on page load
 document.addEventListener("DOMContentLoaded", function () {
-
+    let userLevel = 0
+    //let userScore = 0
     // TEST FUNCTION
     //document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
     // USER LEVEL TEST: POP-UP
     //window.alert("userLevel is " + String(userLevel));
-    displayQuestion(0);
+    displayQuestion(userLevel);
 
 
 
@@ -113,16 +114,17 @@ function displayQuestion(userLevel) {
 
     // asks the question in typewriter text based on userLevel
     askQuestion(userLevel)
-
-    // displays/resets the timer at 1:00 for every question
+    
+    // resets the timer to 1:00 for every question
     resetTimer()
+    let seconds = resetTimer()
 
     // displays answer box after 4 seconds based on userLevel
     displayAnswerBox(userLevel)
     
     // starts 60 second timer once answer has loaded (5 seconds)
     setTimeout(function() {
-        beginTimer()
+        beginTimer(userLevel, seconds)
     }, 5000)
 }
 
@@ -162,7 +164,8 @@ function resetTimer() {
     document.getElementById('timer').innerHTML = '1:00';
     setTimeout(function() {    
         appear(document.getElementById('timer-box'), 0, 10, 50)
-    }, 3000)
+    }, 3000);
+    return 59;
 }
 
 
@@ -199,21 +202,14 @@ function displayAnswerBox(userLevel) {
     // fades in answer after 4 seconds
     setTimeout(function() {  
         appear(answerBox[userLevel], 0, 10, 50)
-    }, 4000)
-
-    // adds event listener to the newly appeared button
-    submitButton[userLevel].onclick = function(){
-            assessAnswer(userLevel);
-    }
+    }, 4000)    
 }
 
 
 // starts timer after 5 seconds (giving time for answer box to load)
-function beginTimer () {
+function beginTimer (userLevel, seconds) {
     // begin interval that begins after 1 second and repeats every second until seconds = 0
     let timer = document.getElementById('timer')
-    let buttonBox = document.getElementsByClassName('button-box')
-    let seconds = 59
     let countdown = setInterval(function(){
         if (seconds > 9) {
             timer.innerHTML = '0:' + seconds;
@@ -228,6 +224,12 @@ function beginTimer () {
             clearInterval(countdown);
         }
     }, 1000);
+    // adds event listener once timer begins
+    // to clear timer and assesses answer
+    submitButton[userLevel].onclick = function(){
+            assessAnswer(userLevel);
+            clearInterval(countdown);
+    }
 
 }
 
@@ -245,6 +247,7 @@ function assessAnswer(userLevel) {
             // userScore += seconds;
             // TEST FUNCTION
             document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
+            // clearInterval(countdown);
             displayQuestion(userLevel);
         }
         else {
