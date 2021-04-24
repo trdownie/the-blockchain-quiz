@@ -216,31 +216,31 @@ function beginTimer (userLevel, userScore, seconds) {
 function assessAnswer(userLevel, userScore, seconds) {
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
+    let answerGiven = ""
     // targets input answer via the submit button according to different html form elements (each answer has its own form)
     let answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
     // let aGiven = document.querySelector('input[name="q1"]:checked').value
-        if (answerGiven === null) {
-            window.alert("Nice try! Answer the question first!")
-        }
-        
-        if (answerGiven == correctAnswer) {
-            userLevel ++;
-            userScore += seconds;
-            // userScore += seconds;
-            // TEST FUNCTION
-            document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
-            // clearInterval(countdown);
-            if (userLevel < 11) {
-                displayQuestion(userLevel, userScore);
-            }
-            else {
-                winnerModal(userLevel, userScore)
-            }
-
+    if (answerGiven === "") {
+        window.alert("Nice try! Answer the question first!");
+    }
+    if (answerGiven == correctAnswer) {
+        userLevel ++;
+        userScore += seconds;
+        // userScore += seconds;
+        // TEST FUNCTION
+        document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
+        // clearInterval(countdown);
+        if (userLevel < 11) {
+            displayQuestion(userLevel, userScore);
         }
         else {
-            loserModal(userLevel, userScore)
+            winnerModal(userLevel, userScore);
         }
+
+    }
+    else {
+        loserModal(userLevel, userScore);
+    }
 }
 
 
