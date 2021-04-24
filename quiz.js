@@ -95,7 +95,7 @@ function displayQuestion(userLevel, userScore) {
     // starts 60 second timer once answer has loaded (5 seconds)
     setTimeout(function() {
         beginTimer(userLevel, userScore, seconds)
-    }, 5000)
+    }, 3500)
 }
 
 
@@ -227,12 +227,12 @@ function assessAnswer(userLevel, userScore, seconds) {
                 displayQuestion(userLevel, userScore);
             }
             else {
-                winnerModal(userLevel)
+                winnerModal(userLevel, userScore)
             }
 
         }
         else {
-            loserModal(userLevel)
+            loserModal(userLevel, userScore)
         }
 }
 
@@ -240,9 +240,11 @@ function assessAnswer(userLevel, userScore, seconds) {
 // on question fail display fail modal
 // (to add details based on userLevel/userScore)
 function loserModal(userLevel) {
-    // opens modal on function run (closing modal not an option)
-    document.getElementById("loser-message").innerHTML = "YOU LOSE! You achieved level " + String(userLevel);
 
+    document.getElementById("loser-message").innerHTML = 
+        "YOU LOSE! You achieved level " + String(userLevel) + " and score " + String(userScore);
+
+    // opens modal on function run (closing modal not an option)
     document.getElementById("loser-modal").style.display = "block";
 }
 
@@ -250,6 +252,10 @@ function loserModal(userLevel) {
 // on question 11 correct answer display winner modal
 // (to add details based on userLevel/userScore)
 function winnerModal(userLevel, userScore) {
+
+    document.getElementById("winner-message").innerHTML = 
+        "YOU WIN! You achieved level " + String(userLevel) + " and score " + String(userScore);
+
     // opens modal on function run (closing modal not an option)
     document.getElementById("winner-modal").style.display = "block";
 }
