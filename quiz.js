@@ -121,23 +121,29 @@ function displayQuestion(userLevel) {
 function askQuestion(userLevel){
     // defines question based on the question list above
     let question = questionList[userLevel]
+    // splits the question into an array for typing
+    let questionLetters = question.split("")
     // resets question on screen ready to ask next question
     document.getElementById('question').innerHTML = '';
-    // letters serves as the number of letters within the question for iteration
-    var letterCount = 0
-    typeQuestion(question, letterCount)
+
+    typeQuestion(questionLetters)
 }
 
 // type the question to be asked
-// code for this adapted from https://www.w3schools.com/howto/howto_js_typewriter.asp
-function typeQuestion(question, letterCount) {
+function typeQuestion(questionLetters) {
+    // i used here for iteration purposes
+    let i = 0
+    // function to iterate through the letters of the question in array form 
+    for (letter of questionLetters) {
+        type(letter, i);
+        i++;
+    }
+    // function called above that types each letter and iterates
+    function type(letter, i) {
     setTimeout(function() {
-        document.getElementById('question').innerHTML += question.charAt(letterCount);
-        letterCount++;
-        if (letterCount < question.length) {
-            typeQuestion(question, letterCount);
-        }
-    }, 100)
+        document.getElementById('question').innerHTML += letter;
+    }, 50 * i);
+    }
 }
 
 // displays timer after 3 seconds
