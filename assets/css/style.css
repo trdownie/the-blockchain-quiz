@@ -273,32 +273,40 @@ input[type="radio"] {
 
 #answer-three {
     display: none;
+    opacity: 0;
 }
 
 #answer-four {
     display: none;
+    opacity: 0;
 }
 
 #answer-five {
     display: none;
+    opacity: 0;
 }
 
 #answer-six {
     display: none;
+    opacity: 0;
 }
 
 #answer-seven {
     display: none;
+    opacity: 0;
 }
 
 #answer-eight {
     display: none;
+    opacity: 0;
 }
 
 #answer-nine {
     display: none;
+    opacity: 0;
 }
 
 #answer-ten {
     display: none;
+    opacity: 0;
 }

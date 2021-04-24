@@ -199,7 +199,7 @@ function displayAnswerBox(userLevel) {
         setTimeout (function(){
             answerBox[userLevel - 1].style.display = "none";
             answerBox[userLevel].style.display = "block";
-        }, 600)
+        }, 1000)
         //answerBox[userLevel].style.display = "block";
     }
     
