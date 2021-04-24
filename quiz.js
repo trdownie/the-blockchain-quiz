@@ -58,6 +58,8 @@ let userLevel = 0
 // default userScore, increasing by time on clock as each question answered
 let userScore = 0
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // TEST FUNCTION
@@ -73,21 +75,30 @@ document.addEventListener("DOMContentLoaded", function () {
     //document.getElementById("user-level").innerHTML = ' userLevel is ' + String(userLevel);
     // USER LEVEL TEST: POP-UP
     //window.alert("userLevel is " + String(userLevel));
+    displayQuestion(0);
 
-    document.getElementById("user-level").innerHTML += '       quiz is working';        
 
 
-    submitButton[userLevel].onclick = function(){
-        assessAnswer(userLevel, userScore);
+    /*
+    let buttons = document.getElementsByClassName("button-box");
+
+    for (let button of buttons) {
+        button.onclick = function(){
+            
+            // document.getElementById("user-level").innerHTML += '       quiz is working';        
+
+            assessAnswer(userLevel);
+            let userLevel = assessAnswer(userLevel);
+            if (userLevel < 11) {
+                displayQuestion(userLevel)
+            }
+            else {
+                weHaveAWinner(userLevel)
+            }
+            
         }   
-
-    if (userLevel < 11) {
-        displayQuestion(userLevel, userScore)
     }
-    else {
-        weHaveAWinner(userLevel, userScore)
-    }
-
+    */
 })
 
 
@@ -189,6 +200,11 @@ function displayAnswerBox(userLevel) {
     setTimeout(function() {  
         appear(answerBox[userLevel], 0, 10, 50)
     }, 4000)
+
+    // adds event listener to the newly appeared button
+    submitButton[userLevel].onclick = function(){
+            assessAnswer(userLevel);
+    }
 }
 
 
@@ -218,7 +234,7 @@ function beginTimer () {
 
 
 // assess whether correct and adjust user level/score or run fail modal
-function assessAnswer(userLevel, userScore) {
+function assessAnswer(userLevel) {
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
     // targets input answer via the submit button according to different html form elements (each answer has its own form)
@@ -228,19 +244,21 @@ function assessAnswer(userLevel, userScore) {
             userLevel ++;
             // userScore += seconds;
             // TEST FUNCTION
-            document.getElementById("user-level").innerHTML += ' userLevel is ' + String(userLevel);
-            return userLevel
+            document.getElementById("user-level").innerHTML += ' CORRECT ' + String(userLevel);
+            displayQuestion(userLevel);
         }
         else {
-            failModal()
+            loserModal(userLevel)
         }
 }
 
 
 // on question fail display fail modal
 // (to add details based on userLevel/userScore)
-function loserModal(userLevel, userScore) {
+function loserModal(userLevel) {
     // opens modal on function run (closing modal not an option)
+    document.getElementById("loser-message").innerHTML = "YOU LOSE! You achieved level " + String(userLevel);
+
     document.getElementById("loser-modal").style.display = "block";
 }
 
