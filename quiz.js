@@ -212,8 +212,13 @@ function beginTimer (userLevel, userScore, seconds) {
 function assessAnswer(userLevel, userScore, seconds) {
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
+    if ((userLevel) + 1 === 5) {
+        var answerGiven = document.getElementById("5").value
+    }
+    else {
     // targets input answer via the submit button according to different html form elements (each answer has its own form)
-    let answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
+        var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
+    }
     // determines right or wrong answer
     if (answerGiven == correctAnswer) {
         userLevel ++;
