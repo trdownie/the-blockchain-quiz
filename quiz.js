@@ -24,7 +24,7 @@ const questionList = [
 // 1 = multi-choice
 // 2 = drag & drop
 // 3 = input
-const questionTypeList = [1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1]
+const questionTypeList = [1, 1, 2, 1, 3, 1, 1, 1, 1, 3, 1]
 
 // answer forms taken from html
 const answerBox = [
@@ -62,7 +62,6 @@ const submitButton = [
 
 
     // TEST FUNCTIONS
-    // document.getElementById("user-level").innerHTML = 'User Level is ' + String(userLevel);
     // document.getElementById("user-level").innerHTML = ' User Score is ' + String(userLevel);
     // document.getElementById("user-level").innerHTML = 'page is working';
     //window.alert("Nice try! Answer the question first!")
@@ -78,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore) {
-    
+
     // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
     // adds the new question number inner HTML based on userLevel
@@ -227,6 +226,15 @@ function assessAnswer(userLevel, userScore, seconds) {
         break;
         case 2:
             // targets whether object dragged to input area is correct???
+            /*
+            let word = function drop(dropEvent) {
+                dropEvent.preventDefault();
+                var data = dropEvent.dataTransfer.getData("text");
+                dropEvent.target.appendChild(document.getElementById(data));
+                return data;
+            }
+            */
+            document.getElementById("user-level").innerHTML = data;
         break;
         case 3:
             // targets input value for the question displayed (using userLevel to obtain correct input box)
@@ -272,4 +280,26 @@ function winnerModal(userLevel, userScore) {
 
     // opens modal on function run (closing modal not an option)
     document.getElementById("winner-modal").style.display = "block";
+}
+
+
+function allowDrop(allowDropEvent) {
+  allowDropEvent.preventDefault();
+  // code on drop event
+}
+
+function drag(dragEvent) {
+  dragEvent.dataTransfer.setData("text", dragEvent.target.id);
+  // code on drag event
+}
+
+function drop(dropEvent) {
+  dropEvent.preventDefault();
+  var data = dropEvent.dataTransfer.getData("text");
+  dropEvent.target.appendChild(document.getElementById(data));
+  // code on drop event
+  // maybe execute function here that takes in the data variable (which here is free)
+  // and appends this into an answer array for question 3
+  // then this answer array should match the correct answer array
+  // within the answer list array above
 }

@@ -319,3 +319,14 @@ input[type="radio"] {
     display: none;
     opacity: 0;
 }
+
+.word-box {
+    width: 48px;
+    height: 24px;
+    border-bottom: 2px solid var(--btc-orange);
+}
+
+.word {
+    width: 48px;
+    height: 24px;
+}

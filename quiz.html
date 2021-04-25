@@ -59,7 +59,9 @@
         <form id="answer-three">
             <div id="answer-box-three" class="grey-box">
                 <fieldset class="white-text">
-                    <legend class="orange-text center-text">Select one answer</legend>
+                    <legend class="orange-text center-text">Drag and drop the correct answers</legend>
+                    <div id="free-box" class="word-box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <p id="free" class="word" draggable="true" ondragstart="drag(event)">Free</p>
                     <input id="3a" type="radio" name="q3" value="a">
                     <label for="3a">Test</label><br/>
                     <input id="3b" type="radio" name="q3" value="b">
