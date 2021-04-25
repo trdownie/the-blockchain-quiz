@@ -24,7 +24,7 @@ const questionList = [
 // 1 = multi-choice
 // 2 = drag & drop
 // 3 = input
-const questionTypeList = [1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1]
+const questionTypeList = [1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1]
 
 // answer forms taken from html
 const answerBox = [
@@ -41,7 +41,7 @@ const answerBox = [
     document.getElementById("answer-eleven")]
 
 // correct answers (not correct yet)
-const correctAnswerList = ["b", "d", "b", "a", 10, "c", "c", "b", "b", "b", "a"]
+const correctAnswerList = ["b", "d", "b", "a", 10, "c", "c", "b", "b", 32, "a"]
 
 // selector for identifying form
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
