@@ -20,6 +20,12 @@ const questionList = [
     'How many bytes are the hashes that bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces?',
     'What is a Merkle tree and how does it benefit the blockchain?']
 
+// determines question type (1-3)
+// 1 = multi-choice
+// 2 = drag & drop
+// 3 = input
+const questionTypeList = [1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1]
+
 // answer forms taken from html
 const answerBox = [
     document.getElementById("answer-one"),
@@ -212,12 +218,20 @@ function beginTimer (userLevel, userScore, seconds) {
 function assessAnswer(userLevel, userScore, seconds) {
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
-    if ((userLevel) + 1 === 5) {
-        var answerGiven = document.getElementById("5").value
-    }
-    else {
-    // targets input answer via the submit button according to different html form elements (each answer has its own form)
-        var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value
+    let questionType = questionTypeList[userLevel];
+    
+    switch (questionType) {
+        case 1:
+            // targets input answer via the submit button according to different html form elements (each answer has its own form)
+            var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value;
+        break;
+        case 2:
+            // targets whether object dragged to input area is correct???
+        break;
+        case 3:
+            // targets input value for the question displayed (using userLevel to obtain correct input box)
+            var answerGiven = document.getElementById(String(userLevel + 1)).value;
+        break;
     }
     // determines right or wrong answer
     if (answerGiven == correctAnswer) {
