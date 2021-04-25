@@ -35,7 +35,7 @@ const answerBox = [
     document.getElementById("answer-eleven")]
 
 // correct answers (not correct yet)
-const correctAnswerList = ["b", "d", "b", "a", "b", "c", "c", "b", "b", "b", "a"]
+const correctAnswerList = ["b", "d", "b", "a", 10, "c", "c", "b", "b", "b", "a"]
 
 // selector for identifying form
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
