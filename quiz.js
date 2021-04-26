@@ -24,7 +24,7 @@ const questionList = [
 // 1 = multi-choice
 // 2 = drag & drop
 // 3 = input
-const questionTypeList = [1, 1, 2, 1, 3, 1, 1, 1, 1, 3, 1]
+const questionTypeList = [1, 1, 2, 1, 3, 1, 1, 2, 1, 3, 1]
 
 // answer forms taken from html
 const answerBox = [
@@ -41,7 +41,7 @@ const answerBox = [
     document.getElementById("answer-eleven")]
 
 // correct answers (not correct yet)
-const correctAnswerList = ["b", "d", ["anonymous", "decentralised", "trustless"], "a", 10, "c", "c", "b", "b", 32, "a"]
+const correctAnswerList = ["b", "d", ["anonymous", "decentralised", "trustless"], "a", 10, "c", "c", ["64", "block-header", "undecipherable"], "b", 32, "a"]
 
 // selector for identifying form
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
@@ -312,7 +312,7 @@ function loserModal(userLevel, userScore) {
     document.getElementById("loser-modal").style.display = "block";
 
     // TEST
-    document.getElementById("loser-message").innerHTML += correctAnswerList[2];
+    document.getElementById("loser-message").innerHTML += correctAnswerList[userLevel];
     document.getElementById("loser-message").innerHTML += dragAndDropAnswersGiven;
 
 }

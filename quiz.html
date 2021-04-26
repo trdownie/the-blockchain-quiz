@@ -17,7 +17,7 @@
         <div id="timer-box">
             <p id="timer" class="orange-text timer">1:00</p>
         </div>
-<!----------------------------------------    question 1       ======================================-->
+<!----------------------------------------    question 1: multi-choice  -------------------------------->
         <form id="answer-one">
             <div id="answer-box-one" class="grey-box">
                 <fieldset class="white-text">
@@ -36,7 +36,7 @@
                 <button id="submit-one" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 2       ======================================-->
+<!----------------------------------------    question 2: multi-choice  -------------------------------->
         <form id="answer-two">
             <div id="answer-box-two" class="grey-box">
                 <fieldset class="white-text">
@@ -55,28 +55,29 @@
                 <button id="submit-two" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 3       ======================================-->
+<!----------------------------------------    question 3: drag & drop  --------------------------------->
         <form id="answer-three">
             <div id="answer-box-three" class="grey-box">
                 <fieldset class="white-text">
                     <legend class="orange-text center-text">Drag and drop the correct answers</legend>
                     <p class="white-text words">It is </p>
-                    <span id="question-three-box-one" class="word-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <span id="question-three-box-one" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
                     <p class="white-text words">,</p>
-                    <span id="question-three-box-two" class="word-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <span id="question-three-box-two" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
                     <p class="white-text words"> and </p>
-                    <span id="question-three-box-three" class="word-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
-                    <div class="original-word-box" ondrop="drop(event)" ondragover="allowDrop(event)"><p id="free-to-use" class="word" draggable="true" ondragstart="drag(event)">free to use</p></div>
-                    <div class="original-word-box" ondrop="drop(event)" ondragover="allowDrop(event)"><p id="anonymous" class="word" draggable="true" ondragstart="drag(event)">anonymous</p></div>
-                    <div class="original-word-box" ondrop="drop(event)" ondragover="allowDrop(event)"><p id="trustless" class="word" draggable="true" ondragstart="drag(event)">trustless</p></div>
-                    <div class="original-word-box" ondrop="drop(event)" ondragover="allowDrop(event)"><p id="decentralised" class="word" draggable="true" ondragstart="drag(event)">decentralised</p></div>
+                    <span id="question-three-box-three" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">.</p>
+                    <p id="free-to-use" class="word-q3" draggable="true" ondragstart="drag(event)">free to use</p>
+                    <p id="anonymous" class="word-q3" draggable="true" ondragstart="drag(event)">anonymous</p>
+                    <p id="trustless" class="word-q3" draggable="true" ondragstart="drag(event)">trustless</p>
+                    <p id="decentralised" class="word-q3" draggable="true" ondragstart="drag(event)">decentralised</p>
                 </fieldset>
             </div>
             <div class="button-box">
                 <button id="submit-three" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 4       ======================================-->
+<!----------------------------------------    question 4: multi-choice  -------------------------------->
         <form id="answer-four">
             <div id="answer-box-four" class="grey-box">
                 <fieldset class="white-text">
@@ -95,7 +96,7 @@
                 <button id="submit-four" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 5       ======================================-->
+<!----------------------------------------    question 5: input   -------------------------------------->
         <form id="answer-five">
             <div id="answer-box-five" class="grey-box">
                 <fieldset class="white-text">
@@ -109,7 +110,7 @@
                 <button id="submit-five" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 6       ======================================-->
+<!----------------------------------------    question 6: multi-choice  -------------------------------->
         <form id="answer-six">
             <div id="answer-box-six" class="grey-box">
                 <fieldset class="white-text">
@@ -128,7 +129,7 @@
                 <button id="submit-six" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 7       ======================================-->
+<!----------------------------------------    question 7: multi-choice  -------------------------------->
         <form id="answer-seven">
             <div id="answer-box-seven" class="grey-box">
                 <fieldset class="white-text">
@@ -147,26 +148,33 @@
                 <button id="submit-seven" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 8       ======================================-->
+<!----------------------------------------    question 8: drag & drop  ===============================-->
         <form id="answer-eight">
             <div id="answer-box-eight" class="grey-box">
                 <fieldset class="white-text">
-                    <legend class="orange-text center-text">Select one answer</legend>
-                    <input id="8a" type="radio" name="q8" value="a">
-                    <label for="8a">Test</label><br/>
-                    <input id="8b" type="radio" name="q8" value="b">
-                    <label for="8b">Test</label><br/>
-                    <input id="8c" type="radio" name="q8" value="c">
-                    <label for="8c">Test</label><br/>
-                    <input id="8d" type="radio" name="q8" value="d">
-                    <label for="8d">Test</label><br/>
+                    <legend class="orange-text center-text">Drag and drop the correct answers</legend>
+                    <p class="white-text words">An </p>
+                    <span id="question-eight-box-one" class="word-box-q8a" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">string of </p>
+                    <span id="question-eight-box-two" class="word-box-q8b" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">letters and numbers that correspond to </p>
+                    <span id="question-eight-box-three" class="word-box-q8c" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">.</p>
+                    <p id="decipherable" class="word" draggable="true" ondragstart="drag(event)">decipherable</p>
+                    <p id="undecipherable" class="word" draggable="true" ondragstart="drag(event)">undecipherable</p>
+                    <p id="32" class="word" draggable="true" ondragstart="drag(event)">32</p>
+                    <p id="64" class="word" draggable="true" ondragstart="drag(event)">64</p>
+                    <p id="128" class="word" draggable="true" ondragstart="drag(event)">128</p>
+                    <p id="block-header" class="word" draggable="true" ondragstart="drag(event)">the specific block header</p>
+                    <p id="transaction-addresses" class="word" draggable="true" ondragstart="drag(event)">the transaction addresses</p>
+                    <p id="block-time" class="word" draggable="true" ondragstart="drag(event)">the time blocks are added</p>
                 </fieldset>
             </div>
             <div class="button-box">
                 <button id="submit-eight" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 9       ======================================-->
+<!----------------------------------------    question 9: multi-choice  -------------------------------->
         <form id="answer-nine">
             <div id="answer-box-nine" class="grey-box">
                 <fieldset class="white-text">
@@ -185,7 +193,7 @@
                 <button id="submit-nine" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 10       ======================================-->
+<!----------------------------------------    question 10: input   ------------------------------------->
         <form id="answer-ten">
             <div id="answer-box-ten" class="grey-box">
                 <fieldset class="white-text">
@@ -199,7 +207,7 @@
                 <button id="submit-ten" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    question 11       ======================================-->
+<!----------------------------------------    question 11: multi-choice  ------------------------------->
         <form id="answer-eleven">
             <div id="answer-box-eleven" class="grey-box">
                 <fieldset class="white-text">
@@ -218,7 +226,7 @@
                 <button id="submit-eleven" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    loser modal    ---------------------------------------->
+<!----------------------------------------    loser modal    ------------------------------------------->
         <div id="loser-modal" class="modal">
             <div class="modal-content">
                 <h2 class="orange-text underline">Epic Fail!</h2>
@@ -226,7 +234,7 @@
                 <a href="quiz.html" class="grey-button white-text">TRY AGAIN</a>
             </div>
         </div>
-<!----------------------------------------    winner modal    ---------------------------------------->
+<!----------------------------------------    winner modal    ------------------------------------------>
         <div id="winner-modal" class="modal">
             <div class="modal-content">
                 <h2 class="orange-text underline">We have a winner!</h2>
