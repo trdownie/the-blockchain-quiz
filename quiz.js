@@ -222,35 +222,82 @@ function assessAnswer(userLevel, userScore, seconds) {
     let questionType = questionTypeList[userLevel];
     
     switch (questionType) {
+        // for multi-choice questions
         case 1:
             // targets input answer via the submit button according to different html form elements (each answer has its own form)
             var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value;
+            // determines if answer is right or wrong
+            if (answerGiven == correctAnswer) {
+                userLevel ++;
+                userScore += seconds;
+                // when correct, display another question based on user level until Q11
+                if (userLevel < 11) {
+                    displayQuestion(userLevel, userScore);
+                }
+                // then display winner modal
+                else {
+                    winnerModal(userLevel, userScore);
+                }
+            }
+            // if wrong answer given, display loser modal
+            else {
+                loserModal(userLevel, userScore);
+            }
         break;
+        // for drag & drop questions
         case 2:
-            // makes answer given = array of answers dropped
-            var answerGiven = dragAndDropAnswersGiven;
+            // resets number correct within drag & drop function
+            let numCorrect = 0;
+            // sorts answers given so they can match correct answers
+            dragAndDropAnswersGiven.sort();
+            // loops through the correct answers and checks them against the answers given
+            // each iteration increments numCorrect for this answer
+            for (var i = 0; i < correctAnswer.length; ++i) {
+                if (dragAndDropAnswersGiven[i] == correctAnswer[i])
+                numCorrect ++;
+            }
+            // provided all three are correct, passes answer as correct
+            if (numCorrect == 3){
+                userLevel ++;
+                userScore += seconds;
+                // reset drag & drop answer array for next drag & drop question
+                dragAndDropAnswersGiven.length = 0;
+                // when correct, display another question based on user level until Q11
+                if (userLevel < 11) {
+
+                    displayQuestion(userLevel, userScore);
+                }
+                // then display winner modal
+                else {
+                    winnerModal(userLevel, userScore);
+                }
+            }
+            // if wrong answer given, display loser modal
+            else {
+                loserModal(userLevel, userScore);
+            }
         break;
+        // for input questions
         case 3:
             // targets input value for the question displayed (using userLevel to obtain correct input box)
             var answerGiven = document.getElementById(String(userLevel + 1)).value;
+            if (answerGiven == correctAnswer) {
+                userLevel ++;
+                userScore += seconds;
+                // when correct, display another question based on user level until Q11
+                if (userLevel < 11) {
+                    displayQuestion(userLevel, userScore);
+                }
+                // then display winner modal
+                else {
+                    winnerModal(userLevel, userScore);
+                }
+            }
+            // if wrong answer given, display loser modal
+            else {
+                loserModal(userLevel, userScore);
+            }
         break;
-    }
-    // determines if answer is right or wrong
-    if (answerGiven == correctAnswer) {
-        userLevel ++;
-        userScore += seconds;
-        // when correct, display another question based on user level until Q11
-        if (userLevel < 11) {
-            displayQuestion(userLevel, userScore);
-        }
-        // then display winner modal
-        else {
-            winnerModal(userLevel, userScore);
-        }
-    }
-    // if wrong answer given, display loser modal
-    else {
-        loserModal(userLevel, userScore);
     }
 }
 
