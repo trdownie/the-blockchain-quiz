@@ -311,12 +311,8 @@ function loserModal(userLevel, userScore) {
     // opens modal on function run (closing modal not an option)
     document.getElementById("loser-modal").style.display = "block";
 
-    // TEST
-    document.getElementById("loser-message").innerHTML += correctAnswerList[userLevel];
-    document.getElementById("loser-message").innerHTML += dragAndDropAnswersGiven;
-
+    storeUserLevel(userLevel, userScore)
 }
-
 
 // on question 11 correct answer display winner modal
 function winnerModal(userLevel, userScore) {
@@ -326,6 +322,28 @@ function winnerModal(userLevel, userScore) {
 
     // opens modal on function run (closing modal not an option)
     document.getElementById("winner-modal").style.display = "block";
+
+    storeUserLevel(userLevel, userScore)
+}
+
+// stores highest user level & user score a user haas achieveed in local storage
+function storeUserLevel (userLevel, userScore) {
+    // gets previous user level & user score
+    let previousLevelString = window.localStorage.getItem("User Level");
+    let previousScoreString = window.localStorage.getItem("User Level");
+    // converts previous user level/score to integers
+    let previousLevel = parseInt(previousLevelString, 10);
+    let previousScore = parseInt(previousScoreString, 10);
+    // if userLevel is higher, or if there is no previous level, store user level
+    if (userLevel > previousLevel || previousLevel == null) {
+        window.localStorage.removeItem("User Level")
+        window.localStorage.setItem("User Level", String(userLevel))
+    }
+    // if userScore is higher, or if there is no previous level, store user score
+    if (userScore > previousScore || previousScore == null) {
+        window.localStorage.removeItem("User Score")
+        window.localStorage.setItem("User Score", String(userScore))
+    }
 }
 
 // DRAG AND DROP
