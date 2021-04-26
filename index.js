@@ -1,5 +1,4 @@
-//-------------------- GET PREVIOUS USER INFO
-
+//-------------------- LOCAL STORAGE
 // gets previous user level & user score
 let previousLevelString = window.localStorage.getItem("User Level");
 let previousScoreString = window.localStorage.getItem("User Score");

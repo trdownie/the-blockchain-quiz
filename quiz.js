@@ -1,9 +1,10 @@
-//-------------------- COOKIES
-//---------- set achieved level (on question fail)
-function storeLevel(level) {
-  document.cookie = userLevel + "=" + level + ";path=/";
-}
-
+//-------------------- LOCAL STORAGE
+// gets previous user level & user score
+let previousLevelString = window.localStorage.getItem("User Level");
+let previousScoreString = window.localStorage.getItem("User Score");
+// converts previous user level/score to integers
+let previousLevel = parseInt(previousLevelString, 10);
+let previousScore = parseInt(previousScoreString, 10);
 //-------------------- QUIZ
 
 // questions to ask user
@@ -311,7 +312,10 @@ function loserModal(userLevel, userScore) {
     // opens modal on function run (closing modal not an option)
     document.getElementById("loser-modal").style.display = "block";
 
-    storeUserLevel(userLevel, userScore)
+    storeUserLevel(userLevel, userScore);
+
+    document.getElementById("best-score").innerHTML = "Your top score to date is " + previousScoreString;
+
 }
 
 // on question 11 correct answer display winner modal
@@ -328,12 +332,6 @@ function winnerModal(userLevel, userScore) {
 
 // stores highest user level & user score a user haas achieveed in local storage
 function storeUserLevel (userLevel, userScore) {
-    // gets previous user level & user score
-    let previousLevelString = window.localStorage.getItem("User Level");
-    let previousScoreString = window.localStorage.getItem("User Score");
-    // converts previous user level/score to integers
-    let previousLevel = parseInt(previousLevelString, 10);
-    let previousScore = parseInt(previousScoreString, 10);
     // if userLevel is higher, or if there is no previous level, store user level
     if (userLevel > previousLevel || previousLevel == null) {
         window.localStorage.removeItem("User Level")
