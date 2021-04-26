@@ -69,6 +69,7 @@ var dragAndDropAnswersGiven = []
 document.addEventListener("DOMContentLoaded", function () {
     let userLevel = 0
     let userScore = 0
+    window.localStorage.setItem("User Level", String(userLevel))
     window.localStorage.setItem("User Score", String(userScore))
     displayQuestion(userLevel, userScore);
 })
@@ -335,13 +336,11 @@ function storeUserLevel (userLevel, userScore) {
     var previousLevel = parseInt(previousLevelString, 10);
     var previousScore = parseInt(previousScoreString, 10);
     // if userLevel is higher, or if there is no previous level, store user level
-    if (userLevel > previousLevel || previousLevel == null) {
-        window.localStorage.removeItem("User Level")
+    if (userLevel > previousLevel) {
         window.localStorage.setItem("User Level", String(userLevel))
     }
     // if userScore is higher, or if there is no previous level, store user score
-    if (userScore > previousScore || previousScore == null) {
-        window.localStorage.removeItem("User Score")
+    if (userScore > previousScore) {
         window.localStorage.setItem("User Score", String(userScore))
     }
 
