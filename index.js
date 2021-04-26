@@ -224,7 +224,9 @@ var span = document.getElementsByClassName("close-modal")[0]; // targets close b
 // opens modal on button click
 btn.onclick = function() {
   modal.style.display = "block";
+  if (previousScoreString != null){
   document.getElementById("best-score").innerHTML = "Your previous top score was " + previousScoreString;
+  }
 }
 
 // closes modal on close click
