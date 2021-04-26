@@ -314,7 +314,7 @@ function loserModal(userLevel, userScore) {
 
     storeUserLevel(userLevel, userScore);
 
-    document.getElementById("best-score").innerHTML = "Your top score to date is " + previousScoreString;
+    document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + previousScoreString;
 
 }
 
