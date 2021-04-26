@@ -320,13 +320,24 @@ input[type="radio"] {
     opacity: 0;
 }
 
+.original-word-box{
+    width: 150px;
+    height: 24px;
+}
+
 .word-box {
-    width: 48px;
+    display: inline-block;
+    width: 150px;
     height: 24px;
     border-bottom: 2px solid var(--btc-orange);
+    padding-bottom: 35px;
 }
 
 .word {
-    width: 48px;
-    height: 24px;
+    width: 150px;
+    height: 24px;;
+}
+
+.words {
+    display: inline;
 }

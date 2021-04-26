@@ -41,7 +41,7 @@ const answerBox = [
     document.getElementById("answer-eleven")]
 
 // correct answers (not correct yet)
-const correctAnswerList = ["b", "d", "b", "a", 10, "c", "c", "b", "b", 32, "a"]
+const correctAnswerList = ["b", "d", ["anonymous", "decentralised", "trustless"], "a", 10, "c", "c", "b", "b", 32, "a"]
 
 // selector for identifying form
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
@@ -59,6 +59,8 @@ const submitButton = [
     document.getElementById("submit-nine"),
     document.getElementById("submit-ten"),
     document.getElementById("submit-eleven")]
+
+var dragAndDropAnswersGiven = []
 
 
     // TEST FUNCTIONS
@@ -225,23 +227,15 @@ function assessAnswer(userLevel, userScore, seconds) {
             var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value;
         break;
         case 2:
-            // targets whether object dragged to input area is correct???
-            /*
-            let word = function drop(dropEvent) {
-                dropEvent.preventDefault();
-                var data = dropEvent.dataTransfer.getData("text");
-                dropEvent.target.appendChild(document.getElementById(data));
-                return data;
-            }
-            */
-            document.getElementById("user-level").innerHTML = data;
+            // makes answer given = array of answers dropped
+            var answerGiven = dragAndDropAnswersGiven;
         break;
         case 3:
             // targets input value for the question displayed (using userLevel to obtain correct input box)
             var answerGiven = document.getElementById(String(userLevel + 1)).value;
         break;
     }
-    // determines right or wrong answer
+    // determines if answer is right or wrong
     if (answerGiven == correctAnswer) {
         userLevel ++;
         userScore += seconds;
@@ -269,6 +263,11 @@ function loserModal(userLevel, userScore) {
 
     // opens modal on function run (closing modal not an option)
     document.getElementById("loser-modal").style.display = "block";
+
+    // TEST
+    document.getElementById("loser-message").innerHTML += correctAnswerList[2];
+    document.getElementById("loser-message").innerHTML += dragAndDropAnswersGiven;
+
 }
 
 
@@ -282,24 +281,30 @@ function winnerModal(userLevel, userScore) {
     document.getElementById("winner-modal").style.display = "block";
 }
 
-
-function allowDrop(allowDropEvent) {
-  allowDropEvent.preventDefault();
-  // code on drop event
-}
-
+// DRAG AND DROP
+// code triggered repeatedly when one of the word options are dragged
 function drag(dragEvent) {
-  dragEvent.dataTransfer.setData("text", dragEvent.target.id);
-  // code on drag event
+    dragEvent.dataTransfer.setData("text", dragEvent.target.id);
 }
 
+// code triggered when word is dragged over drop box to prevent the default mode which disallows dropping
+function allowDrop(dropEvent) {
+    dropEvent.preventDefault();
+}
+
+// code triggered on the dropping of a word into the drop box
 function drop(dropEvent) {
-  dropEvent.preventDefault();
-  var data = dropEvent.dataTransfer.getData("text");
-  dropEvent.target.appendChild(document.getElementById(data));
-  // code on drop event
-  // maybe execute function here that takes in the data variable (which here is free)
-  // and appends this into an answer array for question 3
-  // then this answer array should match the correct answer array
-  // within the answer list array above
+    dropEvent.preventDefault();
+    var data = dropEvent.dataTransfer.getData("text");
+    dropEvent.target.appendChild(document.getElementById(data));
+    // code on drop event
+    //document.getElementById("user-level").innerHTML = data
+
+    dragAndDropAnswersGiven.push(String(data));
+    document.getElementById("user-level").innerHTML = String(dragAndDropAnswersGiven);
+    // return dragAndDropAnswersGiven
+    // maybe execute function here that takes in the data variable (which here is free)
+    // and appends this into an answer array for question 3
+    // then this answer array should match the correct answer array
+    // within the answer list array above
 }
