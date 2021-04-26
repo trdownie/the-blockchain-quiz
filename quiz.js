@@ -330,7 +330,7 @@ function winnerModal(userLevel, userScore) {
 function storeUserLevel (userLevel, userScore) {
     // gets previous user level & user score
     let previousLevelString = window.localStorage.getItem("User Level");
-    let previousScoreString = window.localStorage.getItem("User Level");
+    let previousScoreString = window.localStorage.getItem("User Score");
     // converts previous user level/score to integers
     let previousLevel = parseInt(previousLevelString, 10);
     let previousScore = parseInt(previousScoreString, 10);
@@ -344,6 +344,7 @@ function storeUserLevel (userLevel, userScore) {
         window.localStorage.removeItem("User Score")
         window.localStorage.setItem("User Score", String(userScore))
     }
+
 }
 
 // DRAG AND DROP

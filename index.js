@@ -1,11 +1,12 @@
-//-------------------- COOKIES
-// function to retrieve previously achieved level
-// cookie should look like {userLevel=6;path=/}
-function retrieveLevel() {
-// line 6 adapted from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
-    var userLevel = document.cookie.split('; ').find(row => row.startsWith('userLevel=')).split('=')[1];
-    return userLevel
-}
+//-------------------- GET PREVIOUS USER INFO
+
+// gets previous user level & user score
+let previousLevelString = window.localStorage.getItem("User Level");
+let previousScoreString = window.localStorage.getItem("User Score");
+// converts previous user level/score to integers
+let previousLevel = parseInt(previousLevelString, 10);
+let previousScore = parseInt(previousScoreString, 10);
+
 
 //-------------------- WELCOME MESSAGE ANIMATION
 // welcome text options
@@ -35,8 +36,6 @@ function retrieveLevel() {
 
 // function to set greetings to be displayed based on previous level achieved
 function setGreeting() {
-// line 6 adapted from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
-    var userLevel = document.cookie.split('; ').find(row => row.startsWith('userLevel=')).split('=')[1];
 // sets default greetings for no level found
     if (userLevel = '') {
         welcome = newWelcome
@@ -226,6 +225,7 @@ var span = document.getElementsByClassName("close-modal")[0]; // targets close b
 // opens modal on button click
 btn.onclick = function() {
   modal.style.display = "block";
+  document.getElementById("best-score").innerHTML = "Your previous top score was " + previousScoreString;
 }
 
 // closes modal on close click
