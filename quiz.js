@@ -74,7 +74,7 @@ var dragAndDropAnswersGiven = []
 document.addEventListener("DOMContentLoaded", function () {
     let userLevel = 0
     let userScore = 0
-    window.localStorage.setItem("User Level", String(userLevel))
+    window.localStorage.setItem("User Score", String(userScore))
     displayQuestion(userLevel, userScore);
 })
 
