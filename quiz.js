@@ -219,6 +219,10 @@ function assessAnswer(userLevel, userScore, seconds) {
     let correctAnswer = correctAnswerList[userLevel];
     let questionType = questionTypeList[userLevel];
     
+    // TEST
+    document.getElementById("user-level").innerHTML = window.localStorage.getItem("User Score");
+
+    
     switch (questionType) {
         // for multi-choice questions
         case 1:
@@ -315,14 +319,14 @@ function loserModal(userLevel, userScore) {
 
     // converts previous user level/score to integers
     let previousLevel = parseInt(previousLevelString, 10);
-    let previousScore = parseInt(previousScoreString, 10);
+    var previousScore = 0;
     // if userLevel is higher, or if there is no previous level, store user level
     if (userLevel > previousLevel) {
-        window.localStorage.setItem("User Level", String(userLevel))
+        window.localStorage.setItem("User Level", String(userLevel));
     }
     // if userScore is higher, or if there is no previous level, store user score
     if (userScore > previousScore) {
-        window.localStorage.setItem("User Score", String(userScore))
+        window.localStorage.setItem("User Score", String(userScore));
     }
 
     document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + previousScoreString;
@@ -367,7 +371,6 @@ function drop(dropEvent) {
     //document.getElementById("user-level").innerHTML = data
 
     dragAndDropAnswersGiven.push(String(data));
-    document.getElementById("user-level").innerHTML = String(dragAndDropAnswersGiven);
     // return dragAndDropAnswersGiven
     // maybe execute function here that takes in the data variable (which here is free)
     // and appends this into an answer array for question 3
