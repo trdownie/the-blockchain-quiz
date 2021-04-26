@@ -309,7 +309,21 @@ function loserModal(userLevel, userScore) {
     // opens modal on function run (closing modal not an option)
     document.getElementById("loser-modal").style.display = "block";
 
-    storeUserLevel(userLevel, userScore);
+    // gets previous user level & user score
+    let previousLevelString = window.localStorage.getItem("User Level");
+    let previousScoreString = window.localStorage.getItem("User Score");
+
+    // converts previous user level/score to integers
+    let previousLevel = parseInt(previousLevelString, 10);
+    let previousScore = parseInt(previousScoreString, 10);
+    // if userLevel is higher, or if there is no previous level, store user level
+    if (userLevel > previousLevel) {
+        window.localStorage.setItem("User Level", String(userLevel))
+    }
+    // if userScore is higher, or if there is no previous level, store user score
+    if (userScore > previousScore) {
+        window.localStorage.setItem("User Score", String(userScore))
+    }
 
     document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + previousScoreString;
 
@@ -329,20 +343,7 @@ function winnerModal(userLevel, userScore) {
 
 // stores highest user level & user score a user haas achieveed in local storage
 function storeUserLevel (userLevel, userScore) {
-    // gets previous user level & user score
-    var previousLevelString = window.localStorage.getItem("User Level");
-    var previousScoreString = window.localStorage.getItem("User Score");
-    // converts previous user level/score to integers
-    var previousLevel = parseInt(previousLevelString, 10);
-    var previousScore = parseInt(previousScoreString, 10);
-    // if userLevel is higher, or if there is no previous level, store user level
-    if (userLevel > previousLevel) {
-        window.localStorage.setItem("User Level", String(userLevel))
-    }
-    // if userScore is higher, or if there is no previous level, store user score
-    if (userScore > previousScore) {
-        window.localStorage.setItem("User Score", String(userScore))
-    }
+
 
 }
 
