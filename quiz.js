@@ -59,14 +59,35 @@ const submitButton = [
 var dragAndDropAnswersGiven = []
 
 const explanationList = [
-    "Blockchain is a distributed ledger on a peer-to-peer network. Distributed here means that it exists on many different computers all around the world, in a similar fashion to the internet."
+    "Blockchain is a distributed ledger on a peer-to-peer network. Distributed here means that it exists on many different computers all around the world, in a similar fashion to the internet.",
+    "Nodes are computers that act as communication points, relaying information. This is what creates the blockchain network.",
+    "Bitcoin is anonymous, decentralised and trustless. It is not free to use, however.",
+    "Mining is the process of adding blocks to the blockchain, a task which takes significant effort.",
+    "The target time to add blocks to the blockchain is 10 minutes. The nature of the system ensure this is maintained.",
+    "Miners recieve the transaction fees for the blocks they add to the blockchain, as well as a fixed number of bitcoin which reduces around every four years.",
+    "Bitcoin costs are dictated by the transaction size and network usage.",
+    "Hashes are undecipherable strings containing 64 numbers that are derived from the block header.",
+    "The nonce is an arbitrary string added to each hash in the blockchain.",
+    "The hashes that Bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces are 32 bytes.",
+    "Merkle trees are cryptographic trees used to facilitate the efficient and secure verification of the contents of large data structures."
 ]
 
 const explanationLinksList = [
-    "https://en.bitcoin.it/wiki/Block_chain"
+    "https://en.bitcoin.it/wiki/Block_chain",
+    "https://en.bitcoin.it/wiki/Node",
+    "https://en.bitcoin.it/wiki/Miner_fees",
+    "https://en.bitcoin.it/wiki/Mining",
+    "https://en.bitcoin.it/wiki/Mining",
+    "https://en.bitcoin.it/wiki/Mining#Reward",
+    "https://en.bitcoin.it/wiki/Miner_fees",
+    "https://en.bitcoin.it/wiki/Block_hashing_algorithm",
+    "https://en.bitcoin.it/wiki/Nonce",
+    "https://en.bitcoin.it/wiki/Block_hashing_algorithm",
+    "https://en.bitcoin.it/wiki/Protocol_documentation#Merkle_Trees"
 ]
 
 const knowledgeLevelList = ["A UNICELLULAR ORGANISM"
+    
 ]
 
 
@@ -74,6 +95,7 @@ const knowledgeLevelList = ["A UNICELLULAR ORGANISM"
     // document.getElementById("user-level").innerHTML = ' User Score is ' + String(userLevel);
     // document.getElementById("user-level").innerHTML = 'page is working';
     //window.alert("Nice try! Answer the question first!")
+
 
 
 // starts quiz on page load
@@ -96,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // begins quiz
     displayQuestion(userLevel, userScore);
 })
+
 
 
 // loads question & answer box based on userLevel
@@ -124,6 +147,7 @@ function displayQuestion(userLevel, userScore) {
 }
 
 
+
 // asks the question based on the userLevel
 function askQuestion(userLevel){
     // defines question based on the question list above
@@ -135,6 +159,7 @@ function askQuestion(userLevel){
     // types question on using individual letters array
     typeQuestion(questionLetters)
 }
+
 
 
 // type the question to be asked
@@ -155,6 +180,7 @@ function typeQuestion(questionLetters) {
 }
 
 
+
 // displays timer after 2 seconds
 function resetTimer(userLevel) {
     // resets timer to 1:00
@@ -168,6 +194,7 @@ function resetTimer(userLevel) {
     // returns the reset time for each iteration
     return 59;
 }
+
 
 
 // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
@@ -189,6 +216,7 @@ function appear(element, num, step, speed){
 }
 
 
+
 // displays answer box after 2.5 seconds
 function displayAnswerBox(userLevel) {     
     // fades out previous answer box on q2 and fixes the page structure
@@ -207,6 +235,7 @@ function displayAnswerBox(userLevel) {
         appear(answerBox[userLevel], 0, 10, 50)
     }, 2500)    
 }
+
 
 
 // starts timer and sets event listener ready for each question
@@ -234,6 +263,7 @@ function beginTimer (userLevel, userScore, seconds) {
     }
 
 }
+
 
 
 // assess whether correct and adjust user level/score or run fail modal
@@ -327,25 +357,24 @@ function assessAnswer(userLevel, userScore, seconds) {
 }
 
 
+
 // on question fail display fail modal
 function loserModal(userLevel, userScore) {
     
     // stores the new best user level and user score
     storeUserLevel(userLevel, userScore)
 
-
-    //
+    // adds the explanation for the question the user has failed on
     document.getElementById("explanation").innerHTML = explanationList[userLevel];
 
-    //
+    // adds a link to Bitcoin Wiki explaining the topic in more detail
     document.getElementById("explanation-link").href = explanationLinksList[userLevel];
 
-    //
+    // adds the knowledge level, which equates directly with user score
     document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
 
-    //
+    // adds an image to accompany the knowledge level
     document.getElementById("knowledge-level-image").src = "./assets/img/" + String(userLevel) + ".jpeg"
-
 
     // displays user level and user score achieved from this go
     document.getElementById("loser-message").innerHTML = 
