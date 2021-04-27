@@ -74,44 +74,23 @@ document.addEventListener("DOMContentLoaded", function () {
     var userLevel = 0
     var userScore = 0
     
+    // identifies if they are a new user, and sets their top level/score to zero ready for later use
+    let previousTopLevel = window.localStorage.getItem("User Level");
     let previousTopScore = window.localStorage.getItem("User Score");
-
+    if (previousTopLevel === null) {
+        window.localStorage.setItem("User Level", "0");
+    }
     if (previousTopScore === null) {
         window.localStorage.setItem("User Score", "0");
     }
 
-    /*
-    // gets previous user level & user score
-    var previousTopLevelString = window.localStorage.getItem("User Level");
-    var previousTopScoreString = window.localStorage.getItem("User Score");    
-
-    // converts previous user level/score to integers
-    var previousTopLevel = parseInt(previousTopLevelString, 10);
-    var previousTopScore = parseInt(previousTopScoreString, 10);
-
-    // if there is no previous level, set it to zero (first time user)
-    if (previousTopLevel == null) {
-        window.localStorage.setItem("User Level", String(userLevel));
-    }
- 
-    // if there is no previous score, set it to zero (first time user)
-    if (previousTopScore = null) {
-        window.localStorage.setItem("User Score", String(userScore));
-    }
-    |*/
-
-
-
+    // begins quiz
     displayQuestion(userLevel, userScore);
 })
 
 
-
-
-
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore) {
-
 
     // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
@@ -341,60 +320,59 @@ function assessAnswer(userLevel, userScore, seconds) {
 
 // on question fail display fail modal
 function loserModal(userLevel, userScore) {
-    // if userLevel is higher, or if there is no previous level, store user level
     
-    // gets previous user level & user score
-    // let previousTopLevelString = window.localStorage.getItem("User Level");
-    let previousTopScoreString = window.localStorage.getItem("User Score");    
+    storeUserLevel(userLevel, userScore)
 
-    // converts previous user level/score to integers
-    // let previousTopLevel = parseInt(window.localStorage.getItem("User Level"), 10);
-    let previousTopScoreInt = parseInt(previousTopScoreString, 10);
-
-    /*
-    if (userLevel > previousTopLevel || previousTopLevel == null) {
-        window.localStorage.setItem("User Level", String(userLevel));
-    }
-    */
-    // if userScore is higher, or if there is no previous level, store user score
-    
-    
-    if (userScore > previousTopScoreInt) {
-        window.localStorage.setItem("User Score", String(userScore));
-    }
-    
-    document.getElementById("best-score-loser").innerHTML = "Your best level to date is..." + window.localStorage.getItem("User Score");
-    
-    
-    // displays level and score achieved
+    // displays user level and user score achieved from this go
     document.getElementById("loser-message").innerHTML = 
-        "YOU LOSE! You achieved level " + String(userLevel) + " and score " + String(userScore);
+        "YOU LOSE! You achieved level " + String(userLevel) + " and a score of " + String(userScore);
 
-    // displays best score to date
-    // document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + previousTopScoreString;
+    // message for user telling them their best score to date
+    document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
 
-    // opens modal on function run (closing modal not an option)
+    // opens modal on function run, after messages above are added to html (note: closing modal is not an option)
     document.getElementById("loser-modal").style.display = "block"
-
 }
+
 
 // on question 11 correct answer display winner modal
 function winnerModal(userLevel, userScore) {
+
+    storeUserLevel(userLevel, userScore)
+
     // displays winner modal with level and score
     document.getElementById("winner-message").innerHTML = 
         "YOU WIN! You achieved level " + String(userLevel) + " and score " + String(userScore);
 
     // opens modal on function run (closing modal not an option)
     document.getElementById("winner-modal").style.display = "block";
-
-    storeUserLevel(userLevel, userScore)
 }
 
-// stores highest user level & user score a user haas achieveed in local storage
+
 function storeUserLevel (userLevel, userScore) {
 
+    // gets previous user level & user score (which are zero on first run)
+    let previousTopLevelString = window.localStorage.getItem("User Level");
+    let previousTopScoreString = window.localStorage.getItem("User Score");    
 
+    // converts previous user level/score to integers (this is why zero is required earlier)
+    let previousTopLevelInt = parseInt(previousTopLevelString, 10);
+    let previousTopScoreInt = parseInt(previousTopScoreString, 10);
+
+    // stores the best user level the user has achieved to date
+    if (userLevel > previousTopLevelInt) {
+        window.localStorage.setItem("User Level", String(userLevel));
+    }
+
+    // stores the best user score the user has achieved to date, and adds a message when they beat it
+    if (userScore > previousTopScoreInt) {
+        window.localStorage.setItem("User Score", String(userScore));
+        document.getElementById("new-top-score-loser").innerHTML = "NEW PERSONAL BEST SCORE!!";
+        document.getElementById("new-top-score-winner").innerHTML = "NEW PERSONAL BEST SCORE!!";
+    }
 }
+
+
 
 // DRAG AND DROP
 // code triggered repeatedly when one of the word options are dragged
