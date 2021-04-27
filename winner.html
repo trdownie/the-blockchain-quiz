@@ -9,6 +9,7 @@
     </head>
     <body>
 <!--======================================    START OF PAGE    ======================================-->
+        <div class="grey-box"><p id="test" class="center-text white-text"></p></div>
         <div id="question-box" class="orange-box">
             <h1 class="grey-text">WINNER!</h1>
             <p class="grey-text">Bitcoin knowledge level: Satoshi Nakamoto</p>
@@ -18,9 +19,10 @@
             <canvas></canvas>
         </div>
         <div id="answer-box" class="grey-box">
-            <div class="white-text"><p>This art was generated randomly using an algorithm and a hash from Bitcoin’s blockchain.<br>
-                <br>This digital art is entirely unique. The next person to complete this will receive art based on the next hash in the sequence.<br>
-                <br>The hash used here was from XXXXXX, when Bitcoin was worth $x.</p>
+            <div class="white-text"><p>This art was generated using an algorithm and the latest hash from Bitcoin’s blockchain.<br>
+                <br>This digital art is entirely unique, and will reset within a maximum of ten minutes – as you now know.<br>
+                <br>The hash used here was:</p>
+                <p id="hash"></p>
             </div>
             <div class="center-text">
                 <a class="orange-text" href="">Download Art (FREE)</a><br>
@@ -31,6 +33,7 @@
             <h2><a class="orange-text" href="">CONTACT</a></h2>
             <h2><a class="orange-text" href="">LEADERBOARD</a></h2>
         </div>
+    <script src="winner.js"></script>
     </body>
     <footer>
     </footer>
