@@ -86,8 +86,46 @@ const explanationLinksList = [
     "https://en.bitcoin.it/wiki/Protocol_documentation#Merkle_Trees"
 ]
 
-const knowledgeLevelList = ["A UNICELLULAR ORGANISM"
-    
+const knowledgeLevelList = ["A UNICELLULAR ORGANISM.",
+    "EDWARD SCISSORHANDS, from... Edward Scissorhands (1990).",
+    "AVA, from EX MACHINA (2015).",
+    "THE T-800, from Terminator 2: Judgement Day (1991).",
+    "ROY BATTY, from Blade Runner (1982).",
+    "HAL 9000, from 2001: A Space Odyssey (1968).",
+    "MARVIN, from The Hitchhiker's Guide to the Galaxy (2005).",
+    "GERTY, from Moon (2009).",
+    "DAVID, from Prometheus (2012).",
+    "AGENT SMITH, from The Matrix (1999).",
+    "DEEP THOUGHT, from The Hitchhiker's Guide to the Galaxy (2005).",
+    "SATOSHI NAKAMOTO, creator of Bitcoin.",
+]
+
+const knowledgeImageList = ["./assets/img/unicellular.jpeg",
+    "./assets/img/edward.png",
+    "./assets/img/ava.jpeg",
+    "./assets/img/t-800.jpeg",
+    "./assets/img/roy.jpeg",
+    "./assets/img/hal-9000.jpeg",
+    "./assets/img/marvin.jpeg",
+    "./assets/img/gerty.jpeg",
+    "./assets/img/david.jpeg",
+    "./assets/img/agent-smith.jpg",
+    "./assets/img/deep-thought.png",
+    "./assets/img/satoshi-nakamoto.png",
+]
+
+const knowledgeExplainedList = ["Without a brain, a central nervous system or internet access, unicellular organisms are true Blockchain amateurs.",
+    "Not only did Edward retire to private life long before blockchain was developed, he wasn't the best with a keyboard.",
+    "Ava was completely isolated and would therefore lack exposure to Blockchain technology. Sound familiar?",
+    "The T-800 was from a dystopian future where the apocalypse happened over a decade before Blockchain and still he knows as much about Bitcoin as you.",
+    "Roy can do anything humans can do (except pass a Voight-Kampff test). Sadly, he died almost thirty years before humans could do blockchain.",
+    "HAL went rogue before Blockchain was invented, however he later merged with man after Blockchain was developed so it was only a matter of time before he knew the score. Can you say the same?",
+    "Developed before blockchain was created, Marvin wouldn't have had exposure to Blockchain, however his brain would most likely have been able to anticipate it.",
+    "GERTY was intelligent and had contact with the Eart in the year 2035. He wasn't an expert, but he definitely would have had some significant knowledge on it.",
+    "There's no doubt David would have had considerable knowledge of blockchain. The problem is, he was so obsessed with being human, the technology may not have been important to him.",
+    "Agent Smith has experienced countless Matrix iterations, meaning he would without doubt comprehensively understand Bitcoin, though he wouldn't be a fan.",
+    "The computer that designed the earth should, by deduction, have a complete knowledge of blockchain tech.",
+    "Need we say more?",
 ]
 
 
@@ -374,7 +412,10 @@ function loserModal(userLevel, userScore) {
     document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
 
     // adds an image to accompany the knowledge level
-    document.getElementById("knowledge-level-image").src = "./assets/img/" + String(userLevel) + ".jpeg"
+    document.getElementById("knowledge-image").src = knowledgeImageList[userLevel];
+
+    // adds the knowledge level, which equates directly with user score
+    document.getElementById("knowledge-explained").innerHTML = knowledgeExplainedList[userLevel];
 
     // displays user level and user score achieved from this go
     document.getElementById("loser-message").innerHTML = 
