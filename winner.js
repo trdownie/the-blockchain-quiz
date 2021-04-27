@@ -16,11 +16,24 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.alert("HTTP-Error: " + hash.status);
     }
 
-    document.getElementById("hash").innerHTML = hash;
+    let hashRows = splitHash(hash);
+    document.getElementById("hash").innerHTML += hashRows[0] + hashRows[1] + hashRows[2] + hashRows[3];
 
-    drawArt(hash);
+    drawArt(hashRows);
 })
 
-function drawArt(hash){
+function splitHash(hash) {
+    // code to break hash into string with returns every 16 digits
+    let hashArray = hash.split(); // hash split every 16 characters
+    let firstRow = hashArray[0]; // add first 16 elements in array (0 - 15)
+    let secondRow = hashArray[1]; // add second 16 elements in array (0 - 15)
+    let thirdRow = hashArray[2]; // add third 16 elements in array (0 - 15)
+    let fourthRow = hashArray[3]; // add fourth 16 elements in array (0 - 15)
+    let hashRows = [firstRow, secondRow, thirdRow, fourthRow];
+    return hashRows
+}
+
+
+function drawArt(hashRows){
     // code to go here that connects with canvas API and draws art
 }
