@@ -86,18 +86,18 @@ const explanationLinksList = [
     "https://en.bitcoin.it/wiki/Protocol_documentation#Merkle_Trees"
 ]
 
-const knowledgeLevelList = ["A UNICELLULAR ORGANISM.",
-    "EDWARD SCISSORHANDS, from... Edward Scissorhands (1990).",
-    "AVA, from EX MACHINA (2015).",
-    "THE T-800, from Terminator 2: Judgement Day (1991).",
-    "ROY BATTY, from Blade Runner (1982).",
-    "HAL 9000, from 2001: A Space Odyssey (1968).",
-    "MARVIN, from The Hitchhiker's Guide to the Galaxy (2005).",
-    "GERTY, from Moon (2009).",
-    "DAVID, from Prometheus (2012).",
-    "AGENT SMITH, from The Matrix (1999).",
-    "DEEP THOUGHT, from The Hitchhiker's Guide to the Galaxy (2005).",
-    "SATOSHI NAKAMOTO, creator of Bitcoin.",
+const knowledgeLevelList = ["A UNICELLULAR ORGANISM",
+    "EDWARD SCISSORHANDS (from Edward Scissorhands)",
+    "AVA (from Ex Machina)",
+    "THE T-800 (from Terminator 2: Judgement Day)",
+    "ROY BATTY (from Blade Runner)",
+    "HAL 9000 (from 2001: A Space Odyssey)",
+    "MARVIN (from The Hitchhiker's Guide to the Galaxy)",
+    "DAVID (from Prometheus)",
+    "AGENT SMITH (from The Matrix",
+    "DEEP THOUGHT (from The Hitchhiker's Guide to the Galaxy",
+    "DR. MANHATTAN (from Watchmen)",
+    "SATOSHI NAKAMOTO (creator of Bitcoin)",
 ]
 
 const knowledgeImageList = ["./assets/img/unicellular.jpeg",
@@ -107,10 +107,10 @@ const knowledgeImageList = ["./assets/img/unicellular.jpeg",
     "./assets/img/roy.jpeg",
     "./assets/img/hal-9000.jpeg",
     "./assets/img/marvin.jpeg",
-    "./assets/img/gerty.jpeg",
     "./assets/img/david.jpeg",
     "./assets/img/agent-smith.jpg",
     "./assets/img/deep-thought.png",
+    "./assets/img/dr-manhattan.jpeg",
     "./assets/img/satoshi-nakamoto.png",
 ]
 
@@ -120,12 +120,12 @@ const knowledgeExplainedList = ["Without a brain, a central nervous system or in
     "The T-800 was from a dystopian future where the apocalypse happened over a decade before Blockchain and still he knows as much about Bitcoin as you.",
     "Roy can do anything humans can do (except pass a Voight-Kampff test). Sadly, he died almost thirty years before humans could do blockchain.",
     "HAL went rogue before Blockchain was invented, however he later merged with man after Blockchain was developed so it was only a matter of time before he knew the score. Can you say the same?",
-    "Developed before blockchain was created, Marvin wouldn't have had exposure to Blockchain, however his brain would most likely have been able to anticipate it.",
-    "GERTY was intelligent and had contact with the Eart in the year 2035. He wasn't an expert, but he definitely would have had some significant knowledge on it.",
-    "There's no doubt David would have had considerable knowledge of blockchain. The problem is, he was so obsessed with being human, the technology may not have been important to him.",
-    "Agent Smith has experienced countless Matrix iterations, meaning he would without doubt comprehensively understand Bitcoin, though he wouldn't be a fan.",
-    "The computer that designed the earth should, by deduction, have a complete knowledge of blockchain tech.",
-    "Need we say more?",
+    "Developed before blockchain was created, Marvin wouldn't have had exposure to Blockchain, however, his brain would most likely have been able to anticipate it. Is this the best you've got?",
+    "There's no doubt David would have had considerable knowledge of blockchain. He was so obsessed with being human, however, that it may not have been important to him. Can you say otherwise?",
+    "Agent Smith has experienced countless Matrix iterations, meaning he would without doubt comprehensively understand Bitcoin, though he wouldn't be a true fan. Are you?",
+    "The computer that designed the earth should, by deduction, have a complete working knowledge of blockchain tech rivalled by few. Can you go further?",
+    "Doctor Manhattan has the ability to observe and control space and time. With this level of power, he would be an avid blockchain fan and a true authority on it – as you are now. Can you make the final level?",
+    "We could say more, but at this point - you know as much as we do.",
 ]
 
 
@@ -435,14 +435,14 @@ function winnerModal(userLevel, userScore) {
     document.getElementById("winner-message").innerHTML = 
         "YOU WIN! You achieved level " + String(userLevel) + " and a score of " + String(userScore);
     // message for user telling them their best score to date
-    document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
+    document.getElementById("best-score-winner").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
 
     // adds the knowledge level, which equates directly with user score
-    document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
+    document.getElementById("knowledge-level-winner").innerHTML = knowledgeLevelList[userLevel];
     // adds an image to accompany the knowledge level
-    document.getElementById("knowledge-image").src = knowledgeImageList[userLevel];
+    document.getElementById("knowledge-image-winner").src = knowledgeImageList[userLevel];
     // adds the knowledge level, which equates directly with user score
-    document.getElementById("knowledge-explained").innerHTML = knowledgeExplainedList[userLevel];
+    document.getElementById("knowledge-explained-winner").innerHTML = knowledgeExplainedList[userLevel];
 
 
 
@@ -471,8 +471,8 @@ function storeUserLevel (userLevel, userScore) {
     // also adds 'NEW PERSONAL BEST SCORE' message to winner & loser modal
     if (userScore > previousTopScoreInt) {
         window.localStorage.setItem("User Score", String(userScore));
-        document.getElementById("new-top-score-loser").innerHTML = "NEW PERSONAL BEST SCORE!!";
-        document.getElementById("new-top-score-winner").innerHTML = "NEW PERSONAL BEST SCORE!!";
+        document.getElementById("new-top-score-loser").innerHTML = "THIS IS A NEW PERSONAL BEST SCORE!!";
+        document.getElementById("new-top-score-winner").innerHTML = "THIS IS A NEW PERSONAL BEST SCORE!!";
     }
 }
 
