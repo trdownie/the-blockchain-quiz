@@ -58,6 +58,14 @@ const submitButton = [
 
 var dragAndDropAnswersGiven = []
 
+const explanationList = [
+    "Blockchain is a distributed ledger on a peer-to-peer network. Distributed here means that it exists on many different computers all around the world, in a similar fashion to the internet."
+]
+
+const explanationLinksList = [
+    "https://en.bitcoin.it/wiki/Block_chain"
+]
+
 const knowledgeLevelList = ["A UNICELLULAR ORGANISM"
 ]
 
@@ -325,9 +333,19 @@ function loserModal(userLevel, userScore) {
     // stores the new best user level and user score
     storeUserLevel(userLevel, userScore)
 
+
+    //
+    document.getElementById("explanation").innerHTML = explanationList[userLevel];
+
+    //
+    document.getElementById("explanation-link").href = explanationLinksList[userLevel];
+
+    //
     document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
 
+    //
     document.getElementById("knowledge-level-image").src = "./assets/img/" + String(userLevel) + ".jpeg"
+
 
     // displays user level and user score achieved from this go
     document.getElementById("loser-message").innerHTML = 
