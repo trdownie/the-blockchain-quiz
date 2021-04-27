@@ -402,27 +402,23 @@ function loserModal(userLevel, userScore) {
     // stores the new best user level and user score
     storeUserLevel(userLevel, userScore)
 
+    // displays user level and user score achieved from this go
+    document.getElementById("loser-message").innerHTML = 
+        "You achieved level " + String(userLevel) + " and a score of " + String(userScore);
+    // message for user telling them their best score to date
+    document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
+
     // adds the explanation for the question the user has failed on
     document.getElementById("explanation").innerHTML = explanationList[userLevel];
-
     // adds a link to Bitcoin Wiki explaining the topic in more detail
     document.getElementById("explanation-link").href = explanationLinksList[userLevel];
 
     // adds the knowledge level, which equates directly with user score
     document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
-
     // adds an image to accompany the knowledge level
     document.getElementById("knowledge-image").src = knowledgeImageList[userLevel];
-
     // adds the knowledge level, which equates directly with user score
     document.getElementById("knowledge-explained").innerHTML = knowledgeExplainedList[userLevel];
-
-    // displays user level and user score achieved from this go
-    document.getElementById("loser-message").innerHTML = 
-        "You achieved level " + String(userLevel) + " and a score of " + String(userScore);
-
-    // message for user telling them their best score to date
-    document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
 
     // opens modal on function run, after messages above are added to html (note: closing modal is not an option)
     document.getElementById("loser-modal").style.display = "block"
@@ -437,7 +433,19 @@ function winnerModal(userLevel, userScore) {
 
     // displays winner modal with level and score
     document.getElementById("winner-message").innerHTML = 
-        "YOU WIN! You achieved level " + String(userLevel) + " and score " + String(userScore);
+        "YOU WIN! You achieved level " + String(userLevel) + " and a score of " + String(userScore);
+    // message for user telling them their best score to date
+    document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
+
+    // adds the knowledge level, which equates directly with user score
+    document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
+    // adds an image to accompany the knowledge level
+    document.getElementById("knowledge-image").src = knowledgeImageList[userLevel];
+    // adds the knowledge level, which equates directly with user score
+    document.getElementById("knowledge-explained").innerHTML = knowledgeExplainedList[userLevel];
+
+
+
 
     // opens modal on function run (closing modal not an option)
     document.getElementById("winner-modal").style.display = "block";
