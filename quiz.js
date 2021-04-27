@@ -112,8 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore) {
 
-    // TEST
-    document.getElementById("user-level").innerHTML = "Your best level to date is..." + window.localStorage.getItem("User Score");
 
     // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
@@ -365,6 +363,7 @@ function loserModal(userLevel, userScore) {
         window.localStorage.setItem("User Score", String(userScore));
     }
     
+    document.getElementById("best-score-loser").innerHTML = "Your best level to date is..." + window.localStorage.getItem("User Score");
     
     
     // displays level and score achieved
