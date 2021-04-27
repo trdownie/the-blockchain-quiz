@@ -58,7 +58,8 @@ const submitButton = [
 
 var dragAndDropAnswersGiven = []
 
-
+const knowledgeLevelList = ["A UNICELLULAR ORGANISM"
+]
 
 
     // TEST FUNCTIONS
@@ -321,11 +322,16 @@ function assessAnswer(userLevel, userScore, seconds) {
 // on question fail display fail modal
 function loserModal(userLevel, userScore) {
     
+    // stores the new best user level and user score
     storeUserLevel(userLevel, userScore)
+
+    document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
+
+    document.getElementById("knowledge-level-image").src = "./assets/img/" + String(userLevel) + ".jpeg"
 
     // displays user level and user score achieved from this go
     document.getElementById("loser-message").innerHTML = 
-        "YOU LOSE! You achieved level " + String(userLevel) + " and a score of " + String(userScore);
+        "You achieved level " + String(userLevel) + " and a score of " + String(userScore);
 
     // message for user telling them their best score to date
     document.getElementById("best-score-loser").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
@@ -338,6 +344,7 @@ function loserModal(userLevel, userScore) {
 // on question 11 correct answer display winner modal
 function winnerModal(userLevel, userScore) {
 
+    // stores the new best user level and user score
     storeUserLevel(userLevel, userScore)
 
     // displays winner modal with level and score
@@ -364,7 +371,8 @@ function storeUserLevel (userLevel, userScore) {
         window.localStorage.setItem("User Level", String(userLevel));
     }
 
-    // stores the best user score the user has achieved to date, and adds a message when they beat it
+    // stores the best user score the user has achieved to date
+    // also adds 'NEW PERSONAL BEST SCORE' message to winner & loser modal
     if (userScore > previousTopScoreInt) {
         window.localStorage.setItem("User Score", String(userScore));
         document.getElementById("new-top-score-loser").innerHTML = "NEW PERSONAL BEST SCORE!!";
