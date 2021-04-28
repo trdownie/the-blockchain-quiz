@@ -16,24 +16,50 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.alert("HTTP-Error: " + hash.status);
     }
 
+    // split the hash into manageable arrays (see below)
     let hashRows = splitHash(hash);
-    document.getElementById("hash").innerHTML += hashRows[0] + hashRows[1] + hashRows[2] + hashRows[3];
+
+    // add the hash into the text on screen below the canvas so users can see the hash
+    document.getElementById("hash").innerHTML += hashRows[0].join('') + "<br/>" + hashRows[1].join('') + "<br/>" + hashRows[2].join('') + "<br/>" + hashRows[3].join('');
 
     drawArt(hashRows);
 })
 
+// this function takes the 64-digit hash and splits it into four 16-digit 'row' arrays
+// this helps with displaying the hash on screen and for working with it in later
 function splitHash(hash) {
-    // code to break hash into string with returns every 16 digits
-    let hashArray = hash.split(); // hash split every 16 characters
-    let firstRow = hashArray[0]; // add first 16 elements in array (0 - 15)
-    let secondRow = hashArray[1]; // add second 16 elements in array (0 - 15)
-    let thirdRow = hashArray[2]; // add third 16 elements in array (0 - 15)
-    let fourthRow = hashArray[3]; // add fourth 16 elements in array (0 - 15)
-    let hashRows = [firstRow, secondRow, thirdRow, fourthRow];
+    // hash split into individual characters
+    let hashArray = hash.split('');
+    // rows defined as empty arrays
+    var firstRow = [];
+    var secondRow = [];
+    var thirdRow = [];
+    var fourthRow = [];
+    // each element added to the four rows
+    var i;
+    for (i = 0; i < hashArray.length; i++) {
+        if (i <= 15) {
+            firstRow.push(hashArray[i]);
+        }
+        else if (i > 15 && i <= 31) {
+
+            secondRow.push(hashArray[i]);
+        }
+        else if (i > 31 && i <= 47) {
+            thirdRow.push(hashArray[i]);
+        }
+        else {
+            fourthRow.push(hashArray[i]);
+        }
+    }
+    // one final array for easy access, return to the master function
+    var hashRows = [firstRow, secondRow, thirdRow, fourthRow];
     return hashRows
 }
 
 
 function drawArt(hashRows){
     // code to go here that connects with canvas API and draws art
+
+    
 }
