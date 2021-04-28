@@ -116,14 +116,11 @@ function getColours(hash) {
 }
 
 function getShapes(hash) {
-
-}
-
-function hexToRgb(hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
+    // potential idea:
+    // using the string of values as a fraction of the canvas
+    // for example: 0, 5 represents x = 0, y = 5/16ths
+    // from here, can use cubic bezier curves taking the next four digits
+    // need to figure how to jump from one bezier curve to the next as 'fill' will be too messy
+    // ideally, a continued curved drawing would be perfect (not sure if poss)
+    // colour-wise, cycling through the same colour values for each move would work
 }
