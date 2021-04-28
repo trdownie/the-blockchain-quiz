@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // add the hash into the text on screen below the canvas so users can see the hash
     document.getElementById("hash").innerHTML += hashRows[0].join('') + "<br/>" + hashRows[1].join('') + "<br/>" + hashRows[2].join('') + "<br/>" + hashRows[3].join('');
 
-    drawArt(hashRows);
+    drawArt(hash, hashRows);
 })
 
 // this function takes the 64-digit hash and splits it into four 16-digit 'row' arrays
@@ -58,8 +58,57 @@ function splitHash(hash) {
 }
 
 
-function drawArt(hashRows){
-    // code to go here that connects with canvas API and draws art
+function drawArt(hash, hashRows){
+    // gets the canvas
+    var canvas = document.getElementById('art');
+    // defines width/height for later use
+    var width = canvas.width;
+    var height = canvas.height;
 
+    let colours = getColours(hash)
+
+    // begins the art (if function will return true if canvas accessible)
     
+    if (canvas.getContext) {
+        // defines the context (where the art will take place) as art
+        var art = canvas.getContext('2d');
+        // basic iterative
+    
+        var i;
+
+        for (i = 0; i < 44; i++) {
+
+            //getColours(hashRows);
+            art.fillStyle = '#' + colours[i];
+            //art.fillRect(10,(height/100),50,50);
+            art.fillRect(((i * width) / 44), 0, (width/44), height);
+        }
+        
+        //art.fillStyle = 'rgb(200, 0, 0)';
+        //art.fillRect(10, 10, 50, 50);
+
+        //art.fillStyle = 'rgba(0, 0, 200, 0.5)';
+        //art.fillRect(30, 30, 50, 50);
+    }
+    
+}
+
+function getColours(hash) {
+
+    // hash split into individual characters
+    let hashArray = hash.split('');
+    var i;
+    var j;
+    var colours = [];
+    // 58 used as there are 58 rows of six hexidecimals within a 64-digit hash
+    for (i = 14; i < 58; i++) {
+        var temporaryArray = [];
+        for (j = 0; j < 6; j++) {
+            temporaryArray.push(hashArray[i+j]);
+        }
+        var newColour = temporaryArray.join('');
+        colours.push(newColour);
+    }
+    document.getElementById("test").innerHTML += colours;
+    return colours
 }

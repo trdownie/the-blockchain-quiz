@@ -140,11 +140,12 @@ input[type="radio"] {
     background-color: var(--btc-orange);
 }
 
-.white-box {
+.art-canvas {
     width: 70%;
     margin: 30px auto;
     text-align: center;
     border-radius: 15px;
+    border: solid 2px var(--btc-grey);
     background-color: var(--btc-white);
 }
 
