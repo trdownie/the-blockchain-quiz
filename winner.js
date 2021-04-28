@@ -75,10 +75,12 @@ function drawArt(hash, hashRows){
         // basic iterative
     
         var i;
-
+        art.globalAlpha = 1.0; // added for transaprency (for later if needed)
         for (i = 0; i < 44; i++) {
 
             //getColours(hashRows);
+
+
             art.fillStyle = '#' + colours[i];
             //art.fillRect(10,(height/100),50,50);
             art.fillRect(((i * width) / 44), 0, (width/44), height);
@@ -115,4 +117,13 @@ function getColours(hash) {
 
 function getShapes(hash) {
 
+}
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
 }
