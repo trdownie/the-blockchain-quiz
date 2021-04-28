@@ -83,32 +83,36 @@ function drawArt(hash, hashRows){
             //art.fillRect(10,(height/100),50,50);
             art.fillRect(((i * width) / 44), 0, (width/44), height);
         }
-        
-        //art.fillStyle = 'rgb(200, 0, 0)';
-        //art.fillRect(10, 10, 50, 50);
-
-        //art.fillStyle = 'rgba(0, 0, 200, 0.5)';
-        //art.fillRect(30, 30, 50, 50);
     }
     
 }
 
 function getColours(hash) {
-
     // hash split into individual characters
     let hashArray = hash.split('');
     var i;
     var j;
     var colours = [];
-    // 58 used as there are 58 rows of six hexidecimals within a 64-digit hash
+    // there are 58 rows of six consecutive hexadecimals within a 64-digit hash
+    // beginning at 14 accounts for the first 19 consecutive zeros
+    // by starting at #14, the 6-number block will reach #20 from the beginning which may be non-zero
+    // first for loop sets the starting point within the 64-digit array
     for (i = 14; i < 58; i++) {
+        // within this first for loop, a fresh blank temporary array is created
         var temporaryArray = [];
+        // the second for loop collects the six hexadecimals in order and adds them to the temporary array
         for (j = 0; j < 6; j++) {
             temporaryArray.push(hashArray[i+j]);
         }
+        // after the second loop, a new colour variable is created out of the temporary array
         var newColour = temporaryArray.join('');
+        // this new colour, on its dying breath, is pushed out of both loops to the colours array
         colours.push(newColour);
     }
-    document.getElementById("test").innerHTML += colours;
+    // the colours array is returned
     return colours
+}
+
+function getShapes(hash) {
+
 }
