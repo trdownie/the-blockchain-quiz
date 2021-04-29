@@ -105,8 +105,17 @@ document.addEventListener("DOMContentLoaded", function() {
     // after 7 seconds begin/continue/play button fades in based on previous user level
     setTimeout(function() {
         document.getElementById('begin-button').innerHTML += button[previousLevel];
-        appear(document.getElementsByTagName('button')[0], 0, 5, 50);
+        appear(document.getElementById('begin-button'), 0, 5, 50);
     }, 7000)
+
+    // if user level = 11 (previous winner) then display shortcut to winner's area button
+    
+    if (previousLevel == 11){    
+        setTimeout(function() {
+                document.getElementById('winners-area').innerHTML += "EXPLORE";
+                appear(document.getElementById('winners-area'), 0, 5, 50);
+            }, 7000)
+    }
 })
 
 // ---------------------------------  SUPPORTING FUNCTIONS
