@@ -118,7 +118,27 @@ function getColours(hash) {
     return colours
 }
 
-// function defined for later use
+
+// ---------------------------------  THE FUNCTION HOSPITAL (FUNCTIONS NOT FULLY WORKING)
+// Download image buttons will show an alert as functionality not yet implemented
+document.getElementById("download").onclick = function(){
+    window.alert("The download button isn't working yet - please right click and download instead!")
+}
+document.getElementById("buy").onclick = function(){
+    window.alert("Coming soon!")
+}
+
+    // window.alert("Nice try! Answer the question first!")
+
+// function to allow image download from the canvas (NOT WORKING)
+// code adapted from https://jsfiddle.net/user2314737/28wqq1gu/
+document.getElementById("download").onclick = function(){
+    var canvas = document.getElementById('art');
+    var image = canvas.toDataURL("image/jpg");
+    document.getElementById("download").href = image;
+}
+
+// function defined for later use to improve the artwork (NOT WRITTEN YET)
 function getShapes(hash) {
     // use the string of values as a fraction of the canvas
     // for example: 0, 5 represents x = 0, y = 5/16ths
@@ -126,16 +146,6 @@ function getShapes(hash) {
     // need to figure how to jump from one bezier curve to the next as 'fill' will be too messy
     // ideally, a continued curved drawing would be perfect (not sure if poss)
     // colour-wise, cycling through the same colour values for each move would work
-}
-
-
-// ---------------------------------  IMAGE DOWNLOAD
-// function to allow image download from the canvas (NOT WORKING)
-// code adapted from https://jsfiddle.net/user2314737/28wqq1gu/
-document.getElementById("download").onclick = function(){
-    var canvas = document.getElementById('art');
-    var image = canvas.toDataURL("image/jpg");
-    document.getElementById("download").href = image;
 }
 
 
