@@ -122,3 +122,56 @@ function getShapes(hash) {
     // ideally, a continued curved drawing would be perfect (not sure if poss)
     // colour-wise, cycling through the same colour values for each move would work
 }
+
+// ---------------------------------  MODALS FOR LEADERBOARD/ABOUT/CONTACT
+// code for modal learnt from https://www.w3schools.com/howto/howto_css_modals.asp
+
+var leaderboard = document.getElementById("leaderboard-modal"); // targets leaderboard modal
+var about = document.getElementById("about-modal"); // targets about modal
+var contact = document.getElementById("contact-modal"); // targets contact modal
+
+var leaderboardBtn = document.getElementById("leaderboard"); // targets leaderboard button
+var aboutBtn = document.getElementById("about"); // targets about button
+var contactBtn = document.getElementById("contact"); // targets contact button
+
+var closeLeaderboard = document.getElementById("close-leaderboard"); // targets close buttons
+var closeAbout = document.getElementById("close-about"); // targets close buttons
+var closeContact = document.getElementById("close-contact"); // targets close buttons
+
+
+// opens modals on button click
+leaderboardBtn.onclick = function() {
+    leaderboard.style.display = "block";
+}
+aboutBtn.onclick = function() {
+    about.style.display = "block";
+}
+contactBtn.onclick = function() {
+    contact.style.display = "block";
+}
+
+// closes modal on close click
+closeLeaderboard.onclick = function() {
+    leaderboard.style.display = "none";
+}
+
+closeAbout.onclick = function() {
+    about.style.display = "none";
+}
+
+closeContact.onclick = function() {
+    contact.style.display = "none";
+}
+
+// closes modal when user clicks outside of window
+window.onclick = function(event) {
+    if (event.target == leaderboard) {
+        leaderboard.style.display = "none";
+    }
+    if (event.target == about) {
+        about.style.display = "none";
+    }
+    if (event.target == contact) {
+        contact.style.display = "none";
+    }
+}

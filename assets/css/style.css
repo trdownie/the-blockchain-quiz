@@ -253,14 +253,23 @@ input[type="radio"] {
     width: 80%;
 }
 
-.close-modal {
+.close-modal,
+#close-leaderboard,
+#close-about,
+#close-contact {
     color: var(--btc-grey);
     float: right;
     font-size: var(--sm-font);
 }
 
 .close-modal:hover,
-.close-modal:focus {
+.close-modal:focus,
+#close-leaderboard:hover,
+#close-leaderboard:focus,
+#close-about:hover,
+#close-about:focus,
+#close-contact:hover,
+#close-contact:focus {
     color: var(--btc-orange);
     text-decoration: none;
     cursor: pointer;
