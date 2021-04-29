@@ -237,15 +237,15 @@ function resetTimer(userLevel) {
 
 
 
-// appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// appear function code from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
 // to appear: num = 0 step = positive / to disappear: num = 100 step = negative
 function appear(element, num, step, speed){
-    var t_o;
-    t_o = setInterval(function(){
+    var changeOpacity;
+    changeOpacity = setInterval(function(){
         var opacity = num / 100;
         num = num + step; 
         if(opacity > 1 | opacity < 0){
-            clearInterval(t_o);
+            clearInterval(changeOpacity);
             return; 
         }
         // modern browsers

@@ -1,209 +1,116 @@
-//-------------------- LOCAL STORAGE
-// gets previous user level & user score (which are zero on first run)
-let previousTopLevelString = window.localStorage.getItem("User Level");
-let previousTopScoreString = window.localStorage.getItem("User Score");    
-
-// converts previous user level/score to integers (this is why zero is required earlier)
-let previousTopLevelInt = parseInt(previousTopLevelString, 10);
-let previousTopScoreInt = parseInt(previousTopScoreString, 10);
-
-//-------------------- WELCOME MESSAGE ANIMATION
+// ---------------------------------  OPTIONS FOR TAILORING THE HOME SCREEN
 // welcome text options
-    let welcome
-    newWelcome = "Welcome to...";
-    returnWelcome = "Welcome back to";
+const welcome = [
+    "Welcome to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to...",
+    "Welcome back to..."]
+
 // title of quiz
-    quizTitle = "The Blockchain Quiz";
+const quizTitle = "The Blockchain Quiz";
+
 // greeting text options
-    let greeting
-    greeting0 = "You have everything to learn, Newbie."
-    greeting1 = "Peter. There is still much to learn."
-    greeting2 = 
-    greeting3 = 
-    greeting4 = 
-    greeting5 = 
-    greeting6 = 
-    greeting7 = 
-    greeting8 = 
-    greeting9 = 
-    greeting10 = "Satoshi, hero of the people."
+const greeting = [
+    "You have everything to learn, Newbie.",
+    "You have much to learn, Edward",
+    "You have much to learn, Ava",
+    "You have much to learn, T-800",
+    "You are making progress, ROY",
+    "You are making progress, Hal",
+    "You are making progress, Marvin",
+    "You are making progress, David",
+    "You are almost there, Agent Smith",
+    "You are almost there, Deep Thought",
+    "You are almost there, Agent Smith",
+    "You know it all, Satoshi."]
+
 // invite text options
-    let invite
-    newInvite = "Shall we begin?";
-    returnInvite = "Are you ready?";
-    winnerInvite = "You have unlocked the full site."
+    const invite = [
+    "Shall we begin?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "Shall we continue?",
+    "You have unlocked the full site."
+    ]
 
-// function to set greetings to be displayed based on previous level achieved
-function setGreeting() {
-// sets default greetings for no level found
-    if (userLevel = '') {
-        welcome = newWelcome
-        greeting = greeting0
-        invite = newInvite
+const button = [
+    "BEGIN",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "CONTINUE",
+    "PLAY"
+    ]
+
+// ---------------------------------  MAIN FUNCTION ON PAGE LOAD
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // obtains previous user level, or sets it to zero if there isn't one
+    let previousTopLevel = window.localStorage.getItem("User Level");
+    let previousTopScore = window.localStorage.getItem("User Score");
+    if (previousTopLevel === null) {
+        window.localStorage.setItem("User Level", "0");
     }
-// sets greetings based on level found
-    else {
-        switch(userLevel) {
-            case 1:
-            welcome = returnWelcome
-            greeting = greeting1
-            invite = returnInvite
-            break;
-            case 2:
-            welcome = returnWelcome
-            greeting = greeting2
-            invite = newInvite
-            break;
-            case 3:
-            welcome = returnWelcome
-            greeting = greeting3
-            invite = newInvite
-            break;
-            case 4:
-            welcome = returnWelcome
-            greeting = greeting4
-            invite = newInvite
-            break;
-            case 5:
-            welcome = returnWelcome
-            greeting = greeting5
-            invite = newInvite
-            break;
-            case 6:
-            welcome = returnWelcome
-            greeting = greeting6
-            invite = newInvite
-            break;
-            case 7:
-            welcome = returnWelcome
-            greeting = greeting7
-            invite = newInvite
-            break;
-            case 8:
-            welcome = returnWelcome
-            greeting = greeting8
-            invite = newInvite
-            break;
-            case 9:
-            welcome = returnWelcome
-            greeting = greeting9
-            invite = newInvite
-            break;
-            case 10:
-            welcome = returnWelcome
-            greeting = greeting10
-            invite = winnerInvite
-            break;
-        }
+    if (previousTopScore === null) {
+        window.localStorage.setItem("User Score", "0");
     }
-}
 
-/*
-// animation variables
-let typeSpeed = 50
+    // gets previous user level & user score (which are now zero on first run)
+    let previousTopLevelString = window.localStorage.getItem("User Level");
+    let previousTopScoreString = window.localStorage.getItem("User Score");    
 
-// reusable function for writing typewriter text - couldn't get to work more than once
-function typewriterText(textToType, elementId){
+    // converts previous user level/score to integers (this is why zero is required earlier)
+    let previousLevel = parseInt(previousTopLevelString, 10);
+    let previousScore = parseInt(previousTopScoreString, 10); // not used but set for future enhancements
+
+    // start with welcome message via typewriter text
+    typeText(welcome[previousLevel], 'welcome')
+
+    // after 0.5 seconds, fade in 'The Blockchain Quiz'
     setTimeout(function() {
-        document.getElementById(elementId).innerHTML += textToType.charAt(i);
-        i++;
-        if (i < textToType.length) {
-            typewriterText(textToType, elementId);
-        }
-    }, speed)
-}
-*/
+        appear(document.getElementById('title'), 0, 10, 150);
+    }, 500)
 
-// greeting functions
-// 1 - typewriter text welcome
-/*
-let i = 0
-function typewriterWelcome(){
+    // after 3 seconds, type greeting based on previous user level
     setTimeout(function() {
-        document.getElementById('welcome').innerHTML += newWelcome.charAt(i);
-        i++;
-        if (i < newWelcome.length) {
-            typewriterWelcome();
-        }
-    }, typeSpeed)
-}
-*/
+        typeText(greeting[previousLevel], 'greeting')
+    }, 3000)
 
-// 2 - title appears
-// appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
-function title() {
-    function appear(element, num, step, speed){
-        var t_o;
-        t_o = setInterval(function(){
-            // get opacity in decimals
-            var opacity = num / 100;
-            // set the next opacity step
-            num = num + step; 
-            if(opacity > 1){
-                clearInterval(t_o);
-            // if 1-opaque, stop
-                return; 
-            }
-            // modern browsers
-            element.style.opacity = opacity;
-            // older IE
-            element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
-        }, speed);
-    }
-    appear(document.getElementById('title'), 0, 10, 150);
-}
-
-/*
-// 3 - typewriter text greeting
-let j = 0
-function typewriterGreeting(){
+    // after 6 seconds, type the invite to begin based on previous user level
     setTimeout(function() {
-        document.getElementById('greeting').innerHTML += Greeting0.charAt(j);
-        j++;
-        if (j < Greeting0.length) {
-            typewriterGreeting();
-        }
-    }, typeSpeed)
-}
-*/
+        typeText(invite[previousLevel], 'invite')
+    }, 6000)
 
-// 4 - typewriter text invite
-let k = 0
-function typewriterInvite(){
+    // after 7 seconds begin/continue/play button fades in based on previous user level
     setTimeout(function() {
-        document.getElementById('invite').innerHTML += newInvite.charAt(k);
-        k++;
-        if (k < newInvite.length) {
-            typewriterInvite();
-        }
-    }, typeSpeed)
-}
+        document.getElementById('begin-button').innerHTML += button[previousLevel];
+        appear(document.getElementsByTagName('button')[0], 0, 5, 50);
+    }, 7000)
+})
 
-// 5 - button appears
-// appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
-function button() {
-    function appear(element, num, step, speed){
-        var t_o;
-        t_o = setInterval(function(){
-            // get opacity in decimals
-            var opacity = num / 100;
-            // set the next opacity step
-            num = num + step; 
-            if(opacity > 1){
-                clearInterval(t_o);
-            // if 1-opaque, stop
-                return; 
-            }
-            // modern browsers
-            element.style.opacity = opacity;
-            // older IE
-            element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
-        }, speed);
-    }
-    appear(document.getElementsByTagName('button')[0], 0, 5, 50);
-}
-
-// type some text
+// ---------------------------------  SUPPORTING FUNCTIONS
+// function that types text letter by letter to the inner HTML of the element parament fed into it
 function typeText(text, element) {
     // speed is speed of typing
     let speed = 50
@@ -222,45 +129,25 @@ function typeText(text, element) {
     }
 }
 
-// Run Full Greeting (TO ADD SetGreeting function once cookies enabled)
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // obtains previous user level, or sets it to zero if there isn't one
-    let previousTopLevel = window.localStorage.getItem("User Level");
-    let previousTopScore = window.localStorage.getItem("User Score");
-    if (previousTopLevel === null) {
-        window.localStorage.setItem("User Level", "0");
-    }
-    if (previousTopScore === null) {
-        window.localStorage.setItem("User Score", "0");
-    }
+// function that makes an element appear (or disappear)
+// appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+function appear(element, num, step, speed){
+    var changeOpacity;
+    changeOpacity = setInterval(function(){
+        var opacity = num / 100;
+        num = num + step; 
+        if(opacity > 1 | opacity < 0){
+            clearInterval(changeOpacity);
+            return; 
+        }
+        // modern browsers
+        element.style.opacity = opacity;
+        // older IE
+        element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
+    }, speed);
+}
 
-
-    // starts with: Welcome to...
-    typeText(newWelcome, 'welcome')
-
-    // after 1 second, fades in 'The Blockchain Quiz'
-    setTimeout(function() {
-        title()
-    }, 500)
-
-    // after 4 seconds, types greeting based on previous user level
-    setTimeout(function() {
-        typeText(greeting0, 'greeting')
-    }, 3000)
-
-    // after 5 seconds, types the invite to begin
-    setTimeout(function() {
-        typeText(newInvite, 'invite')
-    }, 6000)
-
-    // after 6 seconds button fades in
-    setTimeout(function() {
-        button()
-    }, 7000)
-})
-
-//-------------------- 'BEGIN' MODAL 
+// ---------------------------------  MODAL ON BUTTON CLICK
 // code for modal learnt from https://www.w3schools.com/howto/howto_css_modals.asp
 
 var modal = document.getElementById("modal"); // targets modal
