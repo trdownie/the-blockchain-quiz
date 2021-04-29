@@ -1,12 +1,11 @@
-
-
+// ---------------------------------  MAIN FUNCTION ON PAGE LOAD
 document.addEventListener("DOMContentLoaded", async function () {
 
     // defines the function to fetch the latest hash from the plaintext API
     let latestHash = await fetch('https://blockchain.info/q/latesthash')
   
     // makes sure the hash returned is ok (the server is responding)
-    // code learnt and utilised from https://javascript.info/fetch 
+    // code learnt from https://javascript.info/fetch 
     if (latestHash.ok) {
         // if the server responds, hash represents the response
         var hash = await latestHash.text();
@@ -16,15 +15,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.alert("HTTP-Error: " + hash.status);
     }
 
-    // split the hash into manageable arrays (see below)
+    // splits the hash into manageable arrays (see below)
     let hashRows = splitHash(hash);
 
-    // add the hash into the text on screen below the canvas so users can see the hash
+    // adds the hash into the text on screen below the canvas so users can see the hash used
     document.getElementById("hash").innerHTML += hashRows[0].join('') + "<br/>" + hashRows[1].join('') + "<br/>" + hashRows[2].join('') + "<br/>" + hashRows[3].join('');
 
+    // draws the unique art
     drawArt(hash, hashRows);
 })
 
+// ---------------------------------  SUPPORTING FUNCTIONS
 // this function takes the 64-digit hash and splits it into four 16-digit 'row' arrays
 // this helps with displaying the hash on screen and for working with it in later
 function splitHash(hash) {
@@ -57,33 +58,30 @@ function splitHash(hash) {
     return hashRows
 }
 
-
+// this function displays some unqiue artwork on the canvas
 function drawArt(hash, hashRows){
-    // gets the canvas
+    // gets the canvas element
     var canvas = document.getElementById('art');
     // defines width/height for later use
     var width = canvas.width;
     var height = canvas.height;
-
+    // gets the colours to be used (see function)
     let colours = getColours(hash)
 
     // begins the art (if function will return true if canvas accessible)
-    
     if (canvas.getContext) {
         // defines the context (where the art will take place) as art
         var art = canvas.getContext('2d');
-        // basic iterative
-    
+        // basic iterative variable for loop
         var i;
-        art.globalAlpha = 1.0; // added for transaprency (for later if needed)
-        for (i = 0; i < 44; i++) {
-
-            //getColours(hashRows);
-
-
+        // sets transparency, here fully opaque
+        art.globalAlpha = 1.0;
+        // cycles through the 45 six-part hexadecimal codes that the get colours function returns (see below)
+        for (i = 0; i < 45; i++) {
+            // turns the codes into hex colours
             art.fillStyle = '#' + colours[i];
-            //art.fillRect(10,(height/100),50,50);
-            art.fillRect(((i * width) / 44), 0, (width/44), height);
+            // uses the colours to draw vertical lines (rectangles) down the canvas 
+            art.fillRect(((i * width) / 45), 0, (width/45), height);
         }
     }
     
@@ -115,9 +113,9 @@ function getColours(hash) {
     return colours
 }
 
+// function defined for later use
 function getShapes(hash) {
-    // potential idea:
-    // using the string of values as a fraction of the canvas
+    // use the string of values as a fraction of the canvas
     // for example: 0, 5 represents x = 0, y = 5/16ths
     // from here, can use cubic bezier curves taking the next four digits
     // need to figure how to jump from one bezier curve to the next as 'fill' will be too messy
