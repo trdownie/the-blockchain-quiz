@@ -84,8 +84,8 @@ function drawArt(hash, hashRows){
             art.fillRect(((i * width) / 45), 0, (width/45), height);
         }
     }
-    
 }
+
 
 function getColours(hash) {
     // hash split into individual characters
@@ -123,6 +123,28 @@ function getShapes(hash) {
     // colour-wise, cycling through the same colour values for each move would work
 }
 
+/*
+document.getElementById("download").onclick = function(){
+
+
+    var canvas = document.getElementById('art');
+    var image = canvas.toDataURL("image/jpg");
+    document.getElementById("test").innerHTML += typeof (image);
+    document.getElementById("download").href = image;
+}
+*/
+
+var canvas = document.getElementById("canvas");
+
+
+download_img = function(el) {
+  var image = canvas.toDataURL("image/jpg");
+  el.href = image;
+};
+
+
+
+
 // ---------------------------------  MODALS FOR LEADERBOARD/ABOUT/CONTACT
 // code for modal learnt from https://www.w3schools.com/howto/howto_css_modals.asp
 
@@ -150,7 +172,7 @@ contactBtn.onclick = function() {
     contact.style.display = "block";
 }
 
-// closes modal on close click
+// closes modals on close click
 closeLeaderboard.onclick = function() {
     leaderboard.style.display = "none";
 }
@@ -163,7 +185,7 @@ closeContact.onclick = function() {
     contact.style.display = "none";
 }
 
-// closes modal when user clicks outside of window
+// closes modals when user clicks outside of window
 window.onclick = function(event) {
     if (event.target == leaderboard) {
         leaderboard.style.display = "none";

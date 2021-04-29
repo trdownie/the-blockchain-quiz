@@ -10,6 +10,8 @@
     <body>
 <!--======================================    START OF PAGE    ======================================-->
 <!----------------------------------------    Winner Message   ---------------------------------------->
+        
+        <div class="grey-box"><p id="test"></p></div>
         <div id="question-box" class="orange-box">
             <h1 class="grey-text">WINNER!</h1>
             <p class="grey-text">Bitcoin knowledge level: Satoshi Nakamoto</p>
@@ -27,32 +29,14 @@
                 <p id="hash" class="center-text"></p>
             </div>
             <div class="center-text">
-                <a class="orange-text" href="">Download Art (FREE)</a><br>
+                <!-- <a id="download" class="orange-text" download="blockArt.jpg" href="">Download Art (FREE)</a><br> -->
+                <a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download to myImage.jpg</a>
                 <a class="orange-text" href="">Buy NFT of image (1 ETH)</a>
             </div>
             <div class="small-divider"></div>
             <h2><a id="about" class="orange-text" href="#">ABOUT</a></h2>
             <h2><a id="contact" class="orange-text" href="#">CONTACT</a></h2>
             <h2><a id="leaderboard" class="orange-text" href="#">LEADERBOARD</a></h2>
-        </div>
-<!----------------------------------------    Leaderboard Modal    ------------------------------------>
-        <div id="leaderboard-modal" class="modal">
-            <div class="modal-content">
-                <span id="close-leaderboard">&times;</span>
-                <h2 class="orange-text underline">The Leaderboard</h2>
-                <p class="grey-text">
-                1: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                2: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                3: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                4: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                5: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                6: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                7: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                8: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                9: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                10: SATOSHI NAKAMOTO ... SCORE: 660<br>
-                </p>
-            </div>
         </div>
 <!----------------------------------------      About Modal      ------------------------------------>
         <div id="about-modal" class="modal">
@@ -71,6 +55,25 @@
                 <h2 class="orange-text underline">Contact</h2>
                 <p class="grey-text">
 
+                </p>
+            </div>
+        </div>
+<!----------------------------------------    Leaderboard Modal    ------------------------------------>
+        <div id="leaderboard-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-leaderboard">&times;</span>
+                <h2 class="orange-text underline">The Leaderboard</h2>
+                <p class="grey-text">
+                1: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                2: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                3: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                4: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                5: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                6: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                7: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                8: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                9: SATOSHI NAKAMOTO ... SCORE: 660<br>
+                10: SATOSHI NAKAMOTO ... SCORE: 660<br>
                 </p>
             </div>
         </div>
