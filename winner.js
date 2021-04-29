@@ -91,7 +91,6 @@ function drawArt(hash, hashRows){
     }
 }
 
-
 function getColours(hash) {
     // hash split into individual characters
     let hashArray = hash.split('');
@@ -118,24 +117,19 @@ function getColours(hash) {
     return colours
 }
 
-
-// ---------------------------------  THE FUNCTION HOSPITAL (FUNCTIONS NOT FULLY WORKING)
-// Download image buttons will show an alert as functionality not yet implemented
-document.getElementById("download").onclick = function(){
-    window.alert("The download button isn't working yet - please right click and download instead!")
-}
-document.getElementById("buy").onclick = function(){
-    window.alert("Coming soon!")
-}
-
-    // window.alert("Nice try! Answer the question first!")
-
-// function to allow image download from the canvas (NOT WORKING)
-// code adapted from https://jsfiddle.net/user2314737/28wqq1gu/
+// function to allow image download from the canvas
+// code adapted (to remove inline JS) from https://jsfiddle.net/user2314737/28wqq1gu/
 document.getElementById("download").onclick = function(){
     var canvas = document.getElementById('art');
     var image = canvas.toDataURL("image/jpg");
     document.getElementById("download").href = image;
+}
+
+
+// ---------------------------------  THE FUNCTION HOSPITAL (FUNCTIONS NOT FULLY WORKING)
+// Buy button will show an alert as functionality not yet implemented
+document.getElementById("buy").onclick = function(){
+    window.alert("Coming soon!")
 }
 
 // function defined for later use to improve the artwork (NOT WRITTEN YET)
