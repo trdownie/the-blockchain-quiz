@@ -131,6 +131,7 @@ function typeText(text, element) {
 
 // function that makes an element appear (or disappear)
 // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// to appear: num = 0 step = positive / to disappear: num = 100 step = negative
 function appear(element, num, step, speed){
     var changeOpacity;
     changeOpacity = setInterval(function(){

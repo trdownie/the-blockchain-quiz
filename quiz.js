@@ -1,7 +1,4 @@
-//-------------------- LOCAL STORAGE
-
-//-------------------- QUIZ
-
+// ---------------------------------  OPTIONS FOR TARGETING THE QUESTIONS
 // questions to ask user
 const questionList = [
     'What is blockchain technology?',
@@ -36,10 +33,10 @@ const answerBox = [
     document.getElementById("answer-ten"),
     document.getElementById("answer-eleven")]
 
-// correct answers (not correct yet)
+// correct answers
 const correctAnswerList = ["b", "d", ["anonymous", "decentralised", "trustless"], "a", 10, "c", "c", ["64", "block-header", "undecipherable"], "b", 32, "a"]
 
-// selector for identifying form
+// selector for identifying the html form for each question
 const answerSelector = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11"]
 
 // submit buttons taken from html
@@ -56,8 +53,10 @@ const submitButton = [
     document.getElementById("submit-ten"),
     document.getElementById("submit-eleven")]
 
+// reusable function for assessing drag&drop questions
 var dragAndDropAnswersGiven = []
 
+// ---------------------------------  OPTIONS FOR TAILORING THE FAIL/WIN MODALS
 const explanationList = [
     "Blockchain is a distributed ledger on a peer-to-peer network. Distributed here means that it exists on many different computers all around the world, in a similar fashion to the internet.",
     "Nodes are computers that act as communication points, relaying information. This is what creates the blockchain network.",
@@ -129,14 +128,14 @@ const knowledgeExplainedList = ["Without a brain, a central nervous system or in
 ]
 
 
-    // TEST FUNCTIONS
+// ---------------------------------  TEST FUNCTIONS FOR FUTURE IMPROVEMENTS
+    // document.getElementById("user-level").innerHTML = 'page is working';
     // document.getElementById("user-level").innerHTML = ' User Score is ' + String(userLevel);
     // document.getElementById("user-level").innerHTML = 'page is working';
-    //window.alert("Nice try! Answer the question first!")
+    // window.alert("Nice try! Answer the question first!")
 
 
-
-// starts quiz on page load
+// ---------------------------------  MAIN FUNCTION ON PAGE LOAD
 document.addEventListener("DOMContentLoaded", function () {
     
     // sets the userlevel / userscore for the current game
@@ -158,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
-
+// ---------------------------------  MAIN FUNCTION THAT CONTROLS QUIZ
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore) {
 
@@ -184,8 +183,7 @@ function displayQuestion(userLevel, userScore) {
     }, 3500)
 }
 
-
-
+// ---------------------------------  SUPPORTING FUNCTIONS TRIGGERED IN ORDER
 // asks the question based on the userLevel
 function askQuestion(userLevel){
     // defines question based on the question list above
@@ -199,29 +197,7 @@ function askQuestion(userLevel){
 }
 
 
-
-// type the question to be asked
-function typeQuestion(questionLetters) {
-    // speed is speed of typing
-    let speed = 50
-    // i used here for iteration purposes
-    let i = 0
-    // function to iterate through the letters of the question in array form 
-    for (letter of questionLetters) {
-        type(letter, i);
-        i++;
-    }
-    // function called above that types each letter and iterates
-    function type(letter, i) {
-    setTimeout(function() {
-        document.getElementById('question').innerHTML += letter;
-    }, speed * i);
-    }
-}
-
-
-
-// displays timer after 2 seconds
+// resets timer and displays 2 seconds after question typed
 function resetTimer(userLevel) {
     // resets timer to 1:00
     document.getElementById('timer').innerHTML = '1:00';
@@ -236,28 +212,7 @@ function resetTimer(userLevel) {
 }
 
 
-
-// appear function code from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
-// to appear: num = 0 step = positive / to disappear: num = 100 step = negative
-function appear(element, num, step, speed){
-    var changeOpacity;
-    changeOpacity = setInterval(function(){
-        var opacity = num / 100;
-        num = num + step; 
-        if(opacity > 1 | opacity < 0){
-            clearInterval(changeOpacity);
-            return; 
-        }
-        // modern browsers
-        element.style.opacity = opacity;
-        // older IE
-        element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
-    }, speed);
-}
-
-
-
-// displays answer box after 2.5 seconds
+// displays answer box 2.5 seconds
 function displayAnswerBox(userLevel) {     
     // fades out previous answer box on q2 and fixes the page structure
     if (userLevel > 0) {
@@ -275,8 +230,6 @@ function displayAnswerBox(userLevel) {
         appear(answerBox[userLevel], 0, 10, 50)
     }, 2500)    
 }
-
-
 
 // starts timer and sets event listener ready for each question
 function beginTimer (userLevel, userScore, seconds) {
@@ -305,17 +258,13 @@ function beginTimer (userLevel, userScore, seconds) {
 }
 
 
-
+// ---------------------------------  FUNCTION ON USER SUBMIT THAT ASSESSES USER ANSWER
 // assess whether correct and adjust user level/score or run fail modal
 function assessAnswer(userLevel, userScore, seconds) {
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
     let questionType = questionTypeList[userLevel];
-    
-    // TEST
-    //document.getElementById("user-level").innerHTML = window.localStorage.getItem("User Score");
 
-    
     switch (questionType) {
         // for multi-choice questions
         case 1:
@@ -396,8 +345,7 @@ function assessAnswer(userLevel, userScore, seconds) {
     }
 }
 
-
-
+// ---------------------------------  LOSE/WIN MODALS
 // on question fail display fail modal
 function loserModal(userLevel, userScore) {
     
@@ -446,14 +394,11 @@ function winnerModal(userLevel, userScore) {
     // adds the knowledge level, which equates directly with user score
     document.getElementById("knowledge-explained-winner").innerHTML = knowledgeExplainedList[userLevel];
 
-
-
-
     // opens modal on function run (closing modal not an option)
     document.getElementById("winner-modal").style.display = "block";
 }
 
-
+// ---------------------------------  LOCAL STORAGE
 function storeUserLevel (userLevel, userScore) {
 
     // gets previous user level & user score (which are zero on first run)
@@ -470,7 +415,7 @@ function storeUserLevel (userLevel, userScore) {
     }
 
     // stores the best user score the user has achieved to date
-    // also adds 'NEW PERSONAL BEST SCORE' message to winner & loser modal
+    // also adds 'NEW PERSONAL BEST SCORE' message to winner & loser modals when achieved
     if (userScore > previousTopScoreInt) {
         window.localStorage.setItem("User Score", String(userScore));
         document.getElementById("new-top-score-loser").innerHTML = "THIS IS A NEW PERSONAL BEST SCORE!!";
@@ -478,9 +423,47 @@ function storeUserLevel (userLevel, userScore) {
     }
 }
 
+// ---------------------------------  ANIMATIONS
+// types the question to be asked
+function typeQuestion(questionLetters) {
+    // speed is speed of typing
+    let speed = 50
+    // i used here for iteration purposes
+    let i = 0
+    // function to iterate through the letters of the question in array form 
+    for (letter of questionLetters) {
+        type(letter, i);
+        i++;
+    }
+    // function called above that types each letter and iterates
+    function type(letter, i) {
+    setTimeout(function() {
+        document.getElementById('question').innerHTML += letter;
+    }, speed * i);
+    }
+}
+
+// function that makes an element appear (or disappear)
+// appear function code from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
+// to appear: num = 0 step = positive / to disappear: num = 100 step = negative
+function appear(element, num, step, speed){
+    var changeOpacity;
+    changeOpacity = setInterval(function(){
+        var opacity = num / 100;
+        num = num + step; 
+        if(opacity > 1 | opacity < 0){
+            clearInterval(changeOpacity);
+            return; 
+        }
+        // modern browsers
+        element.style.opacity = opacity;
+        // older IE
+        element.style.filter = 'alpha(opacity=' + opacity*100 + ')';
+    }, speed);
+}
 
 
-// DRAG AND DROP
+// ---------------------------------  DRAG AND DROP FUNCTION
 // code triggered repeatedly when one of the word options are dragged
 function drag(dragEvent) {
     dragEvent.dataTransfer.setData("text", dragEvent.target.id);
@@ -494,15 +477,10 @@ function allowDrop(dropEvent) {
 // code triggered on the dropping of a word into the drop box
 function drop(dropEvent) {
     dropEvent.preventDefault();
+    // assigns the text data (here the ID) to the variable data
     var data = dropEvent.dataTransfer.getData("text");
+    // adds the dropped element to the drop box area
     dropEvent.target.appendChild(document.getElementById(data));
-    // code on drop event
-    //document.getElementById("user-level").innerHTML = data
-
+    // adds the data (the ID) to the drag and drop answers to be used in assessAnswer()
     dragAndDropAnswersGiven.push(String(data));
-    // return dragAndDropAnswersGiven
-    // maybe execute function here that takes in the data variable (which here is free)
-    // and appends this into an answer array for question 3
-    // then this answer array should match the correct answer array
-    // within the answer list array above
 }
