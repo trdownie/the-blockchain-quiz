@@ -1,3 +1,8 @@
+// ---------------------------------  TEST FUNCTIONS FOR FUTURE IMPROVEMENTS
+    // document.getElementById("test").innerHTML = 'page is working';
+    // window.alert("Nice try! Answer the question first!")
+    
+
 // ---------------------------------  MAIN FUNCTION ON PAGE LOAD
 document.addEventListener("DOMContentLoaded", async function () {
 
@@ -123,26 +128,15 @@ function getShapes(hash) {
     // colour-wise, cycling through the same colour values for each move would work
 }
 
-/*
+
+// ---------------------------------  IMAGE DOWNLOAD
+// function to allow image download from the canvas (NOT WORKING)
+// code adapted from https://jsfiddle.net/user2314737/28wqq1gu/
 document.getElementById("download").onclick = function(){
-
-
     var canvas = document.getElementById('art');
     var image = canvas.toDataURL("image/jpg");
-    document.getElementById("test").innerHTML += typeof (image);
     document.getElementById("download").href = image;
 }
-*/
-
-var canvas = document.getElementById("canvas");
-
-
-download_img = function(el) {
-  var image = canvas.toDataURL("image/jpg");
-  el.href = image;
-};
-
-
 
 
 // ---------------------------------  MODALS FOR LEADERBOARD/ABOUT/CONTACT
@@ -176,11 +170,9 @@ contactBtn.onclick = function() {
 closeLeaderboard.onclick = function() {
     leaderboard.style.display = "none";
 }
-
 closeAbout.onclick = function() {
     about.style.display = "none";
 }
-
 closeContact.onclick = function() {
     contact.style.display = "none";
 }

@@ -1,3 +1,8 @@
+// ---------------------------------  TEST FUNCTIONS FOR FUTURE IMPROVEMENTS
+    // document.getElementById("test").innerHTML = 'page is working';
+    // window.alert("Nice try! Answer the question first!")
+
+    
 // ---------------------------------  OPTIONS FOR TAILORING THE HOME SCREEN
 // welcome text options
 const welcome = [

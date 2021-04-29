@@ -1,3 +1,8 @@
+// ---------------------------------  TEST FUNCTIONS FOR FUTURE IMPROVEMENTS
+    // document.getElementById("test").innerHTML = 'page is working';
+    // window.alert("Nice try! Answer the question first!")
+
+
 // ---------------------------------  OPTIONS FOR TARGETING THE QUESTIONS
 // questions to ask user
 const questionList = [
@@ -126,13 +131,6 @@ const knowledgeExplainedList = ["Without a brain, a central nervous system or in
     "Doctor Manhattan has the ability to observe and control space and time. With this level of power, he would be an avid blockchain fan and a true authority on it – as you are now. Can you make the final level?",
     "We could say more, but at this point - you know as much as we do.",
 ]
-
-
-// ---------------------------------  TEST FUNCTIONS FOR FUTURE IMPROVEMENTS
-    // document.getElementById("user-level").innerHTML = 'page is working';
-    // document.getElementById("user-level").innerHTML = ' User Score is ' + String(userLevel);
-    // document.getElementById("user-level").innerHTML = 'page is working';
-    // window.alert("Nice try! Answer the question first!")
 
 
 // ---------------------------------  MAIN FUNCTION ON PAGE LOAD
