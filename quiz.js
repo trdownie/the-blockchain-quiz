@@ -202,6 +202,8 @@ function askQuestion(userLevel){
 
 // type the question to be asked
 function typeQuestion(questionLetters) {
+    // speed is speed of typing
+    let speed = 50
     // i used here for iteration purposes
     let i = 0
     // function to iterate through the letters of the question in array form 
@@ -213,7 +215,7 @@ function typeQuestion(questionLetters) {
     function type(letter, i) {
     setTimeout(function() {
         document.getElementById('question').innerHTML += letter;
-    }, 50 * i);
+    }, speed * i);
     }
 }
 

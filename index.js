@@ -1,22 +1,22 @@
 //-------------------- LOCAL STORAGE
-// gets previous user level & user score
-let previousLevelString = window.localStorage.getItem("User Level");
-let previousScoreString = window.localStorage.getItem("User Score");
-// converts previous user level/score to integers
-let previousLevel = parseInt(previousLevelString, 10);
-let previousScore = parseInt(previousScoreString, 10);
+// gets previous user level & user score (which are zero on first run)
+let previousTopLevelString = window.localStorage.getItem("User Level");
+let previousTopScoreString = window.localStorage.getItem("User Score");    
 
+// converts previous user level/score to integers (this is why zero is required earlier)
+let previousTopLevelInt = parseInt(previousTopLevelString, 10);
+let previousTopScoreInt = parseInt(previousTopScoreString, 10);
 
 //-------------------- WELCOME MESSAGE ANIMATION
 // welcome text options
     let welcome
-    newWelcome = "Welcome to";
+    newWelcome = "Welcome to...";
     returnWelcome = "Welcome back to";
 // title of quiz
     quizTitle = "The Blockchain Quiz";
 // greeting text options
     let greeting
-    greeting0 = ""
+    greeting0 = "You have everything to learn, Newbie."
     greeting1 = "Peter. There is still much to learn."
     greeting2 = 
     greeting3 = 
@@ -98,6 +98,7 @@ function setGreeting() {
     }
 }
 
+/*
 // animation variables
 let typeSpeed = 50
 
@@ -111,9 +112,11 @@ function typewriterText(textToType, elementId){
         }
     }, speed)
 }
+*/
 
 // greeting functions
 // 1 - typewriter text welcome
+/*
 let i = 0
 function typewriterWelcome(){
     setTimeout(function() {
@@ -124,6 +127,7 @@ function typewriterWelcome(){
         }
     }, typeSpeed)
 }
+*/
 
 // 2 - title appears
 // appear function code adapted from https://stackoverflow.com/questions/2207586/how-do-you-make-something-to-appear-slowly-on-a-page-using-javascript
@@ -149,6 +153,7 @@ function title() {
     appear(document.getElementById('title'), 0, 10, 150);
 }
 
+/*
 // 3 - typewriter text greeting
 let j = 0
 function typewriterGreeting(){
@@ -160,6 +165,7 @@ function typewriterGreeting(){
         }
     }, typeSpeed)
 }
+*/
 
 // 4 - typewriter text invite
 let k = 0
@@ -197,22 +203,62 @@ function button() {
     appear(document.getElementsByTagName('button')[0], 0, 5, 50);
 }
 
+// type some text
+function typeText(text, element) {
+    // speed is speed of typing
+    let speed = 50
+    // i used here for iteration purposes
+    let i = 0
+    // function to iterate through the letters of the question in array form 
+    for (letter of text) {
+        type(letter, i);
+        i++;
+    }
+    // function called above that types each letter and iterates
+    function type(letter, i) {
+    setTimeout(function() {
+        document.getElementById(element).innerHTML += letter;
+    }, speed * i);
+    }
+}
+
 // Run Full Greeting (TO ADD SetGreeting function once cookies enabled)
-document.addEventListener("DOMContentLoaded",
-    typewriterWelcome(),
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // obtains previous user level, or sets it to zero if there isn't one
+    let previousTopLevel = window.localStorage.getItem("User Level");
+    let previousTopScore = window.localStorage.getItem("User Score");
+    if (previousTopLevel === null) {
+        window.localStorage.setItem("User Level", "0");
+    }
+    if (previousTopScore === null) {
+        window.localStorage.setItem("User Score", "0");
+    }
+
+
+    // starts with: Welcome to...
+    typeText(newWelcome, 'welcome')
+
+    // after 1 second, fades in 'The Blockchain Quiz'
     setTimeout(function() {
         title()
-    }, 1000),
+    }, 500)
+
+    // after 4 seconds, types greeting based on previous user level
     setTimeout(function() {
-        typewriterGreeting()
-    }, 4000),
+        typeText(greeting0, 'greeting')
+    }, 3000)
+
+    // after 5 seconds, types the invite to begin
     setTimeout(function() {
-        typewriterInvite()
-    }, 5000),
+        typeText(newInvite, 'invite')
+    }, 6000)
+
+    // after 6 seconds button fades in
     setTimeout(function() {
         button()
-    }, 6000),
-)
+    }, 7000)
+})
 
 //-------------------- 'BEGIN' MODAL 
 // code for modal learnt from https://www.w3schools.com/howto/howto_css_modals.asp
