@@ -401,7 +401,8 @@ function winnerModal(userLevel, userScore) {
 
     // displays winner modal with level and score
     document.getElementById("winner-message").innerHTML = 
-        "YOU WIN! You achieved <br>Level " + String(userLevel) + "<br> Score " + String(userScore);
+        "YOU WIN! You reached level " + String(userLevel) + " and achieved a score of " + String(userScore);
+
     // message for user telling them their best score to date
     document.getElementById("best-score-winner").innerHTML = "Your top score to date is " + window.localStorage.getItem("User Score");
 
