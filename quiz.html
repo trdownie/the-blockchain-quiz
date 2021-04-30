@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-        <title>The Blockchain Quiz</title>
+        <title>The Blockchain Quiz: Desktop</title>
     </head>
     <body>
 <!--======================================    START OF PAGE    ======================================-->
@@ -17,7 +17,7 @@
             <p id="question" class="question small-text"></p>
         </div>
         <div id="timer-box">
-            <p id="timer" class="orange-text timer">1:00</p>
+            <p id="timer" class="orange-text timer" aria-label="countdown-timer">1:00</p>
         </div>
 <!----------------------------------------    Question 1: Multi-Choice  -------------------------------->
         <form id="answer-one">
@@ -61,7 +61,7 @@
         <form id="answer-three">
             <div id="answer-box-three" class="grey-box">
                 <fieldset class="white-text">
-                    <legend class="orange-text center-text">Drag and drop the correct answers</legend>
+                    <legend class="orange-text center-text">Drag and drop the correct answers<br>(Note: first answers are taken)</legend>
                     <p class="white-text words">It is </p>
                     <span id="question-three-box-one" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
                     <p class="white-text words">,</p>
@@ -154,7 +154,7 @@
         <form id="answer-eight">
             <div id="answer-box-eight" class="grey-box">
                 <fieldset class="white-text">
-                    <legend class="orange-text center-text">Drag and drop the correct answers</legend>
+                    <legend class="orange-text center-text">Drag and drop the correct answers<br>(Note: first answers are taken)</legend>
                     <p class="white-text words">An </p>
                     <span id="question-eight-box-one" class="word-box-q8a" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
                     <p class="white-text words">string of </p>
