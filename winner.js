@@ -4,14 +4,14 @@
     
 
 // ---------------------------------  MAIN FUNCTION ON PAGE LOAD
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async function(){
 
     // defines the function to fetch the latest hash from the plaintext API
     let latestHash = await fetch('https://blockchain.info/q/latesthash')
   
     // makes sure the hash returned is ok (the server is responding)
     // code learnt from https://javascript.info/fetch 
-    if (latestHash.ok) {
+    if (latestHash.ok){
         // if the server responds, hash represents the response
         var hash = await latestHash.text();
     }
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 // ---------------------------------  SUPPORTING FUNCTIONS
 // this function takes the 64-digit hash and splits it into four 16-digit 'row' arrays
 // this helps with displaying the hash on screen and for working with it in later
-function splitHash(hash) {
+function splitHash(hash){
     // hash split into individual characters
     let hashArray = hash.split('');
     // rows defined as empty arrays
@@ -43,15 +43,15 @@ function splitHash(hash) {
     var fourthRow = [];
     // each element added to the four rows
     var i;
-    for (i = 0; i < hashArray.length; i++) {
+    for (i = 0; i < hashArray.length; i++){
         if (i <= 15) {
             firstRow.push(hashArray[i]);
         }
-        else if (i > 15 && i <= 31) {
+        else if (i > 15 && i <= 31){
 
             secondRow.push(hashArray[i]);
         }
-        else if (i > 31 && i <= 47) {
+        else if (i > 31 && i <= 47){
             thirdRow.push(hashArray[i]);
         }
         else {
@@ -74,7 +74,7 @@ function drawArt(hash, hashRows){
     let colours = getColours(hash)
 
     // begins the art (if function will return true if canvas accessible)
-    if (canvas.getContext) {
+    if (canvas.getContext){
         // defines the context (where the art will take place) as art
         var art = canvas.getContext('2d');
         // basic iterative variable for loop
@@ -82,7 +82,7 @@ function drawArt(hash, hashRows){
         // sets transparency, here fully opaque
         art.globalAlpha = 1.0;
         // cycles through the 45 six-part hexadecimal codes that the get colours function returns (see below)
-        for (i = 0; i < 45; i++) {
+        for (i = 0; i < 45; i++){
             // turns the codes into hex colours
             art.fillStyle = '#' + colours[i];
             // uses the colours to draw vertical lines (rectangles) down the canvas 
@@ -91,7 +91,7 @@ function drawArt(hash, hashRows){
     }
 }
 
-function getColours(hash) {
+function getColours(hash){
     // hash split into individual characters
     let hashArray = hash.split('');
     var i;
@@ -101,11 +101,11 @@ function getColours(hash) {
     // beginning at 14 accounts for the first 19 consecutive zeros
     // by starting at #14, the 6-number block will reach #20 from the beginning which may be non-zero
     // first for loop sets the starting point within the 64-digit array
-    for (i = 14; i < 58; i++) {
+    for (i = 14; i < 58; i++){
         // within this first for loop, a fresh blank temporary array is created
         var temporaryArray = [];
         // the second for loop collects the six hexadecimals in order and adds them to the temporary array
-        for (j = 0; j < 6; j++) {
+        for (j = 0; j < 6; j++){
             temporaryArray.push(hashArray[i+j]);
         }
         // after the second loop, a new colour variable is created out of the temporary array
@@ -133,7 +133,7 @@ document.getElementById("buy").onclick = function(){
 }
 
 // function defined for later use to improve the artwork (NOT WRITTEN YET)
-function getShapes(hash) {
+function getShapes(hash){
     // use the string of values as a fraction of the canvas
     // for example: 0, 5 represents x = 0, y = 5/16ths
     // from here, can use cubic bezier curves taking the next four digits
@@ -160,36 +160,36 @@ var closeContact = document.getElementById("close-contact"); // targets close bu
 
 
 // opens modals on button click
-leaderboardBtn.onclick = function() {
+leaderboardBtn.onclick = function(){
     leaderboard.style.display = "block";
 }
-aboutBtn.onclick = function() {
+aboutBtn.onclick = function(){
     about.style.display = "block";
 }
-contactBtn.onclick = function() {
+contactBtn.onclick = function(){
     contact.style.display = "block";
 }
 
 // closes modals on close click
-closeLeaderboard.onclick = function() {
+closeLeaderboard.onclick = function(){
     leaderboard.style.display = "none";
 }
-closeAbout.onclick = function() {
+closeAbout.onclick = function(){
     about.style.display = "none";
 }
-closeContact.onclick = function() {
+closeContact.onclick = function(){
     contact.style.display = "none";
 }
 
 // closes modals when user clicks outside of window
 window.onclick = function(event) {
-    if (event.target == leaderboard) {
+    if (event.target == leaderboard){
         leaderboard.style.display = "none";
     }
-    if (event.target == about) {
+    if (event.target == about){
         about.style.display = "none";
     }
-    if (event.target == contact) {
+    if (event.target == contact){
         contact.style.display = "none";
     }
 }

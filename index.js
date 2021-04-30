@@ -69,15 +69,15 @@ const button = [
     ]
 
 // ---------------------------------  MAIN FUNCTION ON PAGE LOAD
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function(){
     
     // obtains previous user level, or sets it to zero if there isn't one
     let previousTopLevel = window.localStorage.getItem("User Level");
     let previousTopScore = window.localStorage.getItem("User Score");
-    if (previousTopLevel === null) {
+    if (previousTopLevel === null){
         window.localStorage.setItem("User Level", "0");
     }
-    if (previousTopScore === null) {
+    if (previousTopScore === null){
         window.localStorage.setItem("User Score", "0");
     }
 
@@ -93,30 +93,30 @@ document.addEventListener("DOMContentLoaded", function() {
     typeText(welcome[previousLevel], 'welcome')
 
     // after 0.5 seconds, fade in 'The Blockchain Quiz'
-    setTimeout(function() {
+    setTimeout(function(){
         appear(document.getElementById('title'), 0, 10, 150);
     }, 500)
 
-    // after 3 seconds, type greeting based on previous user level
-    setTimeout(function() {
+    // after 2.5 seconds, type greeting based on previous user level
+    setTimeout(function(){
         typeText(greeting[previousLevel], 'greeting')
-    }, 3000)
+    }, 2500)
 
-    // after 6 seconds, type the invite to begin based on previous user level
-    setTimeout(function() {
+    // after 5.5 seconds, type the invite to begin based on previous user level
+    setTimeout(function(){
         typeText(invite[previousLevel], 'invite')
-    }, 6000)
+    }, 5500)
 
-    // after 7 seconds begin/continue/play button fades in based on previous user level
-    setTimeout(function() {
+    // after 6.5 seconds begin/continue/play button fades in based on previous user level
+    setTimeout(function(){
         document.getElementById('begin-button').innerHTML += button[previousLevel];
         appear(document.getElementById('begin-button'), 0, 5, 50);
-    }, 7000)
+    }, 6500)
 
     // if user level = 11 (previous winner) then display shortcut to winner's area button
     
     if (previousLevel == 11){    
-        setTimeout(function() {
+        setTimeout(function(){
                 document.getElementById('winners-area').innerHTML += "EXPLORE";
                 appear(document.getElementById('winners-area'), 0, 5, 50);
             }, 7000)
@@ -125,18 +125,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // ---------------------------------  SUPPORTING FUNCTIONS
 // function that types text letter by letter to the inner HTML of the element parament fed into it
-function typeText(text, element) {
+function typeText(text, element){
     // speed is speed of typing
     let speed = 50
     // i used here for iteration purposes
     let i = 0
     // function to iterate through the letters of the question in array form 
-    for (letter of text) {
+    for (letter of text){
         type(letter, i);
         i++;
     }
     // function called above that types each letter and iterates
-    function type(letter, i) {
+    function type(letter, i){
     setTimeout(function() {
         document.getElementById(element).innerHTML += letter;
     }, speed * i);
@@ -151,7 +151,7 @@ function appear(element, num, step, speed){
     changeOpacity = setInterval(function(){
         var opacity = num / 100;
         num = num + step; 
-        if(opacity > 1 | opacity < 0){
+        if (opacity > 1 | opacity < 0){
             clearInterval(changeOpacity);
             return; 
         }
@@ -170,7 +170,7 @@ var btn = document.getElementById("begin-button"); // targets begin-button
 var span = document.getElementsByClassName("close-modal")[0]; // targets close button
 
 // opens modal on button click
-btn.onclick = function() {
+btn.onclick = function(){
   modal.style.display = "block";
   if (previousScoreString != null){
   document.getElementById("best-score").innerHTML = "Your previous top score was " + previousScoreString;
@@ -178,13 +178,13 @@ btn.onclick = function() {
 }
 
 // closes modal on close click
-span.onclick = function() {
+span.onclick = function(){
   modal.style.display = "none";
 }
 
 // closes modal when user clicks outside of window
-window.onclick = function(event) {
-  if (event.target == modal) {
+window.onclick = function(event){
+  if (event.target == modal){
     modal.style.display = "none";
   }
 }

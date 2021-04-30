@@ -148,7 +148,7 @@ const knowledgeExplainedList = ["Without a brain, a central nervous system or in
 
 
 // ---------------------------------  MAIN FUNCTION ON PAGE LOAD
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function(){
     
     // sets the userlevel / userscore for the current game
     var userLevel = 0
@@ -157,10 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // identifies if they are a new user, and sets their top level/score to zero ready for later use
     let previousTopLevel = window.localStorage.getItem("User Level");
     let previousTopScore = window.localStorage.getItem("User Score");
-    if (previousTopLevel === null) {
+    if (previousTopLevel === null){
         window.localStorage.setItem("User Level", "0");
     }
-    if (previousTopScore === null) {
+    if (previousTopScore === null){
         window.localStorage.setItem("User Score", "0");
     }
 
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ---------------------------------  MAIN FUNCTION THAT CONTROLS QUIZ
 // loads question & answer box based on userLevel
-function displayQuestion(userLevel, userScore) {
+function displayQuestion(userLevel, userScore){
 
     // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
@@ -190,7 +190,7 @@ function displayQuestion(userLevel, userScore) {
     displayAnswerBox(userLevel)
     
     // starts 60 second timer once answer box has loaded (after 3.5 seconds)
-    setTimeout(function() {
+    setTimeout(function(){
         beginTimer(userLevel, userScore, seconds)
     }, 3500)
 }
@@ -210,12 +210,12 @@ function askQuestion(userLevel){
 
 
 // resets timer and displays 2 seconds after question typed
-function resetTimer(userLevel) {
+function resetTimer(userLevel){
     // resets timer to 1:00
     document.getElementById('timer').innerHTML = '1:00';
     // fades timer in on first question, after 2 seconds
     if (userLevel == 0) {
-        setTimeout(function() {    
+        setTimeout(function(){    
             appear(document.getElementById('timer-box'), 0, 10, 50)
         }, 2000);
     }
@@ -225,9 +225,9 @@ function resetTimer(userLevel) {
 
 
 // displays answer box 2.5 seconds
-function displayAnswerBox(userLevel) {     
+function displayAnswerBox(userLevel){     
     // fades out previous answer box on q2 and fixes the page structure
-    if (userLevel > 0) {
+    if (userLevel > 0){
         // fades out previous answer box
         appear(answerBox[userLevel - 1], 100, -10, 50)
         // after box has faded (1 second) hides previous answer box
@@ -238,13 +238,13 @@ function displayAnswerBox(userLevel) {
         }, 1000)
     }
     // fades in new answer box after 2.5 seconds
-    setTimeout(function() {  
+    setTimeout(function(){  
         appear(answerBox[userLevel], 0, 10, 50)
     }, 2500)    
 }
 
 // starts timer and sets event listener ready for each question
-function beginTimer (userLevel, userScore, seconds) {
+function beginTimer (userLevel, userScore, seconds){
     let timer = document.getElementById('timer')
     // begin interval after 1 second and repeat every second until seconds = 0
     let countdown = setInterval(function(){
@@ -276,22 +276,22 @@ function beginTimer (userLevel, userScore, seconds) {
 
 // ---------------------------------  FUNCTION ON USER SUBMIT THAT ASSESSES USER ANSWER
 // assess whether correct and adjust user level/score or run fail modal
-function assessAnswer(userLevel, userScore, seconds) {
+function assessAnswer(userLevel, userScore, seconds){
     // answer variable defines the correct answer based on the question number (userLevel)
     let correctAnswer = correctAnswerList[userLevel];
     let questionType = questionTypeList[userLevel];
 
-    switch (questionType) {
+    switch (questionType){
         // for multi-choice questions
         case 1:
             // targets input answer via the submit button according to different html form elements (each answer has its own form)
             var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value;
             // determines if answer is right or wrong
-            if (answerGiven == correctAnswer) {
+            if (answerGiven == correctAnswer){
                 userLevel ++;
                 userScore += seconds;
                 // when correct, display another question based on user level until Q11
-                if (userLevel < 11) {
+                if (userLevel < 11){
                     displayQuestion(userLevel, userScore);
                 }
                 // then display winner modal
@@ -312,7 +312,7 @@ function assessAnswer(userLevel, userScore, seconds) {
             dragAndDropAnswersGiven.sort();
             // loops through the correct answers and checks them against the answers given
             // each iteration increments numCorrect for this answer
-            for (var i = 0; i < correctAnswer.length; ++i) {
+            for (var i = 0; i < correctAnswer.length; ++i){
                 if (dragAndDropAnswersGiven[i] == correctAnswer[i])
                 numCorrect ++;
             }
@@ -323,7 +323,7 @@ function assessAnswer(userLevel, userScore, seconds) {
                 // reset drag & drop answer array for next drag & drop question
                 dragAndDropAnswersGiven.length = 0;
                 // when correct, display another question based on user level until Q11
-                if (userLevel < 11) {
+                if (userLevel < 11){
 
                     displayQuestion(userLevel, userScore);
                 }
@@ -341,11 +341,11 @@ function assessAnswer(userLevel, userScore, seconds) {
         case 3:
             // targets input value for the question displayed (using userLevel to obtain correct input box)
             var answerGiven = document.getElementById(String(userLevel + 1)).value;
-            if (answerGiven == correctAnswer) {
+            if (answerGiven == correctAnswer){
                 userLevel ++;
                 userScore += seconds;
                 // when correct, display another question based on user level until Q11
-                if (userLevel < 11) {
+                if (userLevel < 11){
                     displayQuestion(userLevel, userScore);
                 }
                 // then display winner modal
@@ -363,7 +363,7 @@ function assessAnswer(userLevel, userScore, seconds) {
 
 // ---------------------------------  LOSE/WIN MODALS
 // on question fail display fail modal
-function loserModal(userLevel, userScore) {
+function loserModal(userLevel, userScore){
     
     // stores the new best user level and user score
     storeUserLevel(userLevel, userScore)
@@ -394,7 +394,7 @@ function loserModal(userLevel, userScore) {
 
 
 // on question 11 correct answer display winner modal
-function winnerModal(userLevel, userScore) {
+function winnerModal(userLevel, userScore){
 
     // stores the new best user level and user score
     storeUserLevel(userLevel, userScore)
@@ -420,7 +420,7 @@ function winnerModal(userLevel, userScore) {
 }
 
 // ---------------------------------  LOCAL STORAGE
-function storeUserLevel (userLevel, userScore) {
+function storeUserLevel (userLevel, userScore){
 
     // gets previous user level & user score (which are zero on first run)
     let previousTopLevelString = window.localStorage.getItem("User Level");
@@ -431,13 +431,13 @@ function storeUserLevel (userLevel, userScore) {
     let previousTopScoreInt = parseInt(previousTopScoreString, 10);
 
     // stores the best user level the user has achieved to date
-    if (userLevel > previousTopLevelInt) {
+    if (userLevel > previousTopLevelInt){
         window.localStorage.setItem("User Level", String(userLevel));
     }
 
     // stores the best user score the user has achieved to date
     // also adds 'NEW PERSONAL BEST SCORE' message to winner & loser modals when achieved
-    if (userScore > previousTopScoreInt) {
+    if (userScore > previousTopScoreInt){
         window.localStorage.setItem("User Score", String(userScore));
         document.getElementById("new-top-score-loser").innerHTML = "THIS IS A NEW PERSONAL BEST SCORE!!";
         document.getElementById("new-top-score-winner").innerHTML = "THIS IS A NEW PERSONAL BEST SCORE!!";
@@ -446,18 +446,18 @@ function storeUserLevel (userLevel, userScore) {
 
 // ---------------------------------  ANIMATIONS
 // types the question to be asked
-function typeQuestion(questionLetters) {
+function typeQuestion(questionLetters){
     // speed is speed of typing
     let speed = 50
     // i used here for iteration purposes
     let i = 0
     // function to iterate through the letters of the question in array form 
-    for (letter of questionLetters) {
+    for (letter of questionLetters){
         type(letter, i);
         i++;
     }
     // function called above that types each letter and iterates
-    function type(letter, i) {
+    function type(letter, i){
     setTimeout(function() {
         document.getElementById('question').innerHTML += letter;
     }, speed * i);
@@ -472,7 +472,7 @@ function appear(element, num, step, speed){
     changeOpacity = setInterval(function(){
         var opacity = num / 100;
         num = num + step; 
-        if(opacity > 1 | opacity < 0){
+        if (opacity > 1 | opacity < 0){
             clearInterval(changeOpacity);
             return; 
         }
@@ -486,17 +486,17 @@ function appear(element, num, step, speed){
 
 // ---------------------------------  DRAG AND DROP FUNCTION
 // code triggered repeatedly when one of the word options are dragged
-function drag(dragEvent) {
+function drag(dragEvent){
     dragEvent.dataTransfer.setData("text", dragEvent.target.id);
 }
 
 // code triggered when word is dragged over drop box to prevent the default mode which disallows dropping
-function allowDrop(dropEvent) {
+function allowDrop(dropEvent){
     dropEvent.preventDefault();
 }
 
 // code triggered on the dropping of a word into the drop box
-function drop(dropEvent) {
+function drop(dropEvent){
     dropEvent.preventDefault();
     // assigns the text data (here the ID) to the variable data
     var data = dropEvent.dataTransfer.getData("text");
