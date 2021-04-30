@@ -91,6 +91,7 @@ function drawArt(hash, hashRows){
     }
 }
 
+// this function determines the hex colours using the hash hexadecimals
 function getColours(hash){
     // hash split into individual characters
     let hashArray = hash.split('');

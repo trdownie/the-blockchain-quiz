@@ -450,4 +450,21 @@ input[type="radio"] {
     }
 }
 
+/*----------------------------------- (Medium & Large Screens) >800px  ---------------------------*/
 
+/*  Adjusts text elements on medium and large screens (over 800px)  */
+@media screen and (min-width: 800px) {
+    #question-one,
+    #question-two,
+    #question-three,
+    #question-four,
+    #question-five,
+    #question-six,
+    #question-seven,
+    #question-eight,
+    #question-nine,
+    #question-ten,
+    #question-eleven {
+        font-size: var(--sm-font);
+    }
+}
