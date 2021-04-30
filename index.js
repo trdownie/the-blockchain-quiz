@@ -162,6 +162,13 @@ function appear(element, num, step, speed){
     }, speed);
 }
 
+// ---------------------------------  DETERMINE IF USING TOUCHSCREEN
+window.addEventListener('touchstart', function() {
+    let beginQuiz = document.getElementById('begin-quiz');
+    beginQuiz.href = "quiz-touchscreen.html"
+});
+
+
 // ---------------------------------  MODAL ON BUTTON CLICK
 // code for modal learnt from https://www.w3schools.com/howto/howto_css_modals.asp
 

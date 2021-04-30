@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+        <title>The Blockchain Quiz: Desktop</title>
+    </head>
+    <body>
+<!--======================================    START OF PAGE    ======================================-->
+<!----------------------------------------       Testing       ---------------------------------------->
+        <!-- TEST FUNCTION <div class="grey-box"><p id="test"></p></div> -->
+<!----------------------------------------     Question box    ---------------------------------------->
+        <div class="grey-box">
+            <h1 id="question-number" class="question-number"></h1>
+            <p id="question" class="question small-text"></p>
+        </div>
+        <div id="timer-box">
+            <p id="timer" class="orange-text timer" aria-label="countdown-timer">1:00</p>
+        </div>
+<!----------------------------------------    Question 1: Multi-Choice  -------------------------------->
+        <form id="answer-one">
+            <div id="answer-box-one" class="grey-box">
+                <fieldset id="question-one" class="white-text">
+                    <legend class="orange-text center-text">Select ten answers</legend>
+                    <input id="1a" type="radio" name="q1" value="a">
+                    <label for="1a">The open-source computer language that Bitcoin is written in</label><br/>
+                    <input id="1b" type="radio" name="q1" value="b">
+                    <label for="1b">A distributed ledger on a peer-to-peer network</label><br/>
+                    <input id="1c" type="radio" name="q1" value="c">
+                    <label for="1c">The technology used to sell bitcoins</label><br/>
+                    <input id="1d" type="radio" name="q1" value="d">
+                    <label for="1d">Post Malone’s new necklace containing blocks of milkybar chocolate</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-one" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 2: Multi-Choice  -------------------------------->
+        <form id="answer-two">
+            <div id="answer-box-two" class="grey-box">
+                <fieldset  id="question-two" class="white-text">
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="2a" type="radio" name="q2" value="a">
+                    <label for="2a">Transactions carried out on the blockchain</label><br/>
+                    <input id="2b" type="radio" name="q2" value="b">
+                    <label for="2b">The point at which the blockchain code is split into two</label><br/>
+                    <input id="2c" type="radio" name="q2" value="c">
+                    <label for="2c">The long list of numbers and letters that transactions are converted into to be added to the blockchain</label><br/>
+                    <input id="2d" type="radio" name="q2" value="d">
+                    <label for="2d">Individual computers that form the blockchain network</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-two" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 3: Drag & Drop  --------------------------------->
+        <form id="answer-three">
+            <div id="answer-box-three" class="grey-box">
+                <fieldset id="question-three" class="white-text">
+                    <legend class="orange-text center-text">Drag and drop the correct answers<br>(Note: first answers are taken)</legend>
+                    <p class="white-text words">It is </p>
+                    <span id="question-three-box-one" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">,</p>
+                    <span id="question-three-box-two" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words"> and </p>
+                    <span id="question-three-box-three" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">.</p>
+                    <p id="free-to-use" class="word-q3" draggable="true" ondragstart="drag(event)">free to use</p>
+                    <p id="anonymous" class="word-q3" draggable="true" ondragstart="drag(event)">anonymous</p>
+                    <p id="trustless" class="word-q3" draggable="true" ondragstart="drag(event)">trustless</p>
+                    <p id="decentralised" class="word-q3" draggable="true" ondragstart="drag(event)">decentralised</p>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-three" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 4: Multi-Choice  -------------------------------->
+        <form id="answer-four">
+            <div id="answer-box-four" class="grey-box">
+                <fieldset id="question-four" class="white-text">
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="4a" type="radio" name="q4" value="a">
+                    <label for="4a">Where different nodes work to add the next block to the blockchain</label><br/>
+                    <input id="4b" type="radio" name="q4" value="b">
+                    <label for="4b">Where different nodes send Bitcoins from senders to recipients</label><br/>
+                    <input id="4c" type="radio" name="q4" value="c">
+                    <label for="4c">Where different nodes store blocks on their computers to keep them safe</label><br/>
+                    <input id="4d" type="radio" name="q4" value="d">
+                    <label for="4d">Where different nodes fend off cyber-attacks on the blockchain</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-four" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 5: Input   -------------------------------------->
+        <form id="answer-five">
+            <div id="answer-box-five" class="grey-box">
+                <fieldset id="question-five" class="white-text">
+                    <legend class="orange-text center-text">Please type the answer</legend>
+                    <p class="answer-text">Miners validate the transactions and package them into blocks. How often are these blocks added to the blockchain?</p>
+                    <input id="5" type="number" name="q5">
+                    <label for="5">minutes</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-five" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 6: Multi-Choice  -------------------------------->
+        <form id="answer-six">
+            <div id="answer-box-six" class="grey-box">
+                <fieldset id="question-six" class="white-text">
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="6a" type="radio" name="q6" value="a">
+                    <label for="6a">They get the transaction fees for the transactions they validate</label><br/>
+                    <input id="6b" type="radio" name="q6" value="b">
+                    <label for="6b">They get the transaction fees for the transactions they validate as well as 1 BTC per transaction</label><br/>
+                    <input id="6c" type="radio" name="q6" value="c">
+                    <label for="6c">They get the transaction fees for the transactions they validate as well as a certain number of BTC that reduces over time</label><br/>
+                    <input id="6d" type="radio" name="q6" value="d">
+                    <label for="6d">They get the transaction fees for the transactions they validate as well as a certain numbers of BTC that increases over time</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-six" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 7: Multi-Choice  -------------------------------->
+        <form id="answer-seven">
+            <div id="answer-box-seven" class="grey-box">
+                <fieldset id="question-seven" class="white-text">
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="7a" type="radio" name="q7" value="a">
+                    <label for="7a">They are a small, fixed percentage of the transaction size. The bigger the transaction, the bigger the fee</label><br/>
+                    <input id="7b" type="radio" name="q7" value="b">
+                    <label for="7b">They are a small, fixed amount per transaction. The size of the transaction doesn’t matter</label><br/>
+                    <input id="7c" type="radio" name="q7" value="c">
+                    <label for="7c">They are a variable percentage of the transaction being made depending on the size of the transaction and how busy the network is</label><br/>
+                    <input id="7d" type="radio" name="q7" value="d">
+                    <label for="7d">They are a variable percentage of the transaction being made, determined by the two parties who are conducting the transaction</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-seven" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 8: Drag & Drop  ===============================-->
+        <form id="answer-eight">
+            <div id="answer-box-eight" class="grey-box">
+                <fieldset id="question-eight" class="white-text">
+                    <legend class="orange-text center-text">Drag and drop the correct answers<br>(Note: first answers are taken)</legend>
+                    <p class="white-text words">An </p>
+                    <span id="question-eight-box-one" class="word-box-q8a" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">string of </p>
+                    <span id="question-eight-box-two" class="word-box-q8b" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">letters and numbers that correspond to </p>
+                    <span id="question-eight-box-three" class="word-box-q8c" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    <p class="white-text words">.</p>
+                    <p id="decipherable" class="word" draggable="true" ondragstart="drag(event)">decipherable</p>
+                    <p id="undecipherable" class="word" draggable="true" ondragstart="drag(event)">undecipherable</p>
+                    <p id="32" class="word" draggable="true" ondragstart="drag(event)">32</p>
+                    <p id="64" class="word" draggable="true" ondragstart="drag(event)">64</p>
+                    <p id="128" class="word" draggable="true" ondragstart="drag(event)">128</p>
+                    <p id="block-header" class="word" draggable="true" ondragstart="drag(event)">the specific block header</p>
+                    <p id="transaction-addresses" class="word" draggable="true" ondragstart="drag(event)">the transaction addresses</p>
+                    <p id="block-time" class="word" draggable="true" ondragstart="drag(event)">the time blocks are added</p>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-eight" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 9: Multi-Choice  -------------------------------->
+        <form id="answer-nine">
+            <div id="answer-box-nine" class="grey-box">
+                <fieldset id="question-nine" class="white-text">
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="9a" type="radio" name="q9" value="a">
+                    <label for="9a">The first ever string in any given blockchain</label><br/>
+                    <input id="9b" type="radio" name="q9" value="b">
+                    <label for="9b">An arbitrary string added to each hash in the blockchain</label><br/>
+                    <input id="9c" type="radio" name="q9" value="c">
+                    <label for="9c">The bridging string between each block in the blockchain</label><br/>
+                    <input id="9d" type="radio" name="q9" value="d">
+                    <label for="9d">The algorithm that produces the hash strings used for proof of work</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-nine" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 10: Input   ------------------------------------->
+        <form id="answer-ten">
+            <div id="answer-box-ten" class="grey-box">
+                <fieldset id="question-ten" class="white-text">
+                    <legend class="orange-text center-text">Please type the answer</legend>
+                    <p class="answer-text">How many bytes are the hashes that bitcoin’s Secure Hash Algorithm 256 (SHA-256) produces?</p>
+                    <input id="10" type="number" name="q10">
+                    <label for="10"></label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-ten" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!----------------------------------------    Question 11: Multi-Choice  ------------------------------->
+        <form id="answer-eleven">
+            <div id="answer-box-eleven" class="grey-box">
+                <fieldset id="question-eleven" class="white-text">
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="11a" type="radio" name="q11" value="a">
+                    <label for="11a">A cryptographic tree used to facilitate the efficient and secure verification of the contents of large data structures</label><br/>
+                    <input id="11b" type="radio" name="q11" value="b">
+                    <label for="11b">A cryptographic tree used to securely store large data structures across distributed peer-to-peer networks</label><br/>
+                    <input id="11c" type="radio" name="q11" value="c">
+                    <label for="11c">A cryptographic tree used to validate and secure transactions that have been hashed before adding them to a blockchain</label><br/>
+                    <input id="11d" type="radio" name="q11" value="d">
+                    <label for="11d">A cryptographic tree used to ensure blockchain data is immutable and therefore rendering it secure from interference</label><br/>
+                </fieldset>
+            </div>
+            <div class="button-box">
+                <button id="submit-eleven" class="answer-button" type="button">SUBMIT</button>
+            </div>
+        </form>
+<!--======================================     END OF PAGE     ======================================-->
+<!----------------------------------------    Loser Modal    ------------------------------------------->
+        <div id="loser-modal" class="modal">
+            <div class="modal-content">
+                <h2 id="loser-incorrect" class="orange-text underline">INCORRECT!</h2>
+                <p id="loser-message" class="grey-text"></p>
+                <p id="new-top-score-loser" class="grey-text"></p>
+                <p id="best-score-loser" class="grey-text"></p>
+                <h2 id="loser-explanation" class="orange-text underline">EXPLANATION</h2>
+                <p id="explanation" class="grey-text"></p>
+                <a id="explanation-link" class="grey-button white-text" target="_blank">LEARN MORE</a>
+                <h2 id="loser-knowledge" class="orange-text underline">KNOWLEDGE LEVEL</h2>
+                <p class="grey-text">Your blockchain knowledge level is equal to: </p>
+                <p id="knowledge-level" class="grey-text center-text"></p>
+                <img id="knowledge-image">
+                <p id="knowledge-explained" class="grey-text"></p>
+                <a href="quiz.html" class="grey-button white-text">TRY AGAIN</a>
+            </div>
+        </div>
+<!----------------------------------------    Winner Modal    ------------------------------------------>
+        <div id="winner-modal" class="modal">
+            <div class="modal-content">
+                <h2 id="winner-winner" class="orange-text underline">WE HAVE A WINNER!</h2>
+                <p id="winner-message" class="grey-text"></p>
+                <p id="new-top-score-winner" class="grey-text"></p>
+                <p id="best-score-winner" class="grey-text"></p>
+                <h2 id="winner-knowledge" class="orange-text underline">KNOWLEDGE LEVEL</h2>
+                <p class="grey-text">Your blockchain knowledge level is equal to: </p>
+                <p id="knowledge-level-winner" class="grey-text center-text"></p>
+                <img id="knowledge-image-winner">
+                <p id="knowledge-explained-winner" class="grey-text"></p>
+                <a href="winner.html" class="grey-button white-text">RECIEVE PRIZE</a>
+            </div>
+        </div>
+<!--======================================     END OF HTML     ======================================-->
+    <script src="quiz.js"></script>
+    </body>
+    <footer>
+    </footer>
+</html>
