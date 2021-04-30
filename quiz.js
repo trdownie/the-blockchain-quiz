@@ -162,9 +162,9 @@ document.addEventListener("DOMContentLoaded", function(){
 // ---------------------------------  MAIN FUNCTION THAT CONTROLS QUIZ
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore){
-    
+
     // adds the question number to the question title based on userLevel
-    displayQuestionNumber(userLevel, userScore)
+    displayQuestionNumber(userLevel)
 
     // asks the question in typewriter text based on userLevel
     askQuestion(userLevel)
@@ -185,7 +185,7 @@ function displayQuestion(userLevel, userScore){
 
 // ---------------------------------  SUPPORTING FUNCTIONS TRIGGERED IN ORDER
 // adds the question number to the question title based on userLevel
-function displayQuestionNumber(userLevel, userScore){
+function displayQuestionNumber(userLevel){
     // removes the old question number inner HTML
     document.getElementById("question-number").innerHTML = '';
     // adds the new question number inner HTML based on userLevel
@@ -274,86 +274,102 @@ function beginTimer (userLevel, userScore, seconds){
 // assess whether correct and adjust user level/score or run fail modal
 function assessAnswer(userLevel, userScore, seconds){
     // answer variable defines the correct answer based on the question number (userLevel)
-    let correctAnswer = correctAnswerList[userLevel];
-    let questionType = questionTypeList[userLevel];
-
+    var questionType = questionTypeList[userLevel];
     switch (questionType){
         // for multi-choice questions
         case 1:
-            // targets input answer via the submit button according to different html form elements (each answer has its own form)
-            var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value;
-            // determines if answer is right or wrong
-            if (answerGiven == correctAnswer){
-                userLevel ++;
-                userScore += seconds;
-                // when correct, display another question based on user level until Q11
-                if (userLevel < 11){
-                    displayQuestion(userLevel, userScore);
-                }
-                // then display winner modal
-                else {
-                    winnerModal(userLevel, userScore);
-                }
-            }
-            // if wrong answer given, display loser modal
-            else {
-                loserModal(userLevel, userScore);
-            }
+            assessMultiChoiceAnswer(userLevel, userScore, seconds);
         break;
         // for drag & drop questions
         case 2:
-            // resets number correct within drag & drop function
-            let numCorrect = 0;
-            // sorts answers given so they can match correct answers
-            dragAndDropAnswersGiven.sort();
-            // loops through the correct answers and checks them against the answers given
-            // each iteration increments numCorrect for this answer
-            for (var i = 0; i < correctAnswer.length; ++i){
-                if (dragAndDropAnswersGiven[i] == correctAnswer[i])
-                numCorrect ++;
-            }
-            // provided all three are correct, passes answer as correct
-            if (numCorrect == 3){
-                userLevel ++;
-                userScore += seconds;
-                // reset drag & drop answer array for next drag & drop question
-                dragAndDropAnswersGiven.length = 0;
-                // when correct, display another question based on user level until Q11
-                if (userLevel < 11){
-
-                    displayQuestion(userLevel, userScore);
-                }
-                // then display winner modal
-                else {
-                    winnerModal(userLevel, userScore);
-                }
-            }
-            // if wrong answer given, display loser modal
-            else {
-                loserModal(userLevel, userScore);
-            }
+            assessDragAndDropAnswer(userLevel, userScore, seconds);
         break;
         // for input questions
         case 3:
-            // targets input value for the question displayed (using userLevel to obtain correct input box)
-            var answerGiven = document.getElementById(String(userLevel + 1)).value;
-            if (answerGiven == correctAnswer){
-                userLevel ++;
-                userScore += seconds;
-                // when correct, display another question based on user level until Q11
-                if (userLevel < 11){
-                    displayQuestion(userLevel, userScore);
-                }
-                // then display winner modal
-                else {
-                    winnerModal(userLevel, userScore);
-                }
-            }
-            // if wrong answer given, display loser modal
-            else {
-                loserModal(userLevel, userScore);
-            }
+            assessInputAnswer(userLevel, userScore, seconds);
         break;
+    }
+}
+
+// assesses multi-choice answers
+function assessMultiChoiceAnswer(userLevel, userScore, seconds){
+    var correctAnswer = correctAnswerList[userLevel];
+        // targets input answer via the submit button according to different html form elements (each answer has its own form)
+    var answerGiven = document.querySelector('input[name="' + answerSelector[userLevel] + '"]:checked').value;
+    // determines if answer is right or wrong
+    if (answerGiven == correctAnswer){
+        userLevel ++;
+        userScore += seconds;
+        // when correct, display another question based on user level until Q11
+        if (userLevel < 11){
+            displayQuestion(userLevel, userScore);
+        }
+        // then display winner modal
+        else {
+            winnerModal(userLevel, userScore);
+        }
+    }
+    // if wrong answer given, display loser modal
+    else {
+        loserModal(userLevel, userScore);
+    }
+}
+
+// assesses drag&drop answers
+function assessDragAndDropAnswer(userLevel, userScore, seconds){
+    var correctAnswer = correctAnswerList[userLevel];
+    // resets number correct within drag & drop function
+    let numCorrect = 0;
+    // sorts answers given so they can match correct answers
+    dragAndDropAnswersGiven.sort();
+    // loops through the correct answers and checks them against the answers given
+    // each iteration increments numCorrect for this answer
+    for (var i = 0; i < correctAnswer.length; ++i){
+        if (dragAndDropAnswersGiven[i] == correctAnswer[i])
+        numCorrect ++;
+    }
+    // provided all three are correct, passes answer as correct
+    if (numCorrect == 3){
+        userLevel ++;
+        userScore += seconds;
+        // reset drag & drop answer array for next drag & drop question
+        dragAndDropAnswersGiven.length = 0;
+        // when correct, display another question based on user level until Q11
+        if (userLevel < 11){
+
+            displayQuestion(userLevel, userScore);
+        }
+        // then display winner modal
+        else {
+            winnerModal(userLevel, userScore);
+        }
+    }
+    // if wrong answer given, display loser modal
+    else {
+        loserModal(userLevel, userScore);
+    }
+}
+
+// assesses input answers
+function assessInputAnswer(userLevel, userScore, seconds){
+    var correctAnswer = correctAnswerList[userLevel];
+    // targets input value for the question displayed (using userLevel to obtain correct input box)
+    var answerGiven = document.getElementById(String(userLevel + 1)).value;
+    if (answerGiven == correctAnswer){
+        userLevel ++;
+        userScore += seconds;
+        // when correct, display another question based on user level until Q11
+        if (userLevel < 11){
+            displayQuestion(userLevel, userScore);
+        }
+        // then display winner modal
+        else {
+            winnerModal(userLevel, userScore);
+        }
+    }
+    // if wrong answer given, display loser modal
+    else {
+        loserModal(userLevel, userScore);
     }
 }
 
