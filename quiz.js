@@ -238,12 +238,16 @@ function beginTimer (userLevel, userScore, seconds) {
             timer.innerHTML = '0:' + seconds;
             seconds-- ;
         }
-        else if (seconds < 10 & seconds > 0){
+        else if (seconds <= 9 && seconds > 0){
             timer.innerHTML = '0:0' + seconds;
             seconds-- ;
-            }
-        else {            
+        }
+        else if (seconds == 0){            
             timer.innerHTML = '&#128128'; // skull emoji on time up
+            seconds-- ;
+        }
+        else {
+            loserModal(userLevel, userScore)
             clearInterval(countdown);
         }
     }, 1000);
