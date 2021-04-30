@@ -253,7 +253,7 @@ function beginTimer (userLevel, userScore, seconds){
             seconds-- ;
         }
         else if (seconds == 0){            
-            timer.innerHTML = '&#128128'; // skull emoji on time up
+            timer.innerHTML = '&#128128;'; // skull emoji on time up
             seconds-- ;
         }
         else {
