@@ -14,7 +14,7 @@
 <!----------------------------------------     Question box    ---------------------------------------->
         <div class="grey-box">
             <h1 id="question-number" class="question-number"></h1>
-            <p id="question" class="question"></p>
+            <p id="question" class="question small-text"></p>
         </div>
         <div id="timer-box">
             <p id="timer" class="orange-text timer">1:00</p>
@@ -232,15 +232,14 @@
 <!----------------------------------------    Loser Modal    ------------------------------------------->
         <div id="loser-modal" class="modal">
             <div class="modal-content">
-                <h2 class="orange-text underline">INCORRECT!</h2>
+                <h2 id="loser-incorrect" class="orange-text underline">INCORRECT!</h2>
                 <p id="loser-message" class="grey-text"></p>
                 <p id="new-top-score-loser" class="grey-text"></p>
                 <p id="best-score-loser" class="grey-text"></p>
-
-                <h2 class="orange-text underline">EXPLANATION</h2>
+                <h2 id="loser-explanation" class="orange-text underline">EXPLANATION</h2>
                 <p id="explanation" class="grey-text"></p>
                 <a id="explanation-link" class="grey-button white-text">LEARN MORE</a>
-                <h2 class="orange-text underline">KNOWLEDGE LEVEL</h2>
+                <h2 id="loser-knowledge" class="orange-text underline">KNOWLEDGE LEVEL</h2>
                 <p class="grey-text">Your blockchain knowledge level is equal to: </p>
                 <p id="knowledge-level" class="grey-text center-text"></p>
                 <img id="knowledge-image">
@@ -251,11 +250,11 @@
 <!----------------------------------------    Winner Modal    ------------------------------------------>
         <div id="winner-modal" class="modal">
             <div class="modal-content">
-                <h2 class="orange-text underline">WE HAVE A WINNER!</h2>
+                <h2 id="winner-winner" class="orange-text underline">WE HAVE A WINNER!</h2>
                 <p id="winner-message" class="grey-text"></p>
                 <p id="new-top-score-winner" class="grey-text"></p>
                 <p id="best-score-winner" class="grey-text"></p>
-                <h2 class="orange-text underline">KNOWLEDGE LEVEL</h2>
+                <h2 id="winner-knowledge" class="orange-text underline">KNOWLEDGE LEVEL</h2>
                 <p class="grey-text">Your blockchain knowledge level is equal to: </p>
                 <p id="knowledge-level-winner" class="grey-text center-text"></p>
                 <img id="knowledge-image-winner">

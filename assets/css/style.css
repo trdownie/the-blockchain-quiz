@@ -422,11 +422,32 @@ input[type="radio"] {
 
 /*----------------------------------- (XS Screens) <576px  ---------------------------------*/
 
-/*  Adjusts title and question elements on super-small screens  */
+/*  Adjusts text elements on super-small screens (under 330px)  */
 @media screen and (max-width: 330px) {
-    #title-small,
-    #question-number {
-    font-size: var(--md-font);
+    #main-title,
+    #question-number,
+    #winner {
+        font-size: var(--sm-font);
+    }
+
+    #loser-incorrect,
+    #loser-explanation,
+    #loser-knowledge,
+    #knowledge-level,
+    #winner-winner,
+    #winner-knowledge,
+    #about,
+    #contact,
+    #leaderboard,
+    #about-heading,
+    #contact-heading,
+    #leaderboard-heading {
+        font-size: var(--xs-font);
+    }
+
+    #hash {
+        font-size: var(--xxs-font);
     }
 }
+
 
