@@ -162,6 +162,11 @@ input[type="radio"] {
     background-color: var(--btc-grey);
 }
 
+#begin-quiz:hover {
+    background-color: var(--btc-white);
+    color: var(--btc-grey);
+}
+
 #title {
     opacity: 0;
 }
@@ -183,6 +188,12 @@ input[type="radio"] {
     opacity: 0;
 }
 
+#begin-button:hover {
+    background-color: var(--btc-grey);
+    color: var(--btc-orange);
+    border: 2px solid var(--btc-orange);
+}
+
 #winners-area {
     width: 150px;
     height: 50px;
@@ -193,6 +204,13 @@ input[type="radio"] {
     border-radius: 5px;
     background-color: var(--btc-white);
     opacity: 0;
+}
+
+#winners-area:hover {
+    background-color: var(--btc-grey);
+    color: var(--btc-white);
+    border: 2px solid var(--btc-white);
+
 }
 
 #winners-area-2 {
@@ -356,6 +374,22 @@ input[type="radio"] {
     opacity: 0;
 }
 
+#submit-one:hover, 
+#submit-two:hover, 
+#submit-three:hover, 
+#submit-four:hover, 
+#submit-five:hover, 
+#submit-six:hover, 
+#submit-seven:hover, 
+#submit-eight:hover, 
+#submit-nine:hover, 
+#submit-ten:hover,
+#submit-eleven:hover {
+    background-color: var(--btc-grey);
+    color: var(--btc-orange);
+    border: 2px solid var(--btc-orange);
+}
+
 .original-word-box{
     width: 150px;
     height: 24px;
@@ -417,6 +451,13 @@ input[type="radio"] {
     display: inline;
 }
 
+#explanation-link:hover,
+#try-again:hover,
+#ecieve-prize:hover {
+    background-color: var(--btc-white);
+    color: var(--btc-grey);
+    border: 2px solid var(--btc-grey);
+}
 
 /***********************************  RESPONSIVE ELEMENTS  ******************************/
 
