@@ -118,6 +118,20 @@ const knowledgeImageList = ["./assets/img/unicellular.jpeg",
     "./assets/img/satoshi-nakamoto.png",
 ]
 
+const altTextList = ["a unicellular organism",
+    "Edward Scissorhands, a man with scissors for hands",
+    "Ava, a humanistic robot woman",
+    "The T-800, a humanistic robot man",
+    "Roy, a humanistic robot man",
+    "Hal, a simple camera lens and red light",
+    "Marvin, a robot with a large round head",
+    "David, a humanistic robot man",
+    "Agent Smith, a man in a suit",
+    "Deep thought, a cartoon graphic of a giant supercomputer with a square head",
+    "Dr Manhattan, a blue all powerful being",
+    "A simple graphic representation of Satoshi Nakamoto with the Bitcoin logo",
+]
+
 const knowledgeExplainedList = ["Without a brain, a central nervous system or internet access, unicellular organisms are true Blockchain amateurs.",
     "Not only did Edward retire to private life long before blockchain was developed, he wasn't the best with a keyboard.",
     "Ava was completely isolated and would therefore lack exposure to Blockchain technology. Sound familiar?",
@@ -369,7 +383,9 @@ function loserModal(userLevel, userScore) {
     document.getElementById("knowledge-level").innerHTML = knowledgeLevelList[userLevel];
     // adds an image to accompany the knowledge level
     document.getElementById("knowledge-image").src = knowledgeImageList[userLevel];
-    // adds the knowledge level, which equates directly with user score
+    // adds alt text to accompanying image
+    document.getElementById("knowledge-image").alt = altTextList[userLevel];
+    // adds the knowledge explanation, which equates directly with user score
     document.getElementById("knowledge-explained").innerHTML = knowledgeExplainedList[userLevel];
 
     // opens modal on function run, after messages above are added to html (note: closing modal is not an option)
@@ -393,7 +409,9 @@ function winnerModal(userLevel, userScore) {
     document.getElementById("knowledge-level-winner").innerHTML = knowledgeLevelList[userLevel];
     // adds an image to accompany the knowledge level
     document.getElementById("knowledge-image-winner").src = knowledgeImageList[userLevel];
-    // adds the knowledge level, which equates directly with user score
+    // adds alt text to accompanying image
+    document.getElementById("knowledge-image").alt = altTextList[userLevel];
+    // adds the knowledge explanation, which equates directly with user score
     document.getElementById("knowledge-explained-winner").innerHTML = knowledgeExplainedList[userLevel];
 
     // opens modal on function run (closing modal not an option)
