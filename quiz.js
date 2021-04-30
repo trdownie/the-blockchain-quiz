@@ -153,16 +153,6 @@ document.addEventListener("DOMContentLoaded", function(){
     // sets the userlevel / userscore for the current game
     var userLevel = 0
     var userScore = 0
-    
-    // identifies if they are a new user, and sets their top level/score to zero ready for later use
-    let previousTopLevel = window.localStorage.getItem("User Level");
-    let previousTopScore = window.localStorage.getItem("User Score");
-    if (previousTopLevel === null){
-        window.localStorage.setItem("User Level", "0");
-    }
-    if (previousTopScore === null){
-        window.localStorage.setItem("User Score", "0");
-    }
 
     // begins quiz
     displayQuestion(userLevel, userScore);
@@ -172,11 +162,9 @@ document.addEventListener("DOMContentLoaded", function(){
 // ---------------------------------  MAIN FUNCTION THAT CONTROLS QUIZ
 // loads question & answer box based on userLevel
 function displayQuestion(userLevel, userScore){
-
-    // removes the old question number inner HTML
-    document.getElementById("question-number").innerHTML = '';
-    // adds the new question number inner HTML based on userLevel
-    document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
+    
+    // adds the question number to the question title based on userLevel
+    displayQuestionNumber(userLevel, userScore)
 
     // asks the question in typewriter text based on userLevel
     askQuestion(userLevel)
@@ -196,6 +184,14 @@ function displayQuestion(userLevel, userScore){
 }
 
 // ---------------------------------  SUPPORTING FUNCTIONS TRIGGERED IN ORDER
+// adds the question number to the question title based on userLevel
+function displayQuestionNumber(userLevel, userScore){
+    // removes the old question number inner HTML
+    document.getElementById("question-number").innerHTML = '';
+    // adds the new question number inner HTML based on userLevel
+    document.getElementById("question-number").innerHTML += 'Question ' + (userLevel + 1);
+}
+
 // asks the question based on the userLevel
 function askQuestion(userLevel){
     // defines question based on the question list above
