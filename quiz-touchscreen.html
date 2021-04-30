@@ -23,7 +23,7 @@
         <form id="answer-one">
             <div id="answer-box-one" class="grey-box">
                 <fieldset id="question-one" class="white-text">
-                    <legend class="orange-text center-text">Select ten answers</legend>
+                    <legend class="orange-text center-text">Select one answer</legend>
                     <input id="1a" type="radio" name="q1" value="a">
                     <label for="1a">The open-source computer language that Bitcoin is written in</label><br/>
                     <input id="1b" type="radio" name="q1" value="b">
@@ -57,22 +57,19 @@
                 <button id="submit-two" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    Question 3: Drag & Drop  --------------------------------->
+<!----------------------------------------    Question 3: Multi-Choice  --------------------------------->
         <form id="answer-three">
             <div id="answer-box-three" class="grey-box">
                 <fieldset id="question-three" class="white-text">
-                    <legend class="orange-text center-text">Drag and drop the correct answers<br>(Note: first answers are taken)</legend>
-                    <p class="white-text words">It is </p>
-                    <span id="question-three-box-one" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
-                    <p class="white-text words">,</p>
-                    <span id="question-three-box-two" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
-                    <p class="white-text words"> and </p>
-                    <span id="question-three-box-three" class="word-box-q3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
-                    <p class="white-text words">.</p>
-                    <p id="free-to-use" class="word-q3" draggable="true" ondragstart="drag(event)">free to use</p>
-                    <p id="anonymous" class="word-q3" draggable="true" ondragstart="drag(event)">anonymous</p>
-                    <p id="trustless" class="word-q3" draggable="true" ondragstart="drag(event)">trustless</p>
-                    <p id="decentralised" class="word-q3" draggable="true" ondragstart="drag(event)">decentralised</p>
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="3a" type="radio" name="q3" value="a">
+                    <label for="3a">It is anonymous, decentralised and free to use</label><br/>
+                    <input id="3b" type="radio" name="q3" value="b">
+                    <label for="3b">It is anonymous, trustless and free to use</label><br/>
+                    <input id="3c" type="radio" name="q3" value="c">
+                    <label for="3c">It is anonymous, trustless and decentralised</label><br/>
+                    <input id="3d" type="radio" name="q3" value="d">
+                    <label for="3d">It is trustless, decentralised and free to use</label><br/>
                 </fieldset>
             </div>
             <div class="button-box">
@@ -150,26 +147,19 @@
                 <button id="submit-seven" class="answer-button" type="button">SUBMIT</button>
             </div>
         </form>
-<!----------------------------------------    Question 8: Drag & Drop  ===============================-->
+<!----------------------------------------    Question 8: Multi-Choice  ===============================-->
         <form id="answer-eight">
             <div id="answer-box-eight" class="grey-box">
                 <fieldset id="question-eight" class="white-text">
-                    <legend class="orange-text center-text">Drag and drop the correct answers<br>(Note: first answers are taken)</legend>
-                    <p class="white-text words">An </p>
-                    <span id="question-eight-box-one" class="word-box-q8a" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
-                    <p class="white-text words">string of </p>
-                    <span id="question-eight-box-two" class="word-box-q8b" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
-                    <p class="white-text words">letters and numbers that correspond to </p>
-                    <span id="question-eight-box-three" class="word-box-q8c" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
-                    <p class="white-text words">.</p>
-                    <p id="decipherable" class="word" draggable="true" ondragstart="drag(event)">decipherable</p>
-                    <p id="undecipherable" class="word" draggable="true" ondragstart="drag(event)">undecipherable</p>
-                    <p id="32" class="word" draggable="true" ondragstart="drag(event)">32</p>
-                    <p id="64" class="word" draggable="true" ondragstart="drag(event)">64</p>
-                    <p id="128" class="word" draggable="true" ondragstart="drag(event)">128</p>
-                    <p id="block-header" class="word" draggable="true" ondragstart="drag(event)">the specific block header</p>
-                    <p id="transaction-addresses" class="word" draggable="true" ondragstart="drag(event)">the transaction addresses</p>
-                    <p id="block-time" class="word" draggable="true" ondragstart="drag(event)">the time blocks are added</p>
+                    <legend class="orange-text center-text">Select one answer</legend>
+                    <input id="8a" type="radio" name="q8" value="a">
+                    <label for="8a">They are undecipherable strings of 128 letters and numbers that correspond to the block header</label><br/>
+                    <input id="8b" type="radio" name="q8" value="b">
+                    <label for="8b">They are undecipherable strings of 128 letters and numbers that identify the node in the network</label><br/>
+                    <input id="8c" type="radio" name="q8" value="c">
+                    <label for="8c">They are undecipherable strings of 64 letters and numbers that identify the node in the network</label><br/>
+                    <input id="8d" type="radio" name="q8" value="d">
+                    <label for="8d">They are undecipherable strings of 64 letters and numbers that correspond to the block header</label><br/>
                 </fieldset>
             </div>
             <div class="button-box">
@@ -244,7 +234,7 @@
                 <p id="knowledge-level" class="grey-text center-text"></p>
                 <img id="knowledge-image">
                 <p id="knowledge-explained" class="grey-text"></p>
-                <a href="quiz.html" class="grey-button white-text">TRY AGAIN</a>
+                <a href="quiz-touchscreen.html" class="grey-button white-text">TRY AGAIN</a>
             </div>
         </div>
 <!----------------------------------------    Winner Modal    ------------------------------------------>
@@ -263,7 +253,7 @@
             </div>
         </div>
 <!--======================================     END OF HTML     ======================================-->
-    <script src="quiz.js"></script>
+    <script src="quiz-touchscreen.js"></script>
     </body>
     <footer>
     </footer>
