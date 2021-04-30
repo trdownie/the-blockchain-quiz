@@ -68,6 +68,10 @@ const button = [
     "PLAY"
     ]
 
+// sets the global variables based on local storage
+var previousTopLevelString = window.localStorage.getItem("User Level");
+var previousTopScoreString = window.localStorage.getItem("User Score");    
+
 // ---------------------------------  MAIN FUNCTION ON PAGE LOAD
 document.addEventListener("DOMContentLoaded", function(){
     
@@ -79,11 +83,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     if (previousTopScore === null){
         window.localStorage.setItem("User Score", "0");
-    }
-
-    // gets previous user level & user score (which are now zero on first run)
-    let previousTopLevelString = window.localStorage.getItem("User Level");
-    let previousTopScoreString = window.localStorage.getItem("User Score");    
+    } 
 
     // converts previous user level/score to integers (this is why zero is required earlier)
     let previousLevel = parseInt(previousTopLevelString, 10);
@@ -179,8 +179,8 @@ var span = document.getElementsByClassName("close-modal")[0]; // targets close b
 // opens modal on button click
 btn.onclick = function(){
   modal.style.display = "block";
-  if (previousScoreString != null){
-  document.getElementById("best-score").innerHTML = "Your previous top score was " + previousScoreString;
+  if (previousTopScoreString !== null){
+  document.getElementById("best-score").innerHTML = "Your previous top score was " + previousTopScoreString;
   }
 }
 

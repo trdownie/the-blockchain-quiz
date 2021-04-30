@@ -162,9 +162,11 @@ input[type="radio"] {
     background-color: var(--btc-grey);
 }
 
-#begin-quiz:hover {
+#begin-interactive:hover,
+#begin-accessible:hover {
     background-color: var(--btc-white);
     color: var(--btc-grey);
+    border: 2px solid var(--btc-grey);
 }
 
 #title {
@@ -211,19 +213,6 @@ input[type="radio"] {
     color: var(--btc-white);
     border: 2px solid var(--btc-white);
 
-}
-
-#winners-area-2 {
-    appearance: button;
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--btc-orange);
-    border-radius: 5px;
-    background-color: var(--btc-white);
-    opacity: 0;
 }
 
 #timer-box {
