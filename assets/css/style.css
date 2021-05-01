@@ -237,7 +237,6 @@ input[type="radio"] {
     height: 200px;
 }
 
-
 /* The Modal (background) */
 /* Modal code adapted from https://www.w3schools.com/howto/howto_css_modals.asp */
 .modal {
@@ -440,13 +439,20 @@ input[type="radio"] {
     display: inline;
 }
 
+#download,
+#buy {
+    font-size: var(--xs-font);
+}
+
 #explanation-link:hover,
 #try-again:hover,
-#ecieve-prize:hover {
+#recieve-prize:hover {
     background-color: var(--btc-white);
     color: var(--btc-grey);
     border: 2px solid var(--btc-grey);
 }
+
+
 
 /***********************************  RESPONSIVE ELEMENTS  ******************************/
 
