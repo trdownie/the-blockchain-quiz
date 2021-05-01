@@ -4,8 +4,7 @@ View the live site [here](https://trdownie.github.io/the-blockchain-quiz/).
 
 This website is a quiz on blockchain technology. It is responsive, therefore accessible on a range of devices. The purpose of this site is to edutain: entertain and educate at the same time. This website also forms part of my diploma in Full Stack Development with the Code Institute, specifically interactive frontend development. As such, this site has been developed using HTML5, CSS3 and JavaScript, with an emphasis on using JavaScript where appropriate to make the website interactive.
 
-![The website showing on multiple screen sizes](/assets/readme-img/responsive-display.png)
-
+<div align="center"><img src="assets/README-img/responsive.png" style="height:500px" alt="responsive image of this website"></div>
 -----------------------------
 
 ## <div align="center">PART 1: DESIGN</div>
@@ -40,10 +39,10 @@ The secondary goal of this website is elicit a positive feeling in the user so t
 The scope of the website is to achieve the strategic goals outlined above. The most practical way to achieve this is to allow the user access to the quiz immediately upon landing on the website. Too much clutter or distraction detracts from this pleasant experience and might be enough resistance to send the user elsewhere.
 
 The main scope considerations are:
-•	The landing page will display to our target users that this site is exactly what they are looking for.
-•	From the landing page, the user will be invited to take part in the quiz immediately.
-•	Upon embarking on the quiz, there are two outcomes for each question,
-o	either a correct answer, leading to another question,
+- The landing page will display to our target users that this site is exactly what they are looking for.
+- From the landing page, the user will be invited to take part in the quiz immediately.
+- Upon embarking on the quiz, there are two outcomes for each question,
+-- either a correct answer, leading to another question,
 o	or an incorrect answer, leading to information that helps the user learn more and retry the quiz from the beginning (to solidify the information and help the user learn). At this stage the user will get a ‘rank’ based on someone in the Bitcoin space to make the process fun.
 •	On completing the quiz with 100% the user will be presented with a reward (an algorithmically produced piece of art) to elicit a positive feeling, and their name will be added to the leaderboard of the site.
 •	Finally, there will be an option to learn more about the site and to connect with me but only once they have completed the quiz. This serves as a filter for those who are genuinely interested in learning, or those who already know their stuff. This gives these users exclusivity which further adds to the desire to contacting me.
@@ -90,6 +89,8 @@ o	Drag and drop word questions
 ##### *Skeleton*
 Initial sketches on paper led to the following [wireframes](https://www.figma.com/file/VvGE6j9pl40ixttaedECee/The-Blockchain-Quiz?node-id=0%3A1) being developed using Figma.
 
+<div align="center"><img src="assets/README-img/README-2-wireframes.png" style="height:500px" alt="responsive image of this website"></div>
+
 As you can see, the layout is simple and does not follow a conventional website layout. This is intentional, as the idea is to immerse the user into the quiz and not provide links out and away from the site.
 
 The following features are on display here:
@@ -107,10 +108,18 @@ Colour and typography were used during wireframing to ensure the minimalistic de
 ##### *Surface*
 Following the wireframes, the final step of design was to create in-depth [mockups](https://www.figma.com/file/VvGE6j9pl40ixttaedECee/The-Blockchain-Quiz?node-id=0%3A1). These were also created in Figma.
 
+<div align="center"><img src="assets/README-img/README-3-mockups1.png" style="height:500px" alt="responsive image of this website"></div>
+<div align="center"><img src="assets/README-img/README-4-mockups2.png" style="height:500px" alt="responsive image of this website"></div>
+<div align="center"><img src="assets/README-img/README-5-mockups3.png" style="height:500px" alt="responsive image of this website"></div>
+<div align="center"><img src="assets/README-img/README-6-mockups4.png" style="height:500px" alt="responsive image of this website"></div>
+
+
 Regarding typography, Ubuntu was used. Ubuntu is a humanist sans serif font family designed by London-based type foundry [Dalton Maag](https://fontmeme.com). This font was chosen since it is the font used in the Bitcoin logo. I also believe it is appealing in this setting. To differentiate, since only one font is being utilised, italic and bold will be used throughout the site.
 
 The colour scheme employed is the grey, orange and white of the Bitcoin logo, as per designpieces.com (see below). In addition, to increase the style and contrast, extra greys have been used in the background imagery.
  
+<div align="center"><img src="assets/README-img/README-7-BTC.png" style="height:500px" alt="responsive image of this website"></div>
+
 Imagery used here in three instances. First, the background used throughout the site is the commonly used ‘matrix’ style of binary code, popularised in the Matrix movie. This was developed using Canva, and the 1’s and 0’s change from the landing page to the question pages according to the question the user is on. Second, the user is given a rank depending on how well they do in the quiz, and images are used to convey this rank. Third, on the winner’s page, a JavaScript algorithm will pull hashes from the original blockchain source code via API and use this to produce unique art for the user.
 
 The copy used is strictly functional as this is not a traditional website. As such, it is resigned to question, information, and navigation.
@@ -163,7 +172,7 @@ The following is a series of notes that explain any development-related issues o
 ##### **Index (Landing Page)**
 The landing page, much like the entire site, is relatively basic in design. The background image was created using Canva, and the HTML & CSS were constructed without any significant content, since JavaScript DOM manipulation was implemented to add the text.
 
- 
+<div align="center"><img src="assets/README-img/README-8-index.png" style="height:500px" alt="responsive image of this website"></div>
 
 Since the quiz is simple by nature, animated text was utilised to add style/character. The animations used took two forms: typewriter text and fade in text.
 
@@ -211,7 +220,7 @@ function appear(element, num, step, speed){
 
 In addition to the animation, the entire welcome message is tailored based on a user’s previous best level. As you can see, everything except the title changes based on the user’s previous score.
 
- 
+<div align="center"><img src="assets/README-img/README-9-index2.png" style="height:500px" alt="responsive image of this website"></div>
 
 To achieve this, two things were needed. First, multiple arrays containing the elements that would be displayed were required. I decided to use arrays and not more complex objects to ensure the code remained simple for accessing these objects. Second, local storage was implemented on page load, as shown below. 
 
@@ -241,13 +250,12 @@ As you can see from the initial modal – this forces the user to engage with th
 
 I have also utilised emojis throughout the project. I feel these add symbolic meaning and context in an everyday way, engage with the reader in a light-hearted way that tempers any wooden copy, and spruce up an otherwise plain website.
 
- 
-
+<div align="center"><img src="assets/README-img/README-10-begin-modal.png" style="height:500px" alt="responsive image of this website"></div>
 
 ##### **Quiz**
 The quiz page maintains the same style as the landing page, with minimal HTML and the JavaScript doing the heavy lifting. 
 
- 
+<div align="center"><img src="assets/README-img/README-11-question1.png" style="height:500px" alt="responsive image of this website"></div>
 
 The same typewriter and appear functions were utilised here, so as not to make the animation seem overly gimmicky. Animation is not always desirable, and by keeping the same format it lets the user get used with what to expect. Here, on page load, the following series of events are triggered in order:
 
@@ -267,7 +275,7 @@ Multiple choice questions utilised the form element and simple radio buttons.
 
 Drag and drop questions make use of the Drag & Drop API. I read many guides on how to do this, however I found the guide from [MDN Web Docs]( https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) to be the best for understanding the functionality of this feature.
 
- 
+<div align="center"><img src="assets/README-img/README-12-question3.png" style="height:500px" alt="responsive image of this website"></div>
 
 The code used to achieve this functionality is below. Considering the nature of the functionality, this was impressively simple to implement. (Note: the final line of code – this is referred to later within the Quiz Logic section.)
 
@@ -296,7 +304,7 @@ function drop(dropEvent){
 
 Input type questions simply changed the traditional multi-choice input for an input field that would take numbers. Input questions were only chosen for those that required numerical input for obvious reasons.
 
- 
+<div align="center"><img src="assets/README-img/README-13-question5.png" style="height:500px" alt="responsive image of this website"></div>
 
 The clock was designed to begin ticking once everything had loaded. The code for the clock is below. Simple conditionals were used here to adjust the inner HTML of the element. Upon reaching zero, a skull and cross bones emoji is displayed.
 
@@ -557,37 +565,30 @@ Both of these modals are highly tailored to the user’s performance in the quiz
 
 These are simply to add fun to the site and copyright is outlined later in this document. Two examples of the loser modal are shown below. As you can see, these modals do not have a close button, nor does their code allow for their closure by clicking off screen. The user has only one option at this point: try again. (Note: the learn more button opens in a new page)
 
- 
- 
+<div align="center"><img src="assets/README-img/README-14-failmodal1.png" style="height:500px" alt="responsive image of this website"></div>
 
+<div align="center"><img src="assets/README-img/README-15-failmodal2.png" style="height:500px" alt="responsive image of this website"></div>
 
+<div align="center"><img src="assets/README-img/README-16-failmodal3.png" style="height:500px" alt="responsive image of this website"></div>
 
-
-
-
-
-
-
-
-
- 
- 
+<div align="center"><img src="assets/README-img/README-17-failmodal4.png" style="height:500px" alt="responsive image of this website"></div>
 
 The winner modal is similar to the loser modal in both form and function. The difference here is that there is no explanation provided, since the user has correctly answered all questions, and the option is to progress to the winner’s area, as show below.
 
- 
- 
+<div align="center"><img src="assets/README-img/README-18-winnermodal.png" style="height:500px" alt="responsive image of this website"></div>
+
+<div align="center"><img src="assets/README-img/README-19-winnermodal2.png" style="height:500px" alt="responsive image of this website"></div>
 
 ##### **Winner's Area**
 The winner’s area is only accessible through completion of the quiz (unless someone guesses the address, of course!). It comprises of three parts: a winner notification, a prize, and some further information. The winner notification is shown below and is of course very basic.
 
- 
+<div align="center"><img src="assets/README-img/README-20-winners1.png" style="height:500px" alt="responsive image of this website"></div>
 
 The key part of the winner’s area is the prize. The HTML Canvas element (shown below) displays a piece of ‘art’ that is based on the hash from the latest block in the Bitcoin blockchain. Since this updates every ten minutes, this means in most cases this will be a completely unique prize. The initial intention here was to use the initial block in the blockchain and therefore guarantee that each prize was unique; however, without server-side storage there wasn’t any way to implement this.
 
 The MDN Web Docs [Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) was vital in achieving this.
 
- 
+<div align="center"><img src="assets/README-img/README-21-winners2.png" style="height:500px" alt="responsive image of this website"></div>
 
 To achieve this, the code below is executed on page load. First, it pulls the latest hash from the [Blockchain API](https://www.blockchain.com/api) and defines it at latestHash. Then, it checks that this hash is ok, otherwise displaying an error message, as per [Javascript.info]( https://javascript.info/fetch). After this, it defines the variable hashRows, which is the 64-digit hash broken into four 16-digit rows for easier display on screen, which is subsequently performed. Finally, the drawArt function is called.
 
@@ -687,7 +688,7 @@ function getColours(hash){
 
 Finally, the information box on the home screen displays the hash being used (as per the earlier code) and the additional options.
 
- 
+<div align="center"><img src="assets/README-img/README-22-winners3.png" style="height:500px" alt="responsive image of this website"></div>
 
 The code for downloading the image was adapted from [JS Fiddle]( https://jsfiddle.net/user2314737/28wqq1gu/) to remove an in-line JavaScript. The code is below.
 
@@ -705,11 +706,11 @@ The NFT option is added but not yet implemented, and as such only displays an al
 
 The three final options are: about, contact, and leaderboard. These three options take advantage of modals once again, in keeping with the style of the site. These are shown below and are intentionally minimal to limit the user’s options. Ideally, I want users to connect with me on Twitter, which is where I will be most active regarding my projects. I’ve added a link to this README, however, as it is quite in-depth and may benefit some new developers.
 
- 
+<div align="center"><img src="assets/README-img/README-23-about.png" style="height:500px" alt="responsive image of this website"></div>
 
- 
- 
+<div align="center"><img src="assets/README-img/README-24-contact.png" style="height:500px" alt="responsive image of this website"></div>
 
+<div align="center"><img src="assets/README-img/README-25-leaderboard.png" style="height:500px" alt="responsive image of this website"></div>
 
 #### **Responsiveness**
 From inception to development, the site has been designed using a mobile-first approach. The content is minimal, with most elements appearing and disappearing within a small window. As such, there was no need for extensive responsiveness amendments. Instead, I used one small screen breakpoint whereby text elements would shrink to fit within the screen or their respective boxes, and one larger screen breakpoint to enlarge certain text elements so they did not look out of place on larger screens.
