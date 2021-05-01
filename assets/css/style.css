@@ -140,15 +140,6 @@ input[type="radio"] {
     background-color: var(--btc-orange);
 }
 
-.art-canvas {
-    width: 70%;
-    margin: 30px auto;
-    text-align: center;
-    border-radius: 15px;
-    border: solid 2px var(--btc-grey);
-    background-color: var(--btc-white);
-}
-
 .grey-button {
     align-self: center;
     width: 150px;
@@ -162,20 +153,22 @@ input[type="radio"] {
     background-color: var(--btc-grey);
 }
 
-#begin-interactive:hover,
-#begin-accessible:hover {
-    background-color: var(--btc-white);
-    color: var(--btc-grey);
-    border: 2px solid var(--btc-grey);
+.button-box {
+    display: flex;
+    justify-content: center;
 }
+
+/*----------------------------------  Specific Styling  ------------------------------------------*/
 
 #title {
     opacity: 0;
 }
 
-.button-box {
-    display: flex;
-    justify-content: center;
+#begin-interactive:hover,
+#begin-accessible:hover {
+    background-color: var(--btc-white);
+    color: var(--btc-grey);
+    border: 2px solid var(--btc-grey);
 }
 
 #begin-button {
@@ -439,6 +432,15 @@ input[type="radio"] {
     display: inline;
 }
 
+.art-canvas {
+    width: 70%;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 15px;
+    border: solid 2px var(--btc-grey);
+    background-color: var(--btc-white);
+}
+
 #download,
 #buy {
     font-size: var(--xs-font);
@@ -456,10 +458,10 @@ input[type="radio"] {
 
 /***********************************  RESPONSIVE ELEMENTS  ******************************/
 
-/*----------------------------------- (XS Screens) <576px  ---------------------------------*/
+/*----------------------------------- (Smaller Screens) <800px  ---------------------------------*/
 
 /*  Adjusts text elements on super-small screens (under 330px)  */
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 330px){
     #main-title,
     #question-number,
     #winner {
@@ -486,6 +488,15 @@ input[type="radio"] {
     }
 }
 
+@media screen and (min-width: 500px) and (max-width: 800px){
+    #welcome-box,
+    #question-box,
+    #winner-box {
+        margin-top: 50px;
+    }
+}
+
+
 /*----------------------------------- (Medium & Large Screens) >800px  ---------------------------*/
 
 /*  Adjusts text elements on medium and large screens (over 800px)  */
@@ -502,5 +513,13 @@ input[type="radio"] {
     #question-ten,
     #question-eleven {
         font-size: var(--sm-font);
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #welcome-box,
+    #question-box,
+    #winner-box {
+        margin-top: 80px;
     }
 }
