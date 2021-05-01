@@ -174,6 +174,8 @@ window.addEventListener('touchstart', function() {
     // third, the option text will be removed
     let chooseQuiz = document.getElementById('choose-quiz');
     chooseQuiz.style.display = "none";
+    // finally, the button text changes simply to 'Begin' as there is only one option
+    beginQuiz.innerHTML = "BEGIN";
 });
 
 
