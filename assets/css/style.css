@@ -164,7 +164,7 @@ input[type="radio"] {
     opacity: 0;
 }
 
-#begin-interactive:hover,
+#begin-quiz:hover,
 #begin-accessible:hover {
     background-color: var(--btc-white);
     color: var(--btc-grey);
@@ -493,7 +493,6 @@ input[type="radio"] {
         display: none;
     }
 }
-
 
 /*----------------------------------- (Medium & Large Screens) >800px  ---------------------------*/
 
