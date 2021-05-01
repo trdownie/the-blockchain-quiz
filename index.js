@@ -163,9 +163,17 @@ function appear(element, num, step, speed){
 }
 
 // ---------------------------------  DETERMINE IF USING TOUCHSCREEN
+// on the user's first touch on the home screen, the 'enter quiz' option is tailored
 window.addEventListener('touchstart', function() {
+    // first, the begin quiz button will now default to the non-interactive quiz
     let beginQuiz = document.getElementById('begin-quiz');
-    beginQuiz.href = "quiz-touchscreen.html"
+    beginQuiz.href = "quiz-touchscreen.html";
+    // second, the accessible button will be hidden (since it is now default option)
+    let interactiveQuiz = document.getElementById('begin-accessible');
+    interactiveQuiz.style.display = "none";
+    // third, the option text will be removed
+    let chooseQuiz = document.getElementById('choose-quiz');
+    chooseQuiz.style.display = "none";
 });
 
 
