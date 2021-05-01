@@ -42,34 +42,34 @@ The main scope considerations are:
 - The landing page will display to our target users that this site is exactly what they are looking for.
 - From the landing page, the user will be invited to take part in the quiz immediately.
 - Upon embarking on the quiz, there are two outcomes for each question,
--- either a correct answer, leading to another question,
-o	or an incorrect answer, leading to information that helps the user learn more and retry the quiz from the beginning (to solidify the information and help the user learn). At this stage the user will get a ‘rank’ based on someone in the Bitcoin space to make the process fun.
-•	On completing the quiz with 100% the user will be presented with a reward (an algorithmically produced piece of art) to elicit a positive feeling, and their name will be added to the leaderboard of the site.
-•	Finally, there will be an option to learn more about the site and to connect with me but only once they have completed the quiz. This serves as a filter for those who are genuinely interested in learning, or those who already know their stuff. This gives these users exclusivity which further adds to the desire to contacting me.
+    - either a correct answer, leading to another question,
+    - or an incorrect answer, leading to information that helps the user learn more and retry the quiz from the beginning (to solidify the information and help the user learn). At this stage the user will get a ‘rank’ based on someone in the Bitcoin space to make the process fun.
+- On completing the quiz with 100% the user will be presented with a reward (an algorithmically produced piece of art) to elicit a positive feeling, and their name will be added to the leaderboard of the site.
+- Finally, there will be an option to learn more about the site and to connect with me but only once they have completed the quiz. This serves as a filter for those who are genuinely interested in learning, or those who already know their stuff. This gives these users exclusivity which further adds to the desire to contacting me.
 
 The content considerations are:
-•	The website is interactive; therefore, it will involve a combination of buttons to click, toggle buttons/drag and drop words/input fields for answering questions, and pop-ups that inform the user of different things.
-•	Text will be used for questions and explanations.
-•	Images will be used for giving the user a rank and if needed to explain a concept.
-•	A form will be used for contacting me.
-•	The final page will present a canvas to the user in which an algorithmically generated piece of artwork will be available for downloading.
+- The website is interactive; therefore, it will involve a combination of buttons to click, toggle buttons/drag and drop words/input fields for answering questions, and pop-ups that inform the user of different things.
+- Text will be used for questions and explanations.
+- Images will be used for giving the user a rank and if needed to explain a concept.
+- A form will be used for contacting me.
+- The final page will present a canvas to the user in which an algorithmically generated piece of artwork will be available for downloading.
 
 ##### *Structure*
 The website is a quiz – it has a single and concise purpose. As such, no complex structure is warranted, and since JavaScript will be utilised, this allows for a basic structure that JavaScript can then manipulate as the user interacts with the site.
 
 The website structure will be as follows:
 1.	Landing Page: including,
-o	A title as to what the website is
-o	The option for users to play the quiz
-o	A special mention for return users
-o	An option for previous winners to sidestep the quiz and learn more about the project or contact me since they have already completed it
+- A title as to what the website is
+- The option for users to play the quiz
+- A special mention for return users
+- An option for previous winners to sidestep the quiz and learn more about the project or contact me since they have already completed it
 2.	Question Page: a question page that users interact with and that either progresses through the 10 questions in order, or tells the users they have failed, informs them of why to educate them, and allows them to return to the beginning
 3.	Winners Page: a page dedicated to those who have completed the quiz, presenting the winners with:
-o	A congratulation message from me
-o	Their place on the scoreboard
-o	A unique piece of art that is algorithmically generated
-o	The option to contact me or connect with me on social media
-o	The option to learn more about the site
+- A congratulation message from me
+- Their place on the scoreboard
+- A unique piece of art that is algorithmically generated
+- The option to contact me or connect with me on social media
+- The option to learn more about the site
 
 The website will not have header or footer navigation as this will take away from the experience of the site and the strictly controlled nature of navigation/information flow.
 
@@ -78,13 +78,13 @@ Information flow for the website is a consistent and single flow of information 
 Navigation for the website is almost non-existent. There is the landing page, then an infinite question loop that users can only escape by correctly completing the quiz or leaving the site completely having failed. Again, this deviation from convention is intentional and strategic to elicit an emotional response from the user and make them want to play the quiz, to beat the quiz (ultimately learning what they don’t know), and to find out more/contact me.
 
 Interaction is used throughout the site. Specifically:
-•	Upon landing on the site, the user will be greeted with one of three welcome pages depending on whether they have played before.
-•	The user will click on the button to take them into the quiz, which will contain three types of questions:
-o	Toggle button questions
-o	Input field questions
-o	Drag and drop word questions
-•	Depending on whether the answer is correct or incorrect, the user will be met with more questions (initially 10 for practical purposes) or a modal will pop up to inform them of their incorrect answer and explain why, proving a link to retry the quiz.
-•	Upon completion, the user will be presented with a ‘receive prize’ button that will provide them with a piece of art (an image) that is algorithmically generated and totally unique.
+- Upon landing on the site, the user will be greeted with one of three welcome pages depending on whether they have played before.
+- The user will click on the button to take them into the quiz, which will contain three types of questions:
+    - Toggle button questions
+    - Input field questions
+    - Drag and drop word questions
+- Depending on whether the answer is correct or incorrect, the user will be met with more questions (initially 10 for practical purposes) or a modal will pop up to inform them of their incorrect answer and explain why, proving a link to retry the quiz.
+- Upon completion, the user will be presented with a ‘receive prize’ button that will provide them with a piece of art (an image) that is algorithmically generated and totally unique.
 
 ##### *Skeleton*
 Initial sketches on paper led to the following [wireframes](https://www.figma.com/file/VvGE6j9pl40ixttaedECee/The-Blockchain-Quiz?node-id=0%3A1) being developed using Figma.
@@ -94,14 +94,14 @@ Initial sketches on paper led to the following [wireframes](https://www.figma.co
 As you can see, the layout is simple and does not follow a conventional website layout. This is intentional, as the idea is to immerse the user into the quiz and not provide links out and away from the site.
 
 The following features are on display here:
-•	Landing Page: A landing page with a welcome message and button to begin the quiz.
-•	Question Page: A question page displaying a timer, the question, the option for the user to select the correct answer, and a submit button.
-•	Incorrect Answer: An incorrect answer modal will appear when a user enters incorrect information presenting the user with a light-hearted rank based on prominent figures in the Bitcoin world
-•	Winners Page: A winners are is available for those who complete the quiz fully, providing a few additional features.
-o	Prize: a prize is presented, specifically a unique piece of artwork generated using the hashes from the blockchain network
-o	About: a modal will appear providing basic information about the site
-o	Contact: a modal will appear with a form for the user to input contact details and connect via Twitter
-o	Leaderboard: a modal will appear with a mock leaderboard of previous winners. Each name will be Satoshi Nakamoto as a nod to the pseudonymous nature of the developer.
+- Landing Page: A landing page with a welcome message and button to begin the quiz.
+- Question Page: A question page displaying a timer, the question, the option for the user to select the correct answer, and a submit button.
+- Incorrect Answer: An incorrect answer modal will appear when a user enters incorrect information presenting the user with a light-hearted rank based on prominent figures in the Bitcoin world
+- Winners Page: A winners are is available for those who complete the quiz fully, providing a few additional features.
+    - Prize: a prize is presented, specifically a unique piece of artwork generated using the hashes from the blockchain network
+    - About: a modal will appear providing basic information about the site
+    - Contact: a modal will appear with a form for the user to input contact details and connect via Twitter
+    - Leaderboard: a modal will appear with a mock leaderboard of previous winners. Each name will be Satoshi Nakamoto as a nod to the pseudonymous nature of the developer.
 
 Colour and typography were used during wireframing to ensure the minimalistic design was still appealing.
 
