@@ -488,17 +488,17 @@ input[type="radio"] {
     }
 }
 
+@media screen and (max-width: 400px){
+    #larger-screens {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 500px) and (max-width: 800px){
     #welcome-box,
     #question-box,
     #winner-box {
         margin-top: 50px;
-    }
-}
-
-@media screen and (max-width: 800px){
-    #larger-screens {
-        display: none;
     }
 }
 
